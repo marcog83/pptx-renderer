@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "dev": "node ./scripts/build.dev.js"
+    "dev": "node ./scripts/build.dev.js",
+    "lint": "yarn run eslint packages/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,9 @@
     "yarn": ">=1.22.17"
   },
   "devDependencies": {
-    "esbuild": "^0.14.11"
-  },
-  "dependencies": {
-    "@yarnpkg/esbuild-plugin-pnp": "^2.0.0"
+    "@yarnpkg/esbuild-plugin-pnp": "^2.0.0",
+    "esbuild": "^0.14.11",
+    "eslint": "^8.6.0",
+    "eslint-plugin-react": "7.28.0"
   }
 }

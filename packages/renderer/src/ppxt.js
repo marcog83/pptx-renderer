@@ -1,14 +1,15 @@
  import { renderer } from "./host";
 import { getLayout } from "@pptx-renderer/layout";
 import { render,Pptxgen } from "@pptx-renderer/render";
+ 
 
 export const PPTX = {
-  render(doc, callback) {
+  render(doc) {
     const container = { type: "ROOT", document: null };
 
     // doc: This is the react element for App component
     // container: This is the host root element to which the rendered app will be attached.
-    // callback: if specified will be called after render is done.
+    //  
     // Disables async rendering
     const isAsync = false;
     const mountNode = renderer.createContainer(container, isAsync);

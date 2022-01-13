@@ -25,20 +25,26 @@ executors:
    
 
 jobs:
-  build-standalone:
+  test-standalone:
     executor: node-executor
     steps:
       - checkout
       - restore_cache: *restore-yarn-cache
         # Builds babel-standalone with the regular Babel config
-        # test-ci-coverage doesn't test babel-standalone, as trying to gather coverage
-        # - run: IS_PUBLISH=true make -j build-standalone-ci
         # data for a JS file that's several megabytes large is bound to fail. Here,
         # we just run the babel-standalone test separately.
       - run: yarn test
       - store_artifacts: *artifact_pptx
       - store_artifacts: *artifact_pptx_min
       - save_cache: *save-yarn-cache
+  eslint:
+     executor: node-executor
+     steps:
+      - checkout
+      - restore_cache: *restore-yarn-cache
+      - run: yarn lint
+      - save_cache: *save-yarn-cache
+
 
  
 
@@ -46,4 +52,5 @@ workflows:
   version: 2
   build-standalone:
     jobs:
-      - build-standalone
+      - test-standalone
+      - lint
