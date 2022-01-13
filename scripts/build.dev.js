@@ -1,1 +1,1 @@
-require("esbuild").build(require("./config.dev.js"));
+require('esbuild').build(require('./config.dev.js'));

@@ -1,4 +1,4 @@
-import * as N from "@pptx-renderer/primitives";
+import * as N from '@pptx-renderer/primitives';
 
 const renderText = (ctx, node) => {
   const { options, children } = node;

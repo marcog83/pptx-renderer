@@ -1,5 +1,5 @@
 //Layout from react structure to pptx structure
-import * as N from "@pptx-renderer/primitives";
+import * as N from '@pptx-renderer/primitives';
 // import Yoga from "yoga-layout";
 
 const isTextInstance = ({ type }) => type === N.TextInstance;
@@ -7,7 +7,7 @@ const isTextInstance = ({ type }) => type === N.TextInstance;
 // const YOGA_NODE = "_yogaNode";
 // const YOGA_CONFIG = Yoga.Config.create();
 
-YOGA_CONFIG.setPointScaleFactor(0);
+// YOGA_CONFIG.setPointScaleFactor(0);
 
 const flattenArr = (arr, props) => {
   const result = [];
@@ -46,7 +46,7 @@ const layoutNotes = (node) => {
   const text = node.children
     .filter(isTextInstance)
     .map(({ value }) => value)
-    .join(" ");
+    .join(' ');
 
   return {
     ...node,

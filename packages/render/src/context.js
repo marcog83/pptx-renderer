@@ -1,4 +1,4 @@
-import pptxgen from "pptxgenjs";
+import pptxgen from 'pptxgenjs';
 export class Pptxgen {
   constructor(props) {
     this.pres = new pptxgen();
@@ -10,42 +10,42 @@ export class Pptxgen {
     this.pres.layout = props.layout;
   }
   addSlide({ masterName, sectionTitle, ...props }) {
-    console.log("addSlide", masterName, sectionTitle, props);
+    console.log('addSlide', masterName, sectionTitle, props);
     this.slide = this.pres.addSlide({ masterName, sectionTitle });
     this.slide.background = props.background;
     this.slide.color = props.color;
     this.slide.fontSize = props.fontSize;
   }
   addSlideNumber(props) {
-    console.log("addSlideNumber", props);
+    console.log('addSlideNumber', props);
     this.slide.slideNumber = props;
   }
   addText(children, options) {
     //find the current slide
     //slide.addText(children, options)
-    console.log("addText", options, children);
+    console.log('addText', options, children);
     this.slide.addText(children, options);
   }
   addImage(props) {
-    console.log("addImage", props);
+    console.log('addImage', props);
     this.slide.addImage(props);
   }
   addShape(node) {
     if (node.hasText) {
-      console.log("addShape hasText", node);
+      console.log('addShape hasText', node);
       this.addText(node.children, node.options);
     } else {
       const { type, ...props } = node.props;
-      console.log("addShape", type, props);
+      console.log('addShape', type, props);
       this.slide.addShape(type, props);
     }
   }
   addNotes(text) {
-    console.log("addNotes", text);
+    console.log('addNotes', text);
     this.slide.addNotes(text);
   }
   addSection({ title }) {
-    console.log("addSection", title);
+    console.log('addSection', title);
     this.pres.addSection({ title });
   }
   writeFile({ fileName }) {

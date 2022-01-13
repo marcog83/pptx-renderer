@@ -5,12 +5,12 @@ import { PPTX,
     Shape,
     Slide,
     SlideNumber,
-    Text} from "@pptx-renderer/renderer";
+    Text} from '@pptx-renderer/renderer';
  
 
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 
-const wee = "wee";
+const wee = 'wee';
 const pptx = PPTX.render(
   <Document
     author="Brent Ely"
@@ -37,7 +37,7 @@ const pptx = PPTX.render(
           </Text>
         </Shape>
         <Shape type="sun" x="90%" y="2" w={1} h={1} fill="FF0000" />
-        <Text x={1} y={2} w={4} h={3} margin={5} fill={"FF0000"} color="FFCC00">
+        <Text x={1} y={2} w={4} h={3} margin={5} fill={'FF0000'} color="FFCC00">
           {wee}
           text 1
           <Text x={10} y={20} bold>
@@ -65,7 +65,7 @@ const pptx = PPTX.render(
 
 const App = () => {
   const handleClick = () => {
-    pptx.writeFile({ fileName: "Browser-PowerPoint-Demo.pptx" });
+    pptx.writeFile({ fileName: 'Browser-PowerPoint-Demo.pptx' });
   };
   return (
     <>
@@ -74,4 +74,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));

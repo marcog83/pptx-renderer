@@ -1,12 +1,12 @@
-import Reconciler from "react-reconciler";
+import Reconciler from 'react-reconciler';
 
 import {
   unstable_scheduleCallback as schedulePassiveEffects,
   unstable_cancelCallback as cancelPassiveEffects,
   unstable_now as now
-} from "scheduler";
-import propsEqual from "./props-equal";
-import * as N from "@pptx-renderer/primitives";
+} from 'scheduler';
+import propsEqual from './props-equal';
+import * as N from '@pptx-renderer/primitives';
 const emptyObject = {};
 
 const HostConfig = {
@@ -36,11 +36,11 @@ const HostConfig = {
     };
   },
 
-  createTextInstance(text, rootContainerInstance) {
+  createTextInstance(text, /*rootContainerInstance*/) {
     return { type: N.TextInstance, value: text };
   },
 
-  finalizeInitialChildren(element, type, props) {
+  finalizeInitialChildren(/*element, type, props*/) {
     return false;
   },
 
@@ -60,9 +60,9 @@ const HostConfig = {
     return !propsEqual(oldProps, newProps);
   },
 
-  resetAfterCommit: (...rest) => console.log("resetAfterCommit", ...rest),
+  resetAfterCommit: (...rest) => console.log('resetAfterCommit', ...rest),
 
-  resetTextContent(element) {
+  resetTextContent(/*element*/) {
     // Noop
   },
 
@@ -74,7 +74,7 @@ const HostConfig = {
     return emptyObject;
   },
 
-  shouldSetTextContent(type, props) {
+  shouldSetTextContent(/*type, props*/) {
     return false;
   },
 
@@ -83,7 +83,7 @@ const HostConfig = {
   },
 
   appendChildToContainer(parentInstance, child) {
-    if (parentInstance.type === "ROOT") {
+    if (parentInstance.type === 'ROOT') {
       parentInstance.document = child;
     } else {
       parentInstance.children.push(child);
