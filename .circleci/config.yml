@@ -15,11 +15,11 @@ aliases:
     paths:
       - ~/.cache/yarn
 
-    - &restore_node_modules
-    restore_cache:
-      name: Restore node_modules cache
-      keys:
-        - v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "workspace_info.txt" }}-node-modules
+  - &restore_node_modules
+  restore_cache:
+    name: Restore node_modules cache
+    keys:
+      - v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "workspace_info.txt" }}-node-modules
 
    
 
