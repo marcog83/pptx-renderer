@@ -1,0 +1,10 @@
+{
+    "name": "@pptx-renderer/render",
+    "private": true,
+    "version": "0.0.1",
+    "main": "./src/index.js",
+    "dependencies": {
+        "@pptx-renderer/primitives": "0.0.1",
+        "pptxgenjs": "3.9.0"
+    }
+}

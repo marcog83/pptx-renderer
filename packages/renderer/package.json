@@ -1,0 +1,14 @@
+{
+    "name": "@pptx-renderer/renderer",
+    "private": true,
+    "version": "0.0.1",
+    "main": "./src/index.js",
+    "dependencies": {
+        "@pptx-renderer/layout": "0.0.1",
+        "@pptx-renderer/primitives": "0.0.1",
+        "@pptx-renderer/render": "0.0.1",
+        "react": "17.0.2",
+        "react-reconciler": "0.26.2",
+        "scheduler": "0.20.2"
+    }
+}

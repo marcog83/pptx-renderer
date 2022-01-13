@@ -1,0 +1,9 @@
+{
+    "name": "@pptx-renderer/layout",
+    "private": true,
+    "version": "0.0.1",
+    "main": "./src/index.js",
+    "dependencies": {
+        "@pptx-renderer/primitives": "0.0.1"
+    }
+}
