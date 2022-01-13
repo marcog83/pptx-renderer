@@ -10,10 +10,10 @@ aliases:
     key: v2-yarn-cache-{{ checksum "yarn.lock" }}
 
   - &artifact_babel
-    path: ~/ppxt-renderer/packages/renderer/ppxt-renderer.min.js
+    path: ~/pptx-renderer/packages/renderer/pptx-renderer.min.js
 
   - &artifact_babel_min
-    path: ~/ppxt-renderer/packages/renderer/ppxt-renderer.min.js
+    path: ~/pptx-renderer/packages/renderer/pptx-renderer.min.js
 
    
 
@@ -21,7 +21,7 @@ executors:
   node-executor:
     docker:
       - image: cimg/node:current
-    working_directory: ~/ppxt-renderer
+    working_directory: ~/pptx-renderer
    
 
 jobs:
