@@ -15,11 +15,11 @@ aliases:
     paths:
       - ~/.cache/yarn
 
-  - &artifact_pptx
-    path: ~/pptx-renderer/packages/renderer/pptx-renderer.min.js
-
-  - &artifact_pptx_min
-    path: ~/pptx-renderer/packages/renderer/pptx-renderer.min.js
+    - &restore_node_modules
+    restore_cache:
+      name: Restore node_modules cache
+      keys:
+        - v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "workspace_info.txt" }}-node-modules
 
    
 
@@ -44,6 +44,15 @@ jobs:
           command: yarn --immutable
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
       - save_cache: *save-yarn-cache 
+      - save_cache:
+          # Store node_modules for all jobs in this workflow so that they don't
+          # need to each run a yarn install for each job. This will speed up
+          # all jobs run on this branch with the same lockfile.
+          name: Save node_modules cache
+          # This cache key is per branch, a yarn install in setup is required.
+          key: v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "workspace_info.txt" }}-node-modules
+          paths:
+            - node_modules
          
   test:
     executor: node-executor
@@ -61,7 +70,7 @@ jobs:
      steps:
       - checkout
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
-      - *restore-yarn-cache
+      - *restore_node_modules
       - run: yarn lint
       - save_cache: *save-yarn-cache
 
