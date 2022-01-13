@@ -76,6 +76,6 @@ workflows:
       - eslint:
           requires:
             - setup
-      -test:
+      - test:
           requires:
             - setup
