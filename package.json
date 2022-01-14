@@ -27,10 +27,10 @@
     "yarn": ">=1.22.17"
   },
   "devDependencies": {
-    "@yarnpkg/esbuild-plugin-pnp": "^2.0.0",
-    "esbuild": "^0.14.11",
-    "eslint": "^8.6.0",
+    "@yarnpkg/esbuild-plugin-pnp": "2.0.0",
+    "esbuild": "0.14.11",
+    "eslint": "8.6.0",
     "eslint-plugin-react": "7.28.0",
-    "jest": "^27.4.7"
+    "jest": "27.4.7"
   }
 }

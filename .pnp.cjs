@@ -5338,10 +5338,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["regexp.prototype.flags", [
-        ["npm:1.3.2", {
-          "packageLocation": "./.yarn/cache/regexp.prototype.flags-npm-1.3.2-a7dd3c2ef9-25c6c1aaa8.zip/node_modules/regexp.prototype.flags/",
+        ["npm:1.4.1", {
+          "packageLocation": "./.yarn/cache/regexp.prototype.flags-npm-1.4.1-5ee0a77015-77944a3ea5.zip/node_modules/regexp.prototype.flags/",
           "packageDependencies": [
-            ["regexp.prototype.flags", "npm:1.3.2"],
+            ["regexp.prototype.flags", "npm:1.4.1"],
             ["call-bind", "npm:1.0.2"],
             ["define-properties", "npm:1.1.3"]
           ],
@@ -5709,7 +5709,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["get-intrinsic", "npm:1.1.1"],
             ["has-symbols", "npm:1.0.2"],
             ["internal-slot", "npm:1.0.3"],
-            ["regexp.prototype.flags", "npm:1.3.2"],
+            ["regexp.prototype.flags", "npm:1.4.1"],
             ["side-channel", "npm:1.0.4"]
           ],
           "linkType": "HARD",
