@@ -14,6 +14,7 @@ aliases:
     key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
     paths:
       - ~/.cache/yarn
+      - ~/.cache/sdks
 
   - &restore_node_modules
     restore_cache:
