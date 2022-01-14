@@ -5,7 +5,7 @@
   "description": "React Renderer for creating Powerpoint File with React. It is a PPTXJS binding for react",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "jest",
     "dev": "node ./scripts/build.dev.js",
     "lint": "yarn run eslint packages/**/*.js"
   },
@@ -30,6 +30,7 @@
     "@yarnpkg/esbuild-plugin-pnp": "^2.0.0",
     "esbuild": "^0.14.11",
     "eslint": "^8.6.0",
-    "eslint-plugin-react": "7.28.0"
+    "eslint-plugin-react": "7.28.0",
+    "jest": "^27.4.7"
   }
 }
