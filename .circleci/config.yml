@@ -43,7 +43,6 @@ jobs:
             command: node --version
       - *restore-yarn-cache
       - node/install-packages:
-          name: Install Packages 2
           pkg-manager: yarn
       
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
