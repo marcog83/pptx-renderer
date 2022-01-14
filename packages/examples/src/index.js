@@ -10,7 +10,7 @@ import { PPTX,
 
 import ReactDOM from 'react-dom';
 
-const wee = 'wee';
+const wee = "wee";
 const pptx = PPTX.render(
   <Document
     author="Brent Ely"

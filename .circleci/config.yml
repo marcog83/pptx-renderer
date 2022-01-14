@@ -14,7 +14,6 @@ aliases:
     key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
     paths:
       - ~/.cache/yarn
-      - ~/.cache/sdks
 
   - &restore_node_modules
     restore_cache:
@@ -40,11 +39,10 @@ jobs:
             name: Nodejs Version
             command: node --version
       - *restore-yarn-cache
-      - run:
-          name: Install Packages
-          command: yarn --immutable
-      - run:
-          command: yarn dlx @yarnpkg/sdks vscode
+      - node/install-packages:
+          name: Install Packages 2
+          pkg-manager: yarn
+      
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
       - save_cache: *save-yarn-cache 
       - save_cache:
