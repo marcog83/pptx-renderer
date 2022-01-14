@@ -27,7 +27,7 @@ aliases:
 executors:
   node-executor:
     docker:
-      - image: cimg/node:current
+      - image: cimg/node:17.3.1
     working_directory: ~/pptx-renderer
    
 
