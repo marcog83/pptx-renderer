@@ -59,7 +59,7 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: '16'
+      tag: '17.3.1'
     steps:
       - checkout
       - node/install-packages:
@@ -85,10 +85,4 @@ workflows:
   version: 2
   build_and_test: 
     jobs:
-      - setup
-      - eslint:
-          requires:
-            - setup
-      - test:
-          requires:
-            - setup
+      - test
