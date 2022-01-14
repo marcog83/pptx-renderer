@@ -42,7 +42,9 @@ jobs:
       - *restore-yarn-cache
       - run:
           name: Install Packages
-          command: yarn --immutable & yarn dlx @yarnpkg/sdks vscode
+          command: yarn --immutable
+      - run:
+          command: yarn dlx @yarnpkg/sdks vscode
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
       - save_cache: *save-yarn-cache 
       - save_cache:
