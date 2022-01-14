@@ -33,28 +33,7 @@ executors:
    
 
 jobs:
-  setup:
-    executor: node-executor
-    steps:
-      - checkout
-      - run:
-            name: Nodejs Version
-            command: node --version
-      - *restore-yarn-cache
-      - run:
-          name: Install Packages
-          command: yarn install --immutable
-      - run: yarn workspaces info | head -n -1 > workspace_info.txt
-      - save_cache: *save-yarn-cache 
-      - save_cache:
-          # Store node_modules for all jobs in this workflow so that they don't
-          # need to each run a yarn install for each job. This will speed up
-          # all jobs run on this branch with the same lockfile.
-          name: Save node_modules cache
-          # This cache key is per branch, a yarn install in setup is required.
-          key: v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "workspace_info.txt" }}-node-modules
-          paths:
-            - node_modules
+   
          
   test:
     executor:
@@ -70,13 +49,19 @@ jobs:
           command: yarn run test
           name: Run YARN tests
       
-  eslint:
-     executor: node-executor
-     steps:
+  lint:
+    executor:
+      name: node/default
+      tag: '17.3.1'
+    steps:
       - checkout
-      - run: yarn workspaces info | head -n -1 > workspace_info.txt
-      - *restore_node_modules
-      - run: yarn lint
+      - node/install-packages:
+          check-cache: always
+          pkg-manager: yarn-berry
+          with-cache: false
+      - run:
+          command: yarn run lint
+          name: Run YARN eslint
 
 
  
@@ -86,3 +71,4 @@ workflows:
   build_and_test: 
     jobs:
       - test
+      - lint
