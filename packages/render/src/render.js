@@ -2,6 +2,7 @@ import * as N from '@pptx-renderer/primitives';
 
 const renderText = (ctx, node) => {
   const { options, children } = node;
+
   ctx.addText(children, options);
 };
 const renderImage = (ctx, node) => {
@@ -51,6 +52,7 @@ function renderNode(ctx) {
 
 export const render = (ctx, doc) => {
   const pages = doc.children || [];
+
   pages.forEach(renderNode(ctx));
 
   return ctx;
