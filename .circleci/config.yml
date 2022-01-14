@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@4.7.0
-
 aliases:
   - &restore-yarn-cache
     restore_cache:
@@ -17,6 +14,7 @@ aliases:
     key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
     paths:
       - ~/.cache/yarn
+      
 
   - &restore_node_modules
     restore_cache:
@@ -42,9 +40,9 @@ jobs:
             name: Nodejs Version
             command: node --version
       - *restore-yarn-cache
-      - node/install-packages:
-          pkg-manager: yarn
-      
+      - run:
+          name: Install Packages
+          command: yarn --immutable
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
       - save_cache: *save-yarn-cache 
       - save_cache:
