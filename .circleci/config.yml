@@ -1,40 +1,8 @@
 version: 2.1
 orbs: 
   node: circleci/node@5.0.0
-aliases:
-  - &restore-yarn-cache
-    restore_cache:
-      name: Restore yarn cache
-      key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
 
-  - &save-yarn-cache
-    # Store the yarn cache globally for all lock files with this same
-    # checksum. This will speed up the setup job for all PRs where the
-    # lockfile is the same.
-    name: Save yarn cache for future installs
-    key: v2-node-{{ arch }}-{{ checksum "yarn.lock" }}-yarn
-    paths:
-      - ~/.cache/yarn
-      
-
-  - &restore_node_modules
-    restore_cache:
-      name: Restore node_modules cache
-      keys:
-        - v2-node-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "workspace_info.txt" }}-node-modules
-
-   
-
-executors:
-  node-executor:
-    docker:
-      - image: cimg/node:17.3.1
-    working_directory: ~/pptx-renderer
-   
-
-jobs:
-   
-         
+jobs:         
   test:
     executor:
       name: node/default
@@ -44,7 +12,7 @@ jobs:
       - node/install-packages:
           check-cache: always
           pkg-manager: yarn-berry
-          with-cache: false
+          with-cache: true
       - run:
           command: yarn run test
           name: Run YARN tests
@@ -58,7 +26,7 @@ jobs:
       - node/install-packages:
           check-cache: always
           pkg-manager: yarn-berry
-          with-cache: false
+          with-cache: true
       - run:
           command: yarn run lint
           name: Run YARN eslint
