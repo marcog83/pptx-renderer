@@ -1,12 +1,11 @@
 import { PPTX,
-    Document,
-    Notes,
-    Section,
-    Shape,
-    Slide,
-    SlideNumber,
-    Text} from '@pptx-renderer/renderer';
- 
+  Document,
+  Notes,
+  Section,
+  Shape,
+  Slide,
+  SlideNumber,
+  Text } from '@pptx-renderer/renderer';
 
 import ReactDOM from 'react-dom';
 
@@ -67,6 +66,7 @@ const App = () => {
   const handleClick = () => {
     pptx.writeFile({ fileName: 'Browser-PowerPoint-Demo.pptx' });
   };
+
   return (
     <>
       <button onClick={handleClick}>CLICK TO DOWNLOAD</button>

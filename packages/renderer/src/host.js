@@ -1,5 +1,7 @@
 import Reconciler from 'react-reconciler';
 
+let UNDEFINED;
+
 import {
   unstable_scheduleCallback as schedulePassiveEffects,
   unstable_cancelCallback as cancelPassiveEffects,
@@ -7,6 +9,7 @@ import {
 } from 'scheduler';
 import propsEqual from './props-equal';
 import * as N from '@pptx-renderer/primitives';
+
 const emptyObject = {};
 
 const HostConfig = {
@@ -36,11 +39,11 @@ const HostConfig = {
     };
   },
 
-  createTextInstance(text, /*rootContainerInstance*/) {
+  createTextInstance(text /* rootContainerInstance*/) {
     return { type: N.TextInstance, value: text };
   },
 
-  finalizeInitialChildren(/*element, type, props*/) {
+  finalizeInitialChildren(/* element, type, props*/) {
     return false;
   },
 
@@ -60,9 +63,11 @@ const HostConfig = {
     return !propsEqual(oldProps, newProps);
   },
 
-  resetAfterCommit: (...rest) => console.log('resetAfterCommit', ...rest),
+  resetAfterCommit(/* params*/) {
+    // Noop
+  },
 
-  resetTextContent(/*element*/) {
+  resetTextContent(/* element*/) {
     // Noop
   },
 
@@ -74,7 +79,7 @@ const HostConfig = {
     return emptyObject;
   },
 
-  shouldSetTextContent(/*type, props*/) {
+  shouldSetTextContent(/* type, props*/) {
     return false;
   },
 
@@ -93,25 +98,37 @@ const HostConfig = {
   insertBefore(parentInstance, child, beforeChild) {
     const index = parentInstance.children?.indexOf(beforeChild);
 
-    if (index === undefined) return;
+    if (index === UNDEFINED) {
+      return;
+    }
 
-    if (index !== -1 && child) parentInstance.children.splice(index, 0, child);
+    if (index !== -1 && child) {
+      parentInstance.children.splice(index, 0, child);
+    }
   },
 
   removeChild(parentInstance, child) {
     const index = parentInstance.children?.indexOf(child);
 
-    if (index === undefined) return;
+    if (index === UNDEFINED) {
+      return;
+    }
 
-    if (index !== -1) parentInstance.children.splice(index, 1);
+    if (index !== -1) {
+      parentInstance.children.splice(index, 1);
+    }
   },
 
   removeChildFromContainer(parentInstance, child) {
     const index = parentInstance.children?.indexOf(child);
 
-    if (index === undefined) return;
+    if (index === UNDEFINED) {
+      return;
+    }
 
-    if (index !== -1) parentInstance.children.splice(index, 1);
+    if (index !== -1) {
+      parentInstance.children.splice(index, 1);
+    }
   },
 
   commitTextUpdate(textInstance, oldText, newText) {
@@ -122,4 +139,5 @@ const HostConfig = {
     instance.props = newProps;
   }
 };
+
 export const renderer = new Reconciler(HostConfig);

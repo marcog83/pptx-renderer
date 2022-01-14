@@ -1,6 +1,5 @@
-describe('host',()=>{
-    it('should be true',()=>{
-        expect(true).toBe(true);
-    })
-     
-})
+describe('host', () => {
+  it('should be true', () => {
+    expect(true).toBe(true);
+  });
+});

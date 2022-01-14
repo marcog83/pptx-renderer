@@ -1,7 +1,6 @@
- import { renderer } from './host';
+import { renderer } from './host';
 import { getLayout } from '@pptx-renderer/layout';
-import { render,Pptxgen } from '@pptx-renderer/render';
- 
+import { render, Pptxgen } from '@pptx-renderer/render';
 
 export const PPTX = {
   render(doc) {
@@ -9,7 +8,7 @@ export const PPTX = {
 
     // doc: This is the react element for App component
     // container: This is the host root element to which the rendered app will be attached.
-    //  
+    //
     // Disables async rendering
     const isAsync = false;
     const mountNode = renderer.createContainer(container, isAsync);
@@ -18,11 +17,13 @@ export const PPTX = {
 
     // Start reconcilation and render the result
     renderer.updateContainer(doc, mountNode, null);
+
     //
     const props = container.document.props || {};
 
     const ctx = new Pptxgen(props);
     const layout = getLayout(container.document);
+
     return render(ctx, layout);
   }
 };

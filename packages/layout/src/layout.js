@@ -1,5 +1,6 @@
-//Layout from react structure to pptx structure
+// Layout from react structure to pptx structure
 import * as N from '@pptx-renderer/primitives';
+
 // import Yoga from "yoga-layout";
 
 const isTextInstance = ({ type }) => type === N.TextInstance;
@@ -11,6 +12,7 @@ const isTextInstance = ({ type }) => type === N.TextInstance;
 
 const flattenArr = (arr, props) => {
   const result = [];
+
   arr.forEach((item) => {
     const { children, ...node } = item;
 
@@ -18,8 +20,12 @@ const flattenArr = (arr, props) => {
       props,
       ...node
     });
-    if (children) result.push(...flattenArr(children, node.props));
+
+    if (children) {
+      result.push(...flattenArr(children, node.props));
+    }
   });
+
   return result;
 };
 
@@ -28,6 +34,7 @@ const layoutText = (node) => {
   // flatten the children to create text later on render
   const { x, y, w, h, margin, fill, ...otherProps } = node.props;
   let values = flattenArr(node.children, otherProps);
+
   values = values
     .filter(isTextInstance)
     .map(({ value, props: { x, y, w, h, ...options } }) => ({
@@ -68,8 +75,10 @@ const layoutShape = (node) => {
   const hasText = node.children.length > 0;
 
   const { type, ...shapeOptions } = node.props;
+
   if (hasText) {
     let values = flattenArr(node.children, {});
+
     values = values
       .filter(isTextInstance)
       .map(({ value, props: { x, y, w, h, ...options } }) => ({
@@ -84,6 +93,7 @@ const layoutShape = (node) => {
       children: values
     };
   }
+
   return node;
 };
 
@@ -93,8 +103,10 @@ const T = {
   [N.Section]: layoutSection,
   [N.Shape]: layoutShape
 };
+
 function layoutNode(node) {
   const { type } = node;
+
   // const yogaNode = Yoga.Node.createWithConfig(YOGA_CONFIG);
   // node[YOGA_NODE] = yogaNode;
   const identity = (x) => ({
@@ -108,6 +120,7 @@ function layoutNode(node) {
 
 export function getLayout(doc) {
   const pages = doc.children || [];
+
   return {
     ...doc,
     children: pages.map(layoutNode)

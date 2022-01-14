@@ -1,7 +1,14 @@
-import pptxgen from 'pptxgenjs';
+import PPTxgen from 'pptxgenjs';
+
+const console = {
+  log() {
+    // NOOP
+  }
+};
+
 export class Pptxgen {
   constructor(props) {
-    this.pres = new pptxgen();
+    this.pres = new PPTxgen();
     this.pres.author = props.author;
     this.pres.company = props.company;
     this.pres.revision = props.revision;
@@ -21,8 +28,8 @@ export class Pptxgen {
     this.slide.slideNumber = props;
   }
   addText(children, options) {
-    //find the current slide
-    //slide.addText(children, options)
+    // find the current slide
+    // slide.addText(children, options)
     console.log('addText', options, children);
     this.slide.addText(children, options);
   }
@@ -36,6 +43,7 @@ export class Pptxgen {
       this.addText(node.children, node.options);
     } else {
       const { type, ...props } = node.props;
+
       console.log('addShape', type, props);
       this.slide.addShape(type, props);
     }
