@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs: 
+  jest: blimmer/jest@1.0.0
 aliases:
   - &restore-yarn-cache
     restore_cache:
@@ -64,7 +65,8 @@ jobs:
         # Builds babel-standalone with the regular Babel config
         # data for a JS file that's several megabytes large is bound to fail. Here,
         # we just run the babel-standalone test separately.
-      - run: yarn test  --ci
+      - jest/test:
+          package-manager: yarn-berry
       
   eslint:
      executor: node-executor
