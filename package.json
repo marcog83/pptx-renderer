@@ -30,6 +30,7 @@
     "@yarnpkg/esbuild-plugin-pnp": "2.0.0",
     "esbuild": "0.14.11",
     "eslint": "8.6.0",
+    "eslint-plugin-jest": "25.3.4",
     "eslint-plugin-react": "7.28.0",
     "jest": "27.4.7"
   }

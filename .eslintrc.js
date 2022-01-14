@@ -1,5 +1,6 @@
 module.exports = {
-  root: true,
+   // Stop ESLint from looking for a configuration file in parent folders
+   root: true,
   env: {
     browser: true,
     es2021: true,
@@ -8,7 +9,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'eslint:recommended'
+    'eslint:recommended',
+    'plugin:jest/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -17,10 +19,13 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: 'module'
   },
-  plugins: [ 'react' ],
+  plugins: [ 'react','jest'],
   settings: {
     react: {
       version: '17.*'
+    },
+    jest: {
+      version: 27
     }
   },
   rules: {
