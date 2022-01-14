@@ -42,7 +42,7 @@ jobs:
       - *restore-yarn-cache
       - run:
           name: Install Packages
-          command: yarn --immutable
+          command: yarn install --immutable
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
       - save_cache: *save-yarn-cache 
       - save_cache:
@@ -72,7 +72,7 @@ jobs:
       - checkout
       - run: yarn workspaces info | head -n -1 > workspace_info.txt
       - *restore_node_modules
-      - run: yarn run eslint packages/**/*.js
+      - run: yarn lint
 
 
  
