@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@4.7.0
+
 aliases:
   - &restore-yarn-cache
     restore_cache:
