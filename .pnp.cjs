@@ -66,7 +66,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.6.0"],
             ["eslint-plugin-jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:25.3.4"],
             ["eslint-plugin-react", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.28.0"],
-            ["jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:27.4.7"]
+            ["jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:27.4.7"],
+            ["jest-junit", "npm:13.0.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -4977,6 +4978,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["jest-junit", [
+        ["npm:13.0.0", {
+          "packageLocation": "./.yarn/cache/jest-junit-npm-13.0.0-ea74336006-d3a1bf6e98.zip/node_modules/jest-junit/",
+          "packageDependencies": [
+            ["jest-junit", "npm:13.0.0"],
+            ["mkdirp", "npm:1.0.4"],
+            ["strip-ansi", "npm:6.0.1"],
+            ["uuid", "npm:8.3.2"],
+            ["xml", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["jest-leak-detector", [
         ["npm:27.4.6", {
           "packageLocation": "./.yarn/cache/jest-leak-detector-npm-27.4.6-647a404fa3-4259400403.zip/node_modules/jest-leak-detector/",
@@ -6348,7 +6362,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.6.0"],
             ["eslint-plugin-jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:25.3.4"],
             ["eslint-plugin-react", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.28.0"],
-            ["jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:27.4.7"]
+            ["jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:27.4.7"],
+            ["jest-junit", "npm:13.0.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -7694,6 +7709,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["uuid", [
+        ["npm:8.3.2", {
+          "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-5575a8a75c.zip/node_modules/uuid/",
+          "packageDependencies": [
+            ["uuid", "npm:8.3.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["v8-compile-cache", [
         ["npm:2.3.0", {
           "packageLocation": "./.yarn/cache/v8-compile-cache-npm-2.3.0-961375f150-adb0a271ea.zip/node_modules/v8-compile-cache/",
@@ -7899,6 +7923,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/utf-8-validate",
             "bufferutil",
             "utf-8-validate"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["xml", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/xml-npm-1.0.1-f50a7aeb8e-11b5545ef3.zip/node_modules/xml/",
+          "packageDependencies": [
+            ["xml", "npm:1.0.1"]
           ],
           "linkType": "HARD",
         }]
