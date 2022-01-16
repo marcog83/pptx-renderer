@@ -16,8 +16,8 @@ jobs:
       - run:
           command: yarn run test
           name: Run YARN tests
-      - store_artifacts:
-          path: coverage
+      - store_test_results:
+          path: test-results
       
   lint:
     executor:
