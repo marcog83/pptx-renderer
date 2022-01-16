@@ -17,7 +17,7 @@ jobs:
           command: yarn run test
           name: Run YARN tests
       - store_test_results:
-          path: ~/pptx-renderer/coverage/clover.xml
+          path: coverage/clover.xml
       
   lint:
     executor:
