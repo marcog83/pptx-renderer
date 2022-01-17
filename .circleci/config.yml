@@ -32,6 +32,18 @@ jobs:
       - run:
           command: yarn run lint
           name: Run YARN eslint
+  deploy:
+    executor:
+      name: node/default
+      tag: '17.3.1'
+    steps:
+      - checkout
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=npm_TOKEN" > ~/pptx-renderer/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
 
 
  
@@ -42,3 +54,4 @@ workflows:
     jobs:
       - test
       - lint
+      - deploy
