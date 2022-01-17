@@ -54,3 +54,4 @@ workflows:
     jobs:
       - test
       - lint
+      - deploy
