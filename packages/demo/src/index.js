@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {
@@ -60,43 +60,48 @@ const pptx = PPTX.render(
   </Document>
 );
 
-const App = () => {
-const [uuid,setUUID]=useState();
-  const handleClick = () => {
-    async function sendData(url, data) {
-      const formData = new FormData();
 
-      for (const name in data) {
-        formData.append(name, data[name]);
-      }
+function usePreview() {
+  const [src, setSrc] = useState();
+  const [isLoading,setLoading]=useState(false);
+  async function sendData(url, data) {
+    const formData = new FormData();
 
-      const response = await fetch(url, {
-        method: 'POST',
-        body: formData
-      }).then(r=>r.json());
-
-      console.log("WEEE",response)
-      setUUID(response.id); 
+    for (const name in data) {
+      formData.append(name, data[name]);
     }
-    pptx.write("blob")
-      .then((data) => {
-        
-        sendData("http://localhost:8012/upload", { pptx: data })
-      })
-      .catch((err) => {
-        console.error(err);
-      });
 
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData
+    });
 
-    //  pptx.writeFile({ fileName: "Browser-PowerPoint-Demo.pptx" });
+    return URL.createObjectURL(await response.blob());
+
+  }
+  const onChange = async(pptx) => {
+    setLoading(true);
+    const iframeUrl = await sendData("http://localhost:8012/upload", { pptx });
+    setLoading(false);
+    setSrc(iframeUrl);
+  }
+  return { src, onChange ,isLoading}
+}
+
+const App = () => {
+  const {src,onChange,isLoading} = usePreview();
+  const handleClick = async() => {     
+    const blob=await pptx.write("blob");
+    onChange(blob); 
   };
-
-
-
   return (
     <>
-      <button onClick={handleClick}>CLICK TO DOWNLOAD</button>
-      {uuid && <Viewer id={uuid}></Viewer>}
+    <div>
+    <button disabled={isLoading} onClick={handleClick}>CLICK TO DOWNLOAD</button>
+      {isLoading && <label>Loading...</label>}
+    </div>
+     
+      {src && <Viewer id={src}></Viewer>}
     </>
   );
 };

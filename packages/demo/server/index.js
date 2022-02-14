@@ -9,25 +9,28 @@ var spawn = require('cross-spawn');
 const app = express();
 app.use(cors());
 
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/' }).single("pptx"); 
 
-app.post('/upload', upload.single('pptx'), async function (req, res, next) {
+app.post('/upload', upload, async function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
+  console.log(req.file)
   try {
     const fileInput = resolve(__dirname, "../", `${req.file.destination}${req.file.filename}`)
 
     const outdir = resolve(__dirname, "../", `uploads`)
 
-    const command = `soffice --headless --convert-to pdf ${fileInput} --outdir ${outdir}`;
+    const command = `soffice --headless --invisible --convert-to pdf ${fileInput} --outdir ${outdir}`;
     spawn.sync(command, [], { stdio: 'inherit' });
-    try {
-      fs.unlinkSync(fileInput)
-      //file removed
-    } catch(err) {
-      console.error(err)
-    }
-    res.json({ id: req.file.filename })
+
+    const fileInputpdf = resolve(__dirname, "../uploads", `${req.file.filename}.pdf`)
+    var pdfData = fs.readFileSync(fileInputpdf); 
+    // remove temp files
+    fs.unlinkSync(fileInput);
+    fs.unlinkSync(fileInputpdf);
+
+    res.contentType("application/pdf");
+    res.send(Buffer.from(pdfData));
   } catch (e) {
     console.log(e)
     res.status(500).send(e);
@@ -35,13 +38,7 @@ app.post('/upload', upload.single('pptx'), async function (req, res, next) {
 
 })
 
-app.get('/download/:id', function (req, res, next) {
-  const fileInput = resolve(__dirname, "../uploads", `${req.params.id}.pdf`)
-
-  var data = fs.readFileSync(fileInput);
-  res.contentType("application/pdf");
-  res.send(data);
-})
+ 
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
