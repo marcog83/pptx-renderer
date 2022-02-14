@@ -59,4 +59,7 @@ export class Pptxgen {
   writeFile({ fileName }) {
     return this.pres.writeFile({ fileName });
   }
+  write(...params) {
+    return this.pres.write(...params);
+  }
 }
