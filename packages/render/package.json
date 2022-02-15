@@ -4,7 +4,9 @@
     "version": "0.0.1",
     "main": "./src/index.js",
     "dependencies": {
-        "@pptx-renderer/primitives": "0.0.1",
+        "@pptx-renderer/primitives": "0.0.1"
+    },
+    "peerDependencies": {
         "pptxgenjs": "3.9.0"
     }
 }

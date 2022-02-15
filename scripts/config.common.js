@@ -17,5 +17,5 @@ module.exports = {
   },
   define: { global: 'window' },
   plugins: [ pnpPlugin() ],
-  // external: [ 'react', 'pptxgenjs' ]
+  external: [ 'react', 'pptxgenjs' ]
 };

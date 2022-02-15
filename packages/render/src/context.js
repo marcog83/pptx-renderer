@@ -1,11 +1,5 @@
 import PPTxgen from 'pptxgenjs';
-
-const console = {
-  log() {
-    // NOOP
-  }
-};
-
+ 
 export class Pptxgen {
   constructor(props) {
     this.pres = new PPTxgen();

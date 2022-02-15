@@ -1,4 +1,3 @@
-
 import { usePreview } from './use-preview';
 import { Viewer } from './viewer';
 export const App = ({pptx}) => {
