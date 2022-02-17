@@ -11,7 +11,6 @@ export const PPTX = {
     //
     // Disables async rendering
     const isAsync = false;
-    console.log(renderer)
     const mountNode = renderer.createContainer(container, isAsync);
 
     // Since there is no parent (since this is the root fiber). We set parentComponent to null.

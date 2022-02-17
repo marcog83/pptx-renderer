@@ -4,6 +4,8 @@
     "version": "0.0.1",
     "main": "./src/index.js",
     "dependencies": {
-        "@pptx-renderer/primitives": "0.0.1"
+        "@pptx-renderer/primitives": "0.0.1",
+        "@react-pdf/yoga": "2.0.4",
+        "parse-color": "1.0.0"
     }
 }

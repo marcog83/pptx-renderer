@@ -27,14 +27,14 @@ export function PPTComponent() {
                 fontFace="Calibri"
                 fontSize="20"
             />
-            <Shape type="sun" x="90%" y="0" w={1} h={1} fill="FF0000">
+            <Shape type="sun" style={{x:"90%" ,y:"0",width:100,height:100}} fill="FF0000">
                 sun
-                <Text x={10} y={20} bold color="FFCC00" fontSize={6}>
+                <Text style={{x:10,y:20}}  bold color="FFCC00" fontSize={6}>
                     wee2
                 </Text>
             </Shape>
             <Shape type="sun" x="90%" y="2" w={1} h={1} fill="FF0000" />
-            <Text x={1} y={2} w={4} h={3} margin={5} fill={"FF0000"} color="FFCC00">
+            <Text style={{left:10,top:20,margin:5,width:400}} fill={"FF0000"} color="FFCC00">
                 {wee}
                 text 1<Text bold>wee2</Text>
             </Text>
