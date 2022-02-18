@@ -14,7 +14,6 @@ const upload = multer({ dest: 'uploads/' }).single("pptx");
 app.post('/upload', upload, async function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
-  console.log(req.file)
   try {
     const fileInput = resolve(__dirname, "../", `${req.file.destination}${req.file.filename}`)
 

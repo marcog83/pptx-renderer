@@ -3126,7 +3126,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@pptx-renderer/layout", "workspace:packages/layout"],
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],
             ["@react-pdf/yoga", "npm:2.0.4"],
-            ["parse-color", "npm:1.0.0"]
+            ["parse-color", "npm:1.0.0"],
+            ["postcss-value-parser", "npm:4.2.0"],
+            ["ramda", "npm:0.28.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -10527,6 +10529,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/queue-microtask-npm-1.2.3-fcc98e4e2d-b676f8c040.zip/node_modules/queue-microtask/",
           "packageDependencies": [
             ["queue-microtask", "npm:1.2.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ramda", [
+        ["npm:0.28.0", {
+          "packageLocation": "./.yarn/cache/ramda-npm-0.28.0-6a5fe8f6cc-44ea6e5010.zip/node_modules/ramda/",
+          "packageDependencies": [
+            ["ramda", "npm:0.28.0"]
           ],
           "linkType": "HARD",
         }]

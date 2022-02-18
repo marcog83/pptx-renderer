@@ -2,8 +2,8 @@ import * as N from '@pptx-renderer/primitives';
 
 const renderText = (ctx, node) => {
   const {style, options, children } = node;
-console.log(style)
-  ctx.addText(children, options);
+  console.log("RENDER TEXT",style)
+  ctx.addText(children, {...style,...options});
 };
 const renderImage = (ctx, node) => {
   ctx.addImage(node.props);

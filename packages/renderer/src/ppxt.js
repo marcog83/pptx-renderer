@@ -22,7 +22,7 @@ export const PPTX = {
     const props = container.document.props || {};
 
     const ctx = new Pptxgen(props);
-    const layout = getLayout(container.document);
+    const layout = getLayout(ctx,container.document);
 
     return render(ctx, layout);
   }

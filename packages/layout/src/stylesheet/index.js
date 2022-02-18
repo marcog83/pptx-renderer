@@ -1,143 +1,83 @@
- 
-import { normalize } from '../utils/colors';
-import { yogaValue } from './yoga-value';
+import processFlex from './flex';
+import {
+  processMargin,
+  processMarginVertical,
+  processMarginHorizontal,
+  processMarginSingle,
+} from './margins';
+import processBorders from './borders';
+import {
+  processPadding,
+  processPaddingVertical,
+  processPaddingHorizontal,
+  processPaddingSingle,
+} from './paddings'; 
 
-const hasOwnProperty = Object.prototype.hasOwnProperty;
-
-const styleShortHands = {
-  margin: {
-    marginTop: true,
-    marginRight: true,
-    marginBottom: true,
-    marginLeft: true
-  },
-  marginHorizontal: {
-    marginLeft: true,
-    marginRight: true
-  },
-  marginVertical: {
-    marginTop: true,
-    marginBottom: true
-  },
-  padding: {
-    paddingTop: true,
-    paddingRight: true,
-    paddingBottom: true,
-    paddingLeft: true
-  },
-  paddingHorizontal: {
-    paddingLeft: true,
-    paddingRight: true
-  },
-  paddingVertical: {
-    paddingTop: true,
-    paddingBottom: true
-  },
-  borderColor: {
-    borderTopColor: true,
-    borderRightColor: true,
-    borderBottomColor: true,
-    borderLeftColor: true
-  },
-  borderRadius: {
-    borderTopLeftRadius: true,
-    borderTopRightRadius: true,
-    borderBottomRightRadius: true,
-    borderBottomLeftRadius: true
-  },
-  borderStyle: {
-    borderTopStyle: true,
-    borderRightStyle: true,
-    borderBottomStyle: true,
-    borderLeftStyle: true
-  },
-  borderWidth: {
-    borderTopWidth: true,
-    borderRightWidth: true,
-    borderBottomWidth: true,
-    borderLeftWidth: true
-  }
+const shorthands = {
+  flex: processFlex,
+  margin: processMargin,
+  marginHorizontal: processMarginHorizontal,
+  marginVertical: processMarginVertical,
+  marginTop: processMarginSingle,
+  marginRight: processMarginSingle,
+  marginBottom: processMarginSingle,
+  marginLeft: processMarginSingle,
+  padding: processPadding,
+  paddingHorizontal: processPaddingHorizontal,
+  paddingVertical: processPaddingVertical,
+  paddingTop: processPaddingSingle,
+  paddingRight: processPaddingSingle,
+  paddingBottom: processPaddingSingle,
+  paddingLeft: processPaddingSingle,
+  border: processBorders,
+  borderTop: processBorders,
+  borderRight: processBorders,
+  borderBottom: processBorders,
+  borderLeft: processBorders,
+  borderColor: processBorders,
+  borderRadius: processBorders,
+  borderStyle: processBorders,
+  borderWidth: processBorders
 };
 
 /**
- * Expand the shorthand properties to isolate every declaration from others.
+ * Transforms style key-value
+ *
+ * @param {String} key style key
+ * @param {String} value style value
+ * @returns {String | Number} transformed style values
  */
-export const transformStyles = style => {
+const expandStyle = (key, value) => {
+  return shorthands[key] ? shorthands[key](key, value) : { [key]: value };
+};
+
+/**
+ * Expand the shorthand properties.
+ *
+ * @param { Object } style object
+ * @returns { Object } expanded style object
+ */
+const expand = style => {
   if (!style) return style;
 
   const propsArray = Object.keys(style);
   const resolvedStyle = {};
 
-  propsArray.forEach(key => {
+  for (let i = 0; i < propsArray.length; i += 1) {
+    const key = propsArray[i];
     const value = style[key];
+    const extended = expandStyle(key, value);
+    const keys = Object.keys(extended);
 
-    switch (key) {
-      case 'display':
-      case 'flex':
-      case 'flexDirection':
-      case 'flexWrap':
-      case 'flexFlow':
-      case 'flexGrow':
-      case 'flexShrink':
-      case 'flexBasis':
-      case 'justifyContent':
-      case 'alignSelf':
-      case 'alignItems':
-      case 'alignContent':
-      case 'order': {
-        resolvedStyle[key] = yogaValue(key, value);
-        break;
-      }
-      case 'textAlignVertical': {
-        resolvedStyle.verticalAlign = value === 'center' ? 'middle' : value;
-        break;
-      }
-      case 'margin':
-      case 'marginHorizontal':
-      case 'marginVertical':
-      case 'padding':
-      case 'paddingHorizontal':
-      case 'paddingVertical':
-      case 'borderColor':
-      case 'borderRadius':
-      case 'borderStyle':
-      case 'borderWidth': {
-        const expandedProps = styleShortHands[key];
+    for (let j = 0; j < keys.length; j += 1) {
+      const propName = keys[j];
+      const propValue = extended[propName];
 
-        for (const propName in expandedProps) {
-          if (hasOwnProperty.call(expandedProps, propName)) {
-            resolvedStyle[propName] = value;
-          }
-        }
-
-        break;
-      }
-      case 'height':
-      case 'width':
-      case 'top':
-      case 'left': {
-        if (typeof value === 'string' && value.endsWith('%')) {
-          resolvedStyle[key] = value;
-        } else {
-          resolvedStyle[key] = value;
-        }
-
-        break;
-      }
-      case 'color':
-      case 'backgroundColor':
-      case 'fill': {
-        resolvedStyle[key] = normalize(value);
-        break;
-      }
-      default: {
-        resolvedStyle[key] = value;
-        break;
-      }
+      resolvedStyle[propName] = propValue;
     }
-  });
+  }
 
   return resolvedStyle;
 };
 
-export default transformStyles;
+export default expand;

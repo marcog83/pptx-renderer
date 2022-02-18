@@ -35,6 +35,7 @@ const HostConfig = {
     return {
       type,
       props: props || {},
+      style:{},
       children: []
     };
   },

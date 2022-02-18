@@ -6,6 +6,8 @@
     "dependencies": {
         "@pptx-renderer/primitives": "0.0.1",
         "@react-pdf/yoga": "2.0.4",
-        "parse-color": "1.0.0"
+        "parse-color": "1.0.0",
+        "postcss-value-parser": "4.2.0",
+        "ramda": "0.28.0"
     }
 }

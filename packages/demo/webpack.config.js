@@ -1,7 +1,6 @@
 var path = require('path');
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-console.log(require.resolve('react/jsx-runtime'))
 module.exports = {
     entry: {
         index:'./src/index.js'

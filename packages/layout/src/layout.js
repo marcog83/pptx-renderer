@@ -1,11 +1,23 @@
 // Layout from react structure to pptx structure
+import * as R from 'ramda';
 import * as N from '@pptx-renderer/primitives';
-import { applyStyle } from './apply-style';
-import * as StyleSheet from './stylesheet/index';
 
 import Yoga from "@react-pdf/yoga";
 import { getStyle } from './get-style';
 import { getProps } from './get-props';
+import { getSize } from './slide/get-size';
+import { setYogaValues } from './setYogaValues';
+import expandStyles from './stylesheet';
+
+const Style = {
+  flexShrink: 1,
+  display: Yoga.DISPLAY_FLEX,
+  flexGrow: 0,
+  overflow: Yoga.OVERFLOW_VISIBLE,
+  flexWrap: Yoga.WRAP_NO_WRAP,
+  justifyContent: Yoga.JUSTIFY_FLEX_START,
+  flexDirection: Yoga.FLEX_DIRECTION_ROW
+}
 
 const isTextInstance = ({ type }) => type === N.TextInstance;
 
@@ -34,38 +46,28 @@ const flattenArr = (arr, props) => {
 };
 
 const layoutText = (parentNode) => (node) => {
-  node.layout = Yoga.Node.createDefault();
+  node._yogaNode = Yoga.Node.createDefault();
 
-  parentNode.layout.insertChild(node.layout, parentNode.layout.getChildCount());
+  parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
+
+  const { style = {} } = node.props;
+  node.style = expandStyles(style);
+  setYogaValues(node)
   // extract props for position
   // flatten the children to create text later on render
-  const { style, ...otherProps } = node.props;
-  const styleParsed = StyleSheet.transformStyles(style)??{};
-
-  Object.entries(styleParsed).map(([attr, value]) => {
-    applyStyle(attr, value, node);
-  });
-  const _style = getStyle(parentNode, node);
-
-  const props = getProps(node);
-
-  let values = flattenArr(node.children, otherProps);
+  let values = flattenArr(node.children, node.props);
 
   values = values
     .filter(isTextInstance)
     .map((child) => ({
       text: child.value,
-      style: StyleSheet.transformStyles(child.props.style),
+      style: expandStyles(child.props.style),
       options: getProps(child)
     }));
 
-
-
   return {
     ...node,
-    children: values,
-    style: _style,
-    options: props
+    children: values
   };
 };
 
@@ -81,7 +83,7 @@ const layoutNotes = (parentNode) => (node) => {
   };
 };
 
-const layoutSection = (parentNode) => (node) => {
+const layoutSection = (ctx) => (node) => {
 
   return {
     ...node,
@@ -90,15 +92,15 @@ const layoutSection = (parentNode) => (node) => {
         ...child,
         props: { ...child.props, sectionTitle: node.props.title }
       }))
-      .map(layoutNode(node))
+      .map(createYogaNodes(ctx))
   }
 };
 
 const layoutShape = (parentNode) => (node) => {
 
-  node.layout = Yoga.Node.createDefault();
+  node._yogaNode = Yoga.Node.createDefault();
 
-  parentNode.layout.insertChild(node.layout, parentNode.layout.getChildCount());
+  parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
 
   const hasText = node.children.length > 0;
 
@@ -125,13 +127,22 @@ const layoutShape = (parentNode) => (node) => {
   return node;
 };
 
-const layoutSlide = (parentNode) => (node) => {
-  node.layout = Yoga.Node.createDefault();
+const layoutSlide = (ctx) => (node) => {
+  node._yogaNode = Yoga.Node.createDefault();
+
+  const { style = {} } = node.props;  
+  node.style = expandStyles(style);
+  setYogaValues(node);
+
+  const { height, width } = getSize(ctx);
+  node._yogaNode.setWidth(width);
+  node._yogaNode.setHeight(height);
 
   return {
     ...node,
-    children: node.children.map(layoutNode(node))
+    children: node.children.map(createYogaNodes(node))
   }
+
 }
 
 const T = {
@@ -142,23 +153,99 @@ const T = {
   [N.Slide]: layoutSlide
 };
 
-const layoutNode = (parentNode) => (node) => {
+
+
+
+const createYogaNodes = (parentNode) => (node) => {
   const { type } = node;
 
   const identity = (parentNode) => (x) => ({
     ...x,
-    children: x.children.map(layoutNode(parentNode))
+    children: x.children.map(createYogaNodes(parentNode))
   });
   const fn = T[type] || identity;
 
   return fn(parentNode)(node);
 }
 
-export function getLayout(doc) {
-  const pages = doc.children || [];
-  
-  return {
+
+
+export function getLayout(ctx, doc) {
+  const pages = doc.children ?? [];
+  const a = {
     ...doc,
-    children: pages.map(layoutNode(null))
+    children: pages.map(createYogaNodes(ctx))
+  };
+
+  a.children.forEach(node => {
+    node._yogaNode?.calculateLayout();
+  })
+
+  const b = {
+    ...a,
+    children: a.children.map(calculateLayout(ctx))
+  }
+  return b;
+}
+
+
+
+
+
+const calculateText = (parentNode) => node => {
+  const style = getStyle(parentNode, node);
+
+  const options = getProps(node);
+  console.log("calculateText", style, options)
+  return {
+    ...node,
+    options,
+    style
   };
 }
+const calculateNotes = (parentNode) => node => {
+  return node;
+}
+const calculateSection = (parentNode) => node => {
+  return {
+    ...node,
+    children: node.children.map(calculateLayout(node))
+  }
+}
+const calculateShape = (parentNode) => node => {
+  return node;
+}
+const calculateSlide = (parentNode) => node => {
+  console.log("calculateSlide", node.style)
+  return {
+    ...node,
+    children: node.children.map(calculateLayout(node))
+  }
+}
+
+const L = {
+  [N.Text]: calculateText,
+  [N.Notes]: calculateNotes,
+  [N.Section]: calculateSection,
+  [N.Shape]: calculateShape,
+  [N.Slide]: calculateSlide
+};
+
+const calculateLayout = (parentNode) => (node) => {
+  const { type } = node;
+
+  const identity = (parentNode) => (x) => {
+
+    return ({
+      ...x,
+      children: x.children?.map(calculateLayout(parentNode))
+    })
+  };
+
+  console.log({ type })
+  const fn = L[type] || identity;
+
+  return fn(parentNode)(node);
+}
+
+ 

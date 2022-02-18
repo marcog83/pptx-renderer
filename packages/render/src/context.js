@@ -50,6 +50,9 @@ export class Pptxgen {
     console.log('addSection', title);
     this.pres.addSection({ title });
   }
+  getLayout(){
+    return this.pres.presLayout;
+  }
   writeFile({ fileName }) {
     return this.pres.writeFile({ fileName });
   }
