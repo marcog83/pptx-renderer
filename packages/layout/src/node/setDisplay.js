@@ -11,7 +11,7 @@ const setDisplay = value => node => {
   const yogaNode = node._yogaNode;
 
   if (yogaNode) {
-    console.log('setDisplay',value)
+     
     yogaNode.setDisplay(
       value === 'none' ? Yoga.DISPLAY_NONE : Yoga.DISPLAY_FLEX,
     );

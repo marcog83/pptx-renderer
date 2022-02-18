@@ -30,7 +30,7 @@ const setYogaValue = (attr, edge) => value => node => {
     if (percent && !yogaNode[percentMethod]) {
       throw new Error(`You can't pass percentage values to ${attr} property`);
     }
-console.log({fixedMethod,autoMethod,percent,percentMethod})
+ 
     if (percent) {
       if (hasEdge) {
         yogaNode[percentMethod]?.(edge, percent.value);

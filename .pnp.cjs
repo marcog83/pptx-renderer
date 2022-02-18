@@ -3126,7 +3126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@pptx-renderer/layout", "workspace:packages/layout"],
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],
             ["@react-pdf/yoga", "npm:2.0.4"],
-            ["parse-color", "npm:1.0.0"],
+            ["color-string", "npm:1.9.0"],
             ["postcss-value-parser", "npm:4.2.0"],
             ["ramda", "npm:0.28.0"]
           ],
@@ -5237,13 +5237,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["color-convert", [
-        ["npm:0.5.3", {
-          "packageLocation": "./.yarn/cache/color-convert-npm-0.5.3-be3d6c0bf9-1074989a2c.zip/node_modules/color-convert/",
-          "packageDependencies": [
-            ["color-convert", "npm:0.5.3"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:1.9.3", {
           "packageLocation": "./.yarn/cache/color-convert-npm-1.9.3-1fe690075e-fd7a64a17c.zip/node_modules/color-convert/",
           "packageDependencies": [
@@ -5273,6 +5266,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/color-name-npm-1.1.4-025792b0ea-b044585952.zip/node_modules/color-name/",
           "packageDependencies": [
             ["color-name", "npm:1.1.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["color-string", [
+        ["npm:1.9.0", {
+          "packageLocation": "./.yarn/cache/color-string-npm-1.9.0-75382c0441-93c6678b84.zip/node_modules/color-string/",
+          "packageDependencies": [
+            ["color-string", "npm:1.9.0"],
+            ["color-name", "npm:1.1.4"],
+            ["simple-swizzle", "npm:0.2.2"]
           ],
           "linkType": "HARD",
         }]
@@ -7804,6 +7808,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-arrayish", "npm:0.2.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:0.3.2", {
+          "packageLocation": "./.yarn/cache/is-arrayish-npm-0.3.2-f856180f79-977e64f54d.zip/node_modules/is-arrayish/",
+          "packageDependencies": [
+            ["is-arrayish", "npm:0.3.2"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["is-bigint", [
@@ -9972,16 +9983,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["parse-color", [
-        ["npm:1.0.0", {
-          "packageLocation": "./.yarn/cache/parse-color-npm-1.0.0-6b3625bdf5-0e6e1821ea.zip/node_modules/parse-color/",
-          "packageDependencies": [
-            ["parse-color", "npm:1.0.0"],
-            ["color-convert", "npm:0.5.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["parse-json", [
         ["npm:5.2.0", {
           "packageLocation": "./.yarn/cache/parse-json-npm-5.2.0-00a63b1199-62085b17d6.zip/node_modules/parse-json/",
@@ -11285,6 +11286,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/signal-exit-npm-3.0.7-bd270458a3-a2f098f247.zip/node_modules/signal-exit/",
           "packageDependencies": [
             ["signal-exit", "npm:3.0.7"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["simple-swizzle", [
+        ["npm:0.2.2", {
+          "packageLocation": "./.yarn/cache/simple-swizzle-npm-0.2.2-8dee37fad1-a7f3f2ab5c.zip/node_modules/simple-swizzle/",
+          "packageDependencies": [
+            ["simple-swizzle", "npm:0.2.2"],
+            ["is-arrayish", "npm:0.3.2"]
           ],
           "linkType": "HARD",
         }]

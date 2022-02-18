@@ -26,7 +26,7 @@ function getAbsoluteLayout(parentNode,node) {
 export function getStyle(parentNode,node) {
     const { left, top, width, height } = getAbsoluteLayout(parentNode,node); // px
     const padding = getComputedPadding(node); // px
-    console.log(padding)
+    
     const style = {
         x: px2inch(left + padding.left),
         y: px2inch(top + padding.top),

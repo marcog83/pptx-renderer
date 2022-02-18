@@ -1,4 +1,5 @@
 import processFlex from './flex';
+import * as R from 'ramda';
 import {
   processMargin,
   processMarginVertical,
@@ -12,6 +13,10 @@ import {
   processPaddingHorizontal,
   processPaddingSingle,
 } from './paddings'; 
+import { normalize } from "../utils/colors";
+
+  
+
 
 const shorthands = {
   flex: processFlex,
@@ -80,4 +85,36 @@ const expand = style => {
   return resolvedStyle;
 };
 
-export default expand;
+
+const COLOR_PROPS = ['color', 'fill', 'line'];
+function getPropName(prop) {
+  const props = {
+    fontFace: 'font_face',
+    fontSize: 'font_size',    
+    lineDash: 'line_dash',
+    lineHead: 'line_head',
+    lineTail: 'line_tail'
+  };
+
+  return props[prop] || prop;
+}
+const transform=(style)=>{
+  return Object.keys(style)
+   
+  .reduce((props, key) => {
+    const propName =key// getPropName(key);
+    let value = style[key];
+
+    if (COLOR_PROPS.includes(propName)) {
+      props[propName] = normalize(value);
+    } else {
+      props[propName] = value;
+    }
+
+    return props;
+  }, {});
+}
+
+export default R.compose(
+  transform,
+  expand);

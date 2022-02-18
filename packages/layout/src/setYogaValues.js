@@ -47,11 +47,12 @@ import {
   setMaxWidth,
   setMinHeight,
   setMaxHeight,
+  setHeight,
 } from './node/setDimension';
 
 export const setYogaValues = node => {
     R.compose(
-      // setNodeHeight(node),
+      setHeight(node.style.height),
       setWidth(node.style.width),
       setMinWidth(node.style.minWidth),
       setMaxWidth(node.style.maxWidth),

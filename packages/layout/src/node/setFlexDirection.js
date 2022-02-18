@@ -24,7 +24,7 @@ const setFlexDirection = value =>
         [isColumnReverse, R.always(Yoga.FLEX_DIRECTION_COLUMN_REVERSE)],
         [R.T, R.always(Yoga.FLEX_DIRECTION_ROW)],
       ])(value);
-      console.log('setFlexDirection',yogaValue)
+      
       yogaNode.setFlexDirection(yogaValue);
     }
   });

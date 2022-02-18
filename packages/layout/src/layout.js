@@ -59,11 +59,16 @@ const layoutText = (parentNode) => (node) => {
 
   values = values
     .filter(isTextInstance)
-    .map((child) => ({
-      text: child.value,
-      style: expandStyles(child.props.style),
-      options: getProps(child)
-    }));
+    .map((child) => {
+      const style = expandStyles(child.props.style);
+      const options = getProps(child);
+      console.log("textInstance", style, options)
+      return ({
+        text: child.value,
+        style,
+        options:{...style,...options}
+      })
+    });
 
   return {
     ...node,
@@ -130,7 +135,7 @@ const layoutShape = (parentNode) => (node) => {
 const layoutSlide = (ctx) => (node) => {
   node._yogaNode = Yoga.Node.createDefault();
 
-  const { style = {} } = node.props;  
+  const { style = {} } = node.props;
   node.style = expandStyles(style);
   setYogaValues(node);
 
@@ -248,4 +253,3 @@ const calculateLayout = (parentNode) => (node) => {
   return fn(parentNode)(node);
 }
 
- 

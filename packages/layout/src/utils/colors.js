@@ -1,7 +1,9 @@
-import parseColor from 'parse-color';
+import colorString from 'color-string';
 
 export const normalize = str => {
-        const { keyword, hex } = parseColor(str);
-    const color = hex ?? keyword;
+        const colorNormalized = colorString.get.rgb(str);
+        const color=colorString.to.hex(colorNormalized) 
+        console.log(str,color)
+  //  const color = hex ?? keyword;
     return color && color.toUpperCase().replace('#', '');
 };
