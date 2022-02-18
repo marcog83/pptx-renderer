@@ -1793,9 +1793,8 @@ __metadata:
   resolution: "@pptx-renderer/layout@workspace:packages/layout"
   dependencies:
     "@pptx-renderer/primitives": 0.0.1
+    "@pptx-renderer/stylesheet": 0.0.1
     "@react-pdf/yoga": 2.0.4
-    color-string: 1.9.0
-    postcss-value-parser: 4.2.0
     ramda: 0.28.0
   languageName: unknown
   linkType: soft
@@ -1826,6 +1825,16 @@ __metadata:
     react: 17.0.2
     react-reconciler: 0.26.2
     scheduler: 0.20.2
+  languageName: unknown
+  linkType: soft
+
+"@pptx-renderer/stylesheet@0.0.1, @pptx-renderer/stylesheet@workspace:packages/stylesheet":
+  version: 0.0.0-use.local
+  resolution: "@pptx-renderer/stylesheet@workspace:packages/stylesheet"
+  dependencies:
+    color-string: 1.9.0
+    postcss-value-parser: 4.2.0
+    ramda: 0.28.0
   languageName: unknown
   linkType: soft
 

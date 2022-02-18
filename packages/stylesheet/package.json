@@ -1,0 +1,11 @@
+{
+    "name": "@pptx-renderer/stylesheet",
+    "private": true,
+    "version": "0.0.1",
+    "main": "./src/index.js",
+    "dependencies": {
+        "color-string": "1.9.0",
+        "postcss-value-parser": "4.2.0",
+        "ramda": "0.28.0"
+    }
+}

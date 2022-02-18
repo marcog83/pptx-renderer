@@ -41,6 +41,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@pptx-renderer/renderer",
         "reference": "workspace:packages/renderer"
+      },
+      {
+        "name": "@pptx-renderer/stylesheet",
+        "reference": "workspace:packages/stylesheet"
       }
     ],
     "enableTopLevelFallback": true,
@@ -50,6 +54,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@pptx-renderer/primitives", ["workspace:packages/primitives"]],
       ["@pptx-renderer/render", ["virtual:f82e7d74599c05357519432d4dd84f0fdff656f2e9877e789fc96400b2924b7b570bbb7ba1a1f61a6dbb6d4af7bf28313d6f43947cd14093f63294f5fece2fb1#workspace:packages/render", "workspace:packages/render"]],
       ["@pptx-renderer/renderer", ["workspace:packages/renderer"]],
+      ["@pptx-renderer/stylesheet", ["workspace:packages/stylesheet"]],
       ["demo", ["workspace:packages/demo"]],
       ["pptx-renderer", ["workspace:."]]
     ],
@@ -3125,9 +3130,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@pptx-renderer/layout", "workspace:packages/layout"],
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],
+            ["@pptx-renderer/stylesheet", "workspace:packages/stylesheet"],
             ["@react-pdf/yoga", "npm:2.0.4"],
-            ["color-string", "npm:1.9.0"],
-            ["postcss-value-parser", "npm:4.2.0"],
             ["ramda", "npm:0.28.0"]
           ],
           "linkType": "SOFT",
@@ -3177,6 +3181,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.2"],
             ["react-reconciler", "virtual:f82e7d74599c05357519432d4dd84f0fdff656f2e9877e789fc96400b2924b7b570bbb7ba1a1f61a6dbb6d4af7bf28313d6f43947cd14093f63294f5fece2fb1#npm:0.26.2"],
             ["scheduler", "npm:0.20.2"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@pptx-renderer/stylesheet", [
+        ["workspace:packages/stylesheet", {
+          "packageLocation": "./packages/stylesheet/",
+          "packageDependencies": [
+            ["@pptx-renderer/stylesheet", "workspace:packages/stylesheet"],
+            ["color-string", "npm:1.9.0"],
+            ["postcss-value-parser", "npm:4.2.0"],
+            ["ramda", "npm:0.28.0"]
           ],
           "linkType": "SOFT",
         }]

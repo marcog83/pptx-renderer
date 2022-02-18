@@ -1,46 +1,46 @@
 import * as R from 'ramda';
-import getMargin from './node/getMargin';
-import getPadding from './node/getPadding';
-import getPosition from './node/getPosition';
-import getDimension from './node/getDimension';
-import getBorderWidth from './node/getBorderWidth';
-import setDisplay from './node/setDisplay';
-import setOverflow from './node/setOverflow';
-import setFlexWrap from './node/setFlexWrap';
-import setFlexGrow from './node/setFlexGrow';
-import setFlexBasis from './node/setFlexBasis';
-import setAlignSelf from './node/setAlignSelf';
-import setAlignItems from './node/setAlignItems';
-import setFlexShrink from './node/setFlexShrink';
-import setAspectRatio from './node/setAspectRatio';
-import setAlignContent from './node/setAlignContent';
-import setPositionType from './node/setPositionType';
-import setFlexDirection from './node/setFlexDirection';
-import setJustifyContent from './node/setJustifyContent';
+import getMargin from '../node/getMargin';
+import getPadding from '../node/getPadding';
+import getPosition from '../node/getPosition';
+import getDimension from '../node/getDimension';
+import getBorderWidth from '../node/getBorderWidth';
+import setDisplay from '../node/setDisplay';
+import setOverflow from '../node/setOverflow';
+import setFlexWrap from '../node/setFlexWrap';
+import setFlexGrow from '../node/setFlexGrow';
+import setFlexBasis from '../node/setFlexBasis';
+import setAlignSelf from '../node/setAlignSelf';
+import setAlignItems from '../node/setAlignItems';
+import setFlexShrink from '../node/setFlexShrink';
+import setAspectRatio from '../node/setAspectRatio';
+import setAlignContent from '../node/setAlignContent';
+import setPositionType from '../node/setPositionType';
+import setFlexDirection from '../node/setFlexDirection';
+import setJustifyContent from '../node/setJustifyContent';
 import {
   setMarginTop,
   setMarginRight,
   setMarginBottom,
   setMarginLeft,
-} from './node/setMargin';
+} from '../node/setMargin';
 import {
   setPaddingTop,
   setPaddingRight,
   setPaddingBottom,
   setPaddingLeft,
-} from './node/setPadding';
+} from '../node/setPadding';
 import {
   setBorderTop,
   setBorderRight,
   setBorderBottom,
   setBorderLeft,
-} from './node/setBorderWidth';
+} from '../node/setBorderWidth';
 import {
   setPositionTop,
   setPositionRight,
   setPositionBottom,
   setPositionLeft,
-} from './node/setPosition';
+} from '../node/setPosition';
 import {
   setWidth, 
   setMinWidth,
@@ -48,7 +48,7 @@ import {
   setMinHeight,
   setMaxHeight,
   setHeight,
-} from './node/setDimension';
+} from '../node/setDimension';
 
 export const setYogaValues = node => {
     R.compose(

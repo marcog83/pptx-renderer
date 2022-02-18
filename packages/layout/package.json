@@ -5,9 +5,8 @@
     "main": "./src/index.js",
     "dependencies": {
         "@pptx-renderer/primitives": "0.0.1",
+        "@pptx-renderer/stylesheet": "0.0.1",
         "@react-pdf/yoga": "2.0.4",
-        "color-string": "1.9.0",
-        "postcss-value-parser": "4.2.0",
         "ramda": "0.28.0"
     }
 }

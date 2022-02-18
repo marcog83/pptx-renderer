@@ -13,7 +13,7 @@ import {
   processPaddingHorizontal,
   processPaddingSingle,
 } from './paddings'; 
-import { normalize } from "../utils/colors";
+import { normalize } from "./utils/colors";
 
   
 
@@ -115,6 +115,8 @@ const transform=(style)=>{
   }, {});
 }
 
-export default R.compose(
+export const expandStyles= R.compose(
   transform,
   expand);
+
+export * from './get-props'

@@ -1,4 +1,3 @@
-import { normalize } from './utils/colors';
 import { px2emu, inch2Emu, px2inch } from './utils/measures';
 import Yoga from "@react-pdf/yoga";
 
