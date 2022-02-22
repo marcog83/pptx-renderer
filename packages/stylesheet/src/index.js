@@ -12,10 +12,10 @@ import {
   processPaddingVertical,
   processPaddingHorizontal,
   processPaddingSingle,
-} from './paddings'; 
-import { normalize } from "./utils/colors";
+} from './paddings';
+import * as T from "./get-props";
 
-  
+
 
 
 const shorthands = {
@@ -85,38 +85,20 @@ const expand = style => {
   return resolvedStyle;
 };
 
+export const expandStyles = expand;
 
-const COLOR_PROPS = ['color', 'fill', 'line'];
-function getPropName(prop) {
-  const props = {
-    fontFace: 'font_face',
-    fontSize: 'font_size',    
-    lineDash: 'line_dash',
-    lineHead: 'line_head',
-    lineTail: 'line_tail'
-  };
 
-  return props[prop] || prop;
-}
-const transform=(style)=>{
-  return Object.keys(style)
-   
-  .reduce((props, key) => {
-    const propName =key// getPropName(key);
-    let value = style[key];
-
-    if (COLOR_PROPS.includes(propName)) {
-      props[propName] = normalize(value);
-    } else {
-      props[propName] = value;
-    }
-
-    return props;
-  }, {});
+const POSITION_RULES = ["top", "bottom", "left", "right", "display", "position", "flexDirection", "flexWrap", "flexFlow", "justifyContent", "alignItems", "alignContent", "gap", "rowGap", "columnGap", "order", "flexGrow", "flexShrink", "flexBasis", "flex", "alignSelf", "border", "margin", "padding", "width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight"];
+export const trimStyles = (style = {}) => {
+  return Object.entries(style)
+    .filter(([key]) => !POSITION_RULES.find(attribute => attribute.includes(key)))
+    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
 }
 
-export const expandStyles= R.compose(
-  transform,
-  expand);
+export const getStyles = R.compose(
+  T.colorTransform,
+  expand,
+  trimStyles
+)
 
-export * from './get-props'
+export const getProps = T.getProps

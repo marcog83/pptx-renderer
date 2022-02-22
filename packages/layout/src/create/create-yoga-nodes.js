@@ -4,6 +4,7 @@ import Yoga from "@react-pdf/yoga";
 import { getSize } from '../slide/get-size';
 import { setYogaValues } from './setYogaValues';
 import { expandStyles, getProps } from '@pptx-renderer/stylesheet';
+import { getStyles } from "../../../stylesheet/src";
 const isTextInstance = ({ type }) => type === N.TextInstance;
 
 const layoutText = (parentNode) => (node) => {
@@ -12,7 +13,7 @@ const layoutText = (parentNode) => (node) => {
     parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
 
     const { style = {} } = node.props;
-    node.style = expandStyles(style);
+    node.box = expandStyles(style);
     setYogaValues(node)
     // extract props for position
     // flatten the children to create text later on render
@@ -21,9 +22,9 @@ const layoutText = (parentNode) => (node) => {
     values = values
         .filter(isTextInstance)
         .map((child) => {
-            const style = expandStyles(child.props.style);
-            const options = getProps(child);
-            console.log("textInstance", style, options)
+            const style =getStyles(child.props.style);
+            const options = getProps(child.props);
+          
             return ({
                 text: child.value,
                 options: { ...style, ...options }
@@ -66,6 +67,10 @@ const layoutShape = (parentNode) => (node) => {
     node._yogaNode = Yoga.Node.createDefault();
 
     parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
+     
+    const box = expandStyles(node.props.style??{});
+    node.box=box;
+    setYogaValues(node)
 
     const hasText = node.children.length > 0;
 
@@ -76,15 +81,22 @@ const layoutShape = (parentNode) => (node) => {
 
         values = values
             .filter(isTextInstance)
-            .map(({ value, props: { x, y, w, h, ...options } }) => ({
-                text: value,
-                options
-            }));
-
+            .map((child) => {
+                const style =expandStyles(child.props.style);
+                const options = getProps(child.props);
+                
+                return ({
+                    text: child.value,
+                    options: { ...style, ...options }
+                })
+            });
+            const options = getProps(node.props);
+             
+           
         return {
             ...node,
             hasText,
-            options: { shape: type, ...shapeOptions },
+            options: { shape: type, ...options },
             children: values
         };
     }
@@ -96,7 +108,7 @@ const layoutSlide = (ctx) => (node) => {
     node._yogaNode = Yoga.Node.createDefault();
 
     const { style = {} } = node.props;
-    node.style = expandStyles(style);
+    node.box = expandStyles(style);
     setYogaValues(node);
 
     const { height, width } = getSize(ctx);

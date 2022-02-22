@@ -1,37 +1,35 @@
 import { normalize } from "./utils/colors";
 
-  
+import * as R from 'ramda';
+
 
 const COLOR_PROPS = ['color', 'fill', 'line'];
+const Colors = {
+  "fill": (color) => ({ color: normalize(color) })
+}
 
-function getPropName(prop) {
-    const props = {
-      fontFace: 'font_face',
-      fontSize: 'font_size',
-      height: 'h',
-      width: 'w',
-      lineDash: 'line_dash',
-      lineHead: 'line_head',
-      lineTail: 'line_tail'
-    };
+export const colorTransform = (props = {}) => {
+  return Object.entries(props)
+    .reduce((props, [propName, value]) => {
+      if (COLOR_PROPS.includes(propName)) {
+        props[propName] = (Colors[propName] ?? normalize)(value);
+      } else {
+        props[propName] = value;
+      }
 
-    return props[prop] || prop;
-  }
-export function  getProps(node) {
-    return Object.keys(node.props)
-      .filter(
-        prop => prop !== 'children' && prop !== 'data' && prop !== 'style'
-      )
-      .reduce((props, key) => {
-        const propName = getPropName(key);
-        let value = node.props[key];
+      return props;
+    }, {});
+}
 
-        if (COLOR_PROPS.includes(propName)) {
-          props[propName] = normalize(value);
-        } else {
-          props[propName] = value;
-        }
+const EXCLUDED_PROPS = new Set(["children", "data", "style", "box"]);
 
-        return props;
-      }, {});
-  }
+const trimProps = (props) => Object.entries(props)
+  .filter(([prop]) => !EXCLUDED_PROPS.has(prop))
+  .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
+
+
+
+export const getProps = R.compose(
+  colorTransform,
+  trimProps
+)

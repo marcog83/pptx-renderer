@@ -22,24 +22,22 @@ export class Pptxgen {
     this.slide.slideNumber = props;
   }
   addText(children, options) {
-    // find the current slide
-    // slide.addText(children, options)
-    console.log('addText', options, children);
+    console.log('addText', children,options);
     this.slide.addText(children, options);
   }
   addImage(props) {
     console.log('addImage', props);
     this.slide.addImage(props);
   }
-  addShape(node) {
+  addShape(node,options) {
     if (node.hasText) {
-      console.log('addShape hasText', node);
-      this.addText(node.children, node.options);
+      console.log('addShape hasText', options);
+      this.addText(node.children, options);
     } else {
       const { type, ...props } = node.props;
 
-      console.log('addShape', type, props);
-      this.slide.addShape(type, props);
+      console.log('addShape', type, options);
+      this.slide.addShape(type, options);
     }
   }
   addNotes(text) {
