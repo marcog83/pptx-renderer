@@ -9,7 +9,7 @@ const calculateText = (parentNode) => node => {
   const style = getStyle(parentNode, node);
 
   const options = getProps(node.props);
-  console.log("calculateText",node.style,options)
+  console.log("calculateText",style,options)
   return {
     ...node,
     options,
@@ -46,7 +46,13 @@ const calculateSlide = (parentNode) => node => {
   }
 }
 
-
+const calculateGroup=(parentNode) => node => {
+  console.log("calculateGroup", node.style)
+  return {
+    ...node,
+    children: node.children.map(calculateLayout(node))
+  }
+}
 
 
 const L = {
@@ -54,7 +60,8 @@ const L = {
   [N.Notes]: calculateNotes,
   [N.Section]: calculateSection,
   [N.Shape]: calculateShape,
-  [N.Slide]: calculateSlide
+  [N.Slide]: calculateSlide,
+  [N.Group]: calculateGroup
 };
 const identity = (parentNode) => (x) => {
 

@@ -24,4 +24,6 @@ export const TableCell = 'tableCell';
 
 export const Chart = 'chart';
 
+export const Group = 'group';
+
 export const TextInstance = 'TEXT_INSTANCE';

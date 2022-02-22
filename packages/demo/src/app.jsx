@@ -4,8 +4,9 @@ export const App = ({pptx}) => {
   const {src,onChange,isLoading} = usePreview();
 
   const handleClick = async() => {     
+    // const blob=await pptx.writeFile({fileName:"blob.pptx"});
     const blob=await pptx.write("blob");
-    onChange(blob); 
+     onChange(blob); 
   };
   
   return (

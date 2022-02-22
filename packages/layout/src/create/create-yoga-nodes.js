@@ -122,12 +122,29 @@ const layoutSlide = (ctx) => (node) => {
 
 }
 
+const layoutGroup = (parentNode) => (node) => {
+    node._yogaNode = Yoga.Node.createDefault();
+
+    parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
+     
+    const box = expandStyles(node.props.style??{});
+    node.box=box;
+    setYogaValues(node)
+ 
+    return {
+        ...node,
+        children: node.children.map(createYogaNodes(node))
+    }
+
+}
+
 const T = {
     [N.Text]: layoutText,
     [N.Notes]: layoutNotes,
     [N.Section]: layoutSection,
     [N.Shape]: layoutShape,
-    [N.Slide]: layoutSlide
+    [N.Slide]: layoutSlide,
+    [N.Group]:layoutGroup
 };
 export const createYogaNodes = (parentNode) => (node) => {
     const { type } = node;
