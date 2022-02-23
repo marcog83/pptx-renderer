@@ -8,16 +8,16 @@ function isString(x) {
 const COLOR_PROPS = ['color', 'fill', 'line'];
 const Colors = {
   "fill": (fill) => {
-    if(isString(fill)){
+    if (isString(fill)) {
       return { color: normalize(fill) }
-    }else{
-      return { color: normalize(fill.color),transparency:fill.transparency }
+    } else {
+      return { color: normalize(fill.color), transparency: fill.transparency }
     }
-   
+
   },
   "line": (line) => {
-    return {...line, color: normalize(line.color) }
-   
+    return { ...line, color: normalize(line.color) }
+
   }
 }
 
@@ -34,10 +34,10 @@ export const colorTransform = (props = {}) => {
     }, {});
 }
 
-const EXCLUDED_PROPS = new Set(["children", "data", "style", "box"]);
 
-const trimProps = (props) => Object.entries(props)
-  .filter(([prop]) => !EXCLUDED_PROPS.has(prop))
+
+const trimProps = ({ children, data, style, box, ...props }) =>
+ Object.entries(props)
   .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
 
 

@@ -50,6 +50,10 @@ module.exports = {
         historyApiFallback: true,
         port: 3000
     },
-    devtool:'inline-source-map'
+    devtool:'inline-source-map',
+    watchOptions: {
+        aggregateTimeout: 200,
+        ignored: [ '**/test', '**/node_modules' ]
+      }
 
 };

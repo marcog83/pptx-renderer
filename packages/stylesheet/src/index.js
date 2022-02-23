@@ -62,9 +62,8 @@ const expandStyle = (key, value) => {
  * @param { Object } style object
  * @returns { Object } expanded style object
  */
-const expand = style => {
-  if (!style) return style;
-
+const expand = (style={}) => {
+  
   const propsArray = Object.keys(style);
   const resolvedStyle = {};
 
@@ -85,7 +84,7 @@ const expand = style => {
   return resolvedStyle;
 };
 
-export const expandStyles = expand;
+export const expandYogaStyles = expand;
 
 
 const POSITION_RULES = ["top", "bottom", "left", "right", "display", "position", "flexDirection", "flexWrap", "flexFlow", "justifyContent", "alignItems", "alignContent", "gap", "rowGap", "columnGap", "order", "flexGrow", "flexShrink", "flexBasis", "flex", "alignSelf", "border", "margin", "padding", "width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight"];

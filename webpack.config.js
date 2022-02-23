@@ -1,4 +1,4 @@
-var path = require('path'); 
+var path = require('path');
 module.exports = {
     entry: {
         index: './packages/renderer/src/index.js'
@@ -10,8 +10,8 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         filename: 'app.bundle.js'
     },
-    externals: ["pptxgenjs"] ,
-     
+    externals: ["pptxgenjs"],
+
     module: {
         rules: [
             {
@@ -21,6 +21,10 @@ module.exports = {
             }
         ]
     },
-devtool:'inline-source-map'
+    devtool: 'inline-source-map',
+    watchOptions: {
+        aggregateTimeout: 200,
+        ignored: [ '**/test', '**/node_modules' ]
+      }
 
 };

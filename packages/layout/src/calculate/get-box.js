@@ -1,4 +1,4 @@
-import { px2emu, inch2Emu, px2inch } from './utils/measures';
+import { px2emu, inch2Emu, px2inch } from './measures';
 import Yoga from "@react-pdf/yoga";
 
 function getComputedPadding(node) {
@@ -22,12 +22,10 @@ function getAbsoluteLayout(parentNode, node) {
     };
 }
 
-export function getStyle(parentNode, node) {
+export function getBox(parentNode, node) {
     const { left, top, width, height } = getAbsoluteLayout(parentNode, node); // px
     const padding = getComputedPadding(node); // px
-    if (node.type === "group") {
-        console.log({ left, top, width, height })
-    }
+    
     const style = {
         x: px2inch(left + padding.left),
         y: px2inch(top + padding.top),

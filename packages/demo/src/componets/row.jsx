@@ -11,7 +11,7 @@ export function Row() {
            
             <Group style={{ flex: 1 }}>
                 <Group style={{ width: 200 }}>
-                    <Text style={{ flex: 1, fontSize: 10, wrap: false, bold: true }} align="center">Name of Campaign</Text>
+                    <Text style={{ flex: 1, fontSize: 10, wrap: false, bold: true,align:"center" }}>Name of Campaign</Text>
                 </Group>
                 <Shape type="line" line={{ color: "grey", width: 1 }} />
                 <Group style={{ flex: 1, flexDirection: "column",padding:5 }}>

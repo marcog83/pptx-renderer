@@ -13,6 +13,6 @@ export const flattenChildren = (arr, props) => {
         result.push(...flattenChildren(children, node.props));
       }
     });
-  console.log(result);
+  
     return result;
   };

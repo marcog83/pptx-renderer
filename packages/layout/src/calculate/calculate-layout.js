@@ -1,81 +1,39 @@
-
-import { getStyle } from '../get-style';
+import { getBox } from './get-box';
 
 import * as N from '@pptx-renderer/primitives';
-import { getProps } from '@pptx-renderer/stylesheet';
+import * as R from 'ramda';
 
 
-const calculateText = (parentNode) => node => {
-  const style = getStyle(node.parent, node);
-
-  const options = getProps(node.props);
-  console.log("calculateText",style,options)
+const calculateText = node => {
+  const box = getBox(node.parent, node);
   return {
     ...node,
-    options,
-    style
+    box
   };
 }
-const calculateNotes = (parentNode) => node => {
+const calculateNotes = node => {
   return node;
 }
-const calculateSection = (parentNode) => node => {
-  return {
-    ...node,
-    children: node.children.map(calculateLayout(node))
-  }
-}
-const calculateShape = (parentNode) => node => {
-  const style = getStyle(node.parent, node);
-  let { type, ...options } = getProps(node.props);
- 
-  if (node.hasText) {
-    options = { shape: type, ...options };
-  }
-  return {
-    ...node,
-    options,
-    style
-  };
-}
-const calculateSlide = (parentNode) => node => {
-  console.log("calculateSlide", node.style)
-  return {
-    ...node,
-    children: node.children.map(calculateLayout(node))
-  }
-}
 
-const calculateGroup=(parentNode) => node => {
-  
-  const style = getStyle(node.parent, node);
-  console.log("calculateGroup", style,node.children)
+const calculateShape = node => {
+  const box = getBox(node.parent, node);
   return {
     ...node,
-    children: node.children.map(calculateLayout(node))
-  }
+    box
+  };
 }
 
 
 const L = {
   [N.Text]: calculateText,
   [N.Notes]: calculateNotes,
-  [N.Section]: calculateSection,
-  [N.Shape]: calculateShape,
-  [N.Slide]: calculateSlide,
-  [N.Group]: calculateGroup
+  [N.Shape]: calculateShape
 };
-const identity = (parentNode) => (x) => {
 
-  return ({
-    ...x,
-    children: x.children?.map(calculateLayout(parentNode))
-  })
-};
-export const calculateLayout = (parentNode) => (node) => {
+export const calculateLayout = (node) => {
   const { type } = node;
-
+  const identity = R.evolve({ children: R.map(calculateLayout) });
   const fn = L[type] || identity;
 
-  return fn(parentNode)(node);
+  return fn(node);
 }

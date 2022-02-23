@@ -1,5 +1,5 @@
 
-import { emu2px } from '../utils/measures';
+import { emu2px } from './measures';
 export function getSize(ctx) {
     const { width, height } = ctx.getLayout();
  
