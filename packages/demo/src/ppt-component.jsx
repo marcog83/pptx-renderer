@@ -7,6 +7,8 @@ import {
     Text,
     Group
 } from "pptx-renderer";
+import { Box } from "./componets/box";
+import { Row } from "./componets/row";
 
 
 
@@ -22,18 +24,31 @@ export function PPTComponent() {
         layout="LAYOUT_16x9"
     >
         <Slide>
-            <Group style={{ flex: 1, 
-            position: "absolute",
-             top: 25,
-              left: 50,
-              width:"400",
-              height:"500" }}>
+            <Group style={{ flex: 1, flexDirection: "column" }}>
+                <Row />
+                <Row />
+                <Row />
+            </Group>
+
+        </Slide>
+        <Slide>
+
+            <Group style={{
+                flex: 1,
+                position: "absolute",
+                top: 25,
+                left: 350,
+                width: "400",
+                height: "500"
+            }}>
                 <Text style={{ flex: 1 }} fill="#FF0000">WEEE</Text>
                 <Text style={{ flex: 1 }} fill="blue">blue</Text>
                 <Text style={{ flex: 1 }} fill="green">green</Text>
-                <Shape style={{position: "absolute",
-             top: 25,
-              left: 50, width: 100, height: 100 }} type="sun" fill="white" />
+                <Shape style={{
+                    position: "absolute",
+                    top: 25,
+                    left: 50, width: 100, height: 100
+                }} type="sun" fill="white" />
             </Group>
         </Slide>
 
@@ -68,19 +83,19 @@ export function PPTComponent() {
             <SlideNumber
                 x="1.0"
                 y="5%"
-                color="FF0000"
+                color="#FF0000"
                 fontFace="Calibri"
                 fontSize="20"
             />
-            <Shape type="sun" style={{ x: "90%", y: "0", width: 100, height: 100 }} fill="FF0000">
+            <Shape type="sun" style={{ x: "90%", y: "0", width: 100, height: 100 }} fill="#FF0000">
                 sun
-                <Text style={{ x: 10, y: 20 }} bold color="FFCC00" fontSize={6}>
+                <Text style={{ x: 10, y: 20 }} bold color="#FFCC00" fontSize={6}>
                     wee2
                 </Text>
             </Shape>
-            
 
-            <Text style={{ left: 10, top: 20, margin: 5, width: 400 }} fill={"FF0000"} color="FFCC00">
+
+            <Text style={{ left: 10, top: 20, margin: 5, width: 400 }} fill={"#FF0000"} color="#FFCC00">
                 {wee}
                 text 1<Text bold>wee2</Text>
             </Text>
@@ -89,7 +104,7 @@ export function PPTComponent() {
             <SlideNumber
                 x="2"
                 y="5%"
-                color="FF0000"
+                color="#FF0000"
                 fontFace="Calibri"
                 fontSize="20"
             />
@@ -99,3 +114,4 @@ export function PPTComponent() {
         </Slide> */}
     </Document >
 }
+

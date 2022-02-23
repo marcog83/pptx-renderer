@@ -1,11 +1,24 @@
 import { normalize } from "./utils/colors";
 
 import * as R from 'ramda';
-
+function isString(x) {
+  return Object.prototype.toString.call(x) === "[object String]"
+}
 
 const COLOR_PROPS = ['color', 'fill', 'line'];
 const Colors = {
-  "fill": (color) => ({ color: normalize(color) })
+  "fill": (fill) => {
+    if(isString(fill)){
+      return { color: normalize(fill) }
+    }else{
+      return { color: normalize(fill.color),transparency:fill.transparency }
+    }
+   
+  },
+  "line": (line) => {
+    return {...line, color: normalize(line.color) }
+   
+  }
 }
 
 export const colorTransform = (props = {}) => {

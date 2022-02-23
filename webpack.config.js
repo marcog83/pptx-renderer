@@ -21,6 +21,6 @@ module.exports = {
             }
         ]
     },
-devtool:false
+devtool:'inline-source-map'
 
 };

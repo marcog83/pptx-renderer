@@ -14,7 +14,6 @@ module.exports = {
         extensions: [ '.js', '.jsx'],
         alias: {
             "pptxgenjs": require.resolve("pptxgenjs"),
-            // "react": require.resolve("react"),
             'react/jsx-runtime': require.resolve("react/jsx-runtime")
         }
     }, 
@@ -50,6 +49,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         port: 3000
-    }
+    },
+    devtool:'inline-source-map'
 
 };

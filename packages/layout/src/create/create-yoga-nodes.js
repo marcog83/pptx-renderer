@@ -22,9 +22,9 @@ const layoutText = (parentNode) => (node) => {
     values = values
         .filter(isTextInstance)
         .map((child) => {
-            const style =getStyles(child.props.style);
+            const style = getStyles(child.props.style);
             const options = getProps(child.props);
-          
+
             return ({
                 text: child.value,
                 options: { ...style, ...options }
@@ -67,9 +67,9 @@ const layoutShape = (parentNode) => (node) => {
     node._yogaNode = Yoga.Node.createDefault();
 
     parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
-     
-    const box = expandStyles(node.props.style??{});
-    node.box=box;
+
+    const box = expandStyles(node.props.style ?? {});
+    node.box = box;
     setYogaValues(node)
 
     const hasText = node.children.length > 0;
@@ -82,17 +82,17 @@ const layoutShape = (parentNode) => (node) => {
         values = values
             .filter(isTextInstance)
             .map((child) => {
-                const style =expandStyles(child.props.style);
+                const style = expandStyles(child.props.style);
                 const options = getProps(child.props);
-                
+
                 return ({
                     text: child.value,
                     options: { ...style, ...options }
                 })
             });
-            const options = getProps(node.props);
-             
-           
+        const options = getProps(node.props);
+
+
         return {
             ...node,
             hasText,
@@ -126,11 +126,11 @@ const layoutGroup = (parentNode) => (node) => {
     node._yogaNode = Yoga.Node.createDefault();
 
     parentNode._yogaNode.insertChild(node._yogaNode, parentNode._yogaNode.getChildCount());
-     
-    const box = expandStyles(node.props.style??{});
-    node.box=box;
+
+    const box = expandStyles(node.props.style ?? {});
+    node.box = box;
     setYogaValues(node)
- 
+
     return {
         ...node,
         children: node.children.map(createYogaNodes(node))
@@ -144,13 +144,14 @@ const T = {
     [N.Section]: layoutSection,
     [N.Shape]: layoutShape,
     [N.Slide]: layoutSlide,
-    [N.Group]:layoutGroup
+    [N.Group]: layoutGroup
 };
 export const createYogaNodes = (parentNode) => (node) => {
     const { type } = node;
-
+    node.parent = parentNode;
     const identity = (parentNode) => (x) => ({
         ...x,
+
         children: x.children.map(createYogaNodes(parentNode))
     });
     const fn = T[type] || identity;

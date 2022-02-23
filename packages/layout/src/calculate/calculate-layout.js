@@ -6,7 +6,7 @@ import { getProps } from '@pptx-renderer/stylesheet';
 
 
 const calculateText = (parentNode) => node => {
-  const style = getStyle(parentNode, node);
+  const style = getStyle(node.parent, node);
 
   const options = getProps(node.props);
   console.log("calculateText",style,options)
@@ -26,7 +26,7 @@ const calculateSection = (parentNode) => node => {
   }
 }
 const calculateShape = (parentNode) => node => {
-  const style = getStyle(parentNode, node);
+  const style = getStyle(node.parent, node);
   let { type, ...options } = getProps(node.props);
  
   if (node.hasText) {
@@ -47,7 +47,9 @@ const calculateSlide = (parentNode) => node => {
 }
 
 const calculateGroup=(parentNode) => node => {
-  console.log("calculateGroup", node.style)
+  
+  const style = getStyle(node.parent, node);
+  console.log("calculateGroup", style,node.children)
   return {
     ...node,
     children: node.children.map(calculateLayout(node))
