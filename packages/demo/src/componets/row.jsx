@@ -7,7 +7,7 @@ import { Box } from "./box";
 
 export function Row() {
     return (
-        <Group style={{ flex: 1, width: "100%", height: 91, flexDirection: "column" }}>
+        <Group style={{ flex: 1, width: "100%", maxHeight: 91, flexDirection: "column" }}>
            
             <Group style={{ flex: 1 }}>
                 <Group style={{ width: 200 }}>

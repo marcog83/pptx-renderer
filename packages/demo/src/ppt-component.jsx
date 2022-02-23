@@ -23,13 +23,10 @@ export function PPTComponent() {
         title="PptxGenJS Sample Presentation"
         layout="LAYOUT_16x9"
     >
-        <Slide>
-            <Group style={{ flex: 1, flexDirection: "column" }}>
-                <Row />
-                <Row />
-                <Row />
-            </Group>
-
+        <Slide style={{ flex: 1, flexDirection: "column" }}>
+            <Row />
+            <Row />
+            <Row />
         </Slide>
         <Slide>
 
