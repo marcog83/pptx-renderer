@@ -24,7 +24,7 @@ const Colors = {
 export const colorTransform = (props = {}) => {
   return Object.entries(props)
     .reduce((props, [propName, value]) => {
-      if (COLOR_PROPS.includes(propName)) {
+      if (COLOR_PROPS.includes(propName)) {        
         props[propName] = (Colors[propName] ?? normalize)(value);
       } else {
         props[propName] = value;

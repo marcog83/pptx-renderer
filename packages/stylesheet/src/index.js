@@ -14,6 +14,7 @@ import {
   processPaddingSingle,
 } from './paddings';
 import * as T from "./get-props";
+import { ALLOWED_YOGA_PROPS, POSITION_RULES } from './allowed-props';
 
 
 
@@ -84,20 +85,23 @@ const expand = (style={}) => {
   return resolvedStyle;
 };
 
-export const expandYogaStyles = expand;
+export const expandYogaStyles = R.compose(
+  R.tap((style)=>console.log({style})),
+  R.pick(ALLOWED_YOGA_PROPS),
+  expand,
+  R.defaultTo({})
+);
 
 
-const POSITION_RULES = ["top", "bottom", "left", "right", "display", "position", "flexDirection", "flexWrap", "flexFlow", "justifyContent", "alignItems", "alignContent", "gap", "rowGap", "columnGap", "order", "flexGrow", "flexShrink", "flexBasis", "flex", "alignSelf", "border", "margin", "padding", "width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight"];
-export const trimStyles = (style = {}) => {
-  return Object.entries(style)
-    .filter(([key]) => !POSITION_RULES.find(attribute => attribute.includes(key)))
-    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
-}
 
 export const getStyles = R.compose(
   T.colorTransform,
-  expand,
-  trimStyles
+  R.omit(ALLOWED_YOGA_PROPS),
+  expand
 )
 
-export const getProps = T.getProps
+export const getProps =R.compose(
+  T.getProps,
+  R.omit(ALLOWED_YOGA_PROPS),
+  expand
+)

@@ -18,13 +18,9 @@ const createYogaNode = (node) => {
     return node;
 }
 
-const layoutText = (parentNode) => (node) => {
-    return createYogaNode(node);
+const layoutText = (parentNode) =>createYogaNode;
 
-
-};
-
-
+const layoutShape = (parentNode) =>createYogaNode;
 
 const layoutSection = (ctx) => (node) => {
     return R.evolve({
@@ -33,10 +29,7 @@ const layoutSection = (ctx) => (node) => {
 
 };
 
-const layoutShape = (parentNode) => (node) => {
-    return createYogaNode(node);
 
-};
 
 const layoutSlide = (ctx) => (node) => {
     createYogaNode(node);

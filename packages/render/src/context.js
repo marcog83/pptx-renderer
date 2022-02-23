@@ -31,7 +31,7 @@ export class Pptxgen {
   }
   addShape(node,options) {
     if (node.hasText) {
-     
+      
       this.addText(node.children, options);
     } else {
       const { type, ...props } = node.props;

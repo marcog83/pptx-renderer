@@ -46,12 +46,13 @@ const styleShape =  node => {
             .map((child) => {
                 const style = getStyles(child.props.style);
                 const options = getProps(child.props);
-
+                
                 return ({
                     text: child.value,
-                    options: { ...style, ...options }
+                    options: {...options,...style }
                 })
             });
+            
         return {
             ...node,
             hasText,
