@@ -31,7 +31,6 @@ export function getBox(parentNode, node) {
         y: px2inch(top + padding.top),
         w: px2inch(width - padding.left - padding.right),
         h: px2inch(height - padding.top - padding.bottom),
-        margin: [px2inch(padding.top), px2inch(padding.left), px2inch(padding.bottom), px2inch(padding.right)]
     };
 
 

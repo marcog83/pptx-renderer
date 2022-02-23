@@ -50,7 +50,7 @@ export function PPTComponent() {
         </Slide>
 
         <Slide>
-            <Text style={{ flex: 1 }} margin={20} color="green" fill="#FF0000">
+            <Text style={{ flex: 1 }} margin={[20, 20, 20, 20]} color="green" fill="#FF0000">
                 <Text bold color="#FFCC00" >
                     wee2
                 </Text>

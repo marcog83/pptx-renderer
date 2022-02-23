@@ -13,7 +13,7 @@ import {
   processPaddingHorizontal,
   processPaddingSingle,
 } from './paddings';
-import * as T from "./get-props";
+import {colorTransform} from "./color-transform";
 import { ALLOWED_YOGA_PROPS, POSITION_RULES } from './allowed-props';
 
 
@@ -63,8 +63,8 @@ const expandStyle = (key, value) => {
  * @param { Object } style object
  * @returns { Object } expanded style object
  */
-const expand = (style={}) => {
-  
+const expand = (style = {}) => {
+
   const propsArray = Object.keys(style);
   const resolvedStyle = {};
 
@@ -86,7 +86,7 @@ const expand = (style={}) => {
 };
 
 export const expandYogaStyles = R.compose(
-  R.tap((style)=>console.log({style})),
+
   R.pick(ALLOWED_YOGA_PROPS),
   expand,
   R.defaultTo({})
@@ -95,13 +95,14 @@ export const expandYogaStyles = R.compose(
 
 
 export const getStyles = R.compose(
-  T.colorTransform,
+  colorTransform,
   R.omit(ALLOWED_YOGA_PROPS),
   expand
 )
 
-export const getProps =R.compose(
-  T.getProps,
-  R.omit(ALLOWED_YOGA_PROPS),
-  expand
+export const getProps = R.compose(
+  R.tap((style) => console.log(style)),
+  colorTransform,
+  R.mergeRight({ margin: [0, 0, 0, 0] }),
+  R.omit([...ALLOWED_YOGA_PROPS, 'children', 'data', 'style', 'box'])
 )
