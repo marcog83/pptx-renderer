@@ -1,15 +1,11 @@
 import { normalize } from "./utils/colors";
 
 import * as R from 'ramda';
-function isString(x) {
-  return Object.prototype.toString.call(x) === "[object String]"
-}
-
 
 const Colors = {
   color: normalize,
   fill: (fill) => {
-    if (isString(fill)) {
+    if (R.is(String, fill)) {
       return { color: normalize(fill) }
     } else {
       return { color: normalize(fill.color), transparency: fill.transparency }

@@ -1,7 +1,7 @@
 var path = require('path');
 module.exports = {
     entry: {
-        index: './packages/renderer/src/index.js'
+        index: './index.js'
     },
     mode: 'development',
     output: {

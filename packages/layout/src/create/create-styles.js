@@ -1,18 +1,22 @@
 
 import * as N from '@pptx-renderer/primitives';
 import { flattenChildren } from './flatten-children';
-import { getProps, getStyles } from '@pptx-renderer/stylesheet';
+import { getProps, getStyles, parseClassNames, parseYogaClassNames } from '@pptx-renderer/stylesheet';
 import * as R from 'ramda';
 
- 
 
-const styleText =  node => {
+
+const styleText = node => {
     let values = flattenChildren(node.children, node.props);
 
     values = values
         .filter(N.isTextInstance)
         .map((child) => {
-            const style = getStyles(child.props.style);
+            const style = {
+                ...parseClassNames(child.props.className),
+                ...getStyles(child.props.style)
+            };
+
             const options = getProps(child.props);
 
             return ({
@@ -20,20 +24,39 @@ const styleText =  node => {
                 options: { ...options, ...style }
             })
         });
-    const style = getStyles(node.props.style);
+    const style = {
+        ...parseClassNames(node.props.className),
+        ...getStyles(node.props.style)
+    };
     const options = getProps(node.props);
+
+    const yogaStyle = {
+        ...parseYogaClassNames(node.props.className),
+        ...node.props.style
+    };
+
     return {
         ...node,
         style,
         options,
+        yogaStyle,
         children: values
     };
 }
-const styleShape =  node => {
+const styleShape = node => {
 
 
     const options = getProps(node.props);
-    const style = getStyles(node.props.style);
+    const style = {
+        ...parseClassNames(node.props.className),
+        ...getStyles(node.props.style)
+    };
+
+    const yogaStyle = {
+        ...parseYogaClassNames(node.props.className),
+        ...node.props.style
+    };
+
     const hasText = node.children.length > 0;
 
     const { type } = node.props;
@@ -44,19 +67,24 @@ const styleShape =  node => {
         values = values
             .filter(N.isTextInstance)
             .map((child) => {
-                const style = getStyles(child.props.style);
+
+                const style = {
+                    ...parseClassNames(child.props.className ?? ''),
+                    ...getStyles(child.props.style)
+                };
                 const options = getProps(child.props);
-                
+
                 return ({
                     text: child.value,
-                    options: {...options,...style }
+                    options: { ...options, ...style }
                 })
             });
-            
+
         return {
             ...node,
             hasText,
             style,
+            yogaStyle,
             options: { shape: type, ...options },
             children: values
         };
@@ -65,7 +93,8 @@ const styleShape =  node => {
     return {
         ...node,
         style,
-        options
+        options,
+        yogaStyle
     };
 }
 
@@ -93,11 +122,55 @@ const styleSections = node => {
     }
 }
 
+const styleSlide = (node) => {
+    const style = {
+        ...parseClassNames(node.props.className),
+        ...getStyles(node.props.style)
+    };
+
+    const yogaStyle = {
+        ...parseYogaClassNames(node.props.className),
+        ...node.props.style
+    };
+   
+    // const options = getProps(node.props);
+    return R.evolve({
+        children: R.map(createStyles)
+    })({
+        ...node,
+        style,
+        yogaStyle
+    })
+}
+const styleGroup = (node) => {
+    const style = {
+        ...parseClassNames(node.props.className),
+        ...getStyles(node.props.style)
+    };
+
+    const yogaStyle = {
+        ...parseYogaClassNames(node.props.className),
+        ...node.props.style
+    };
+
+     
+
+    return R.evolve({
+        children: R.map(createStyles)
+    })({
+        ...node,
+        style,
+        yogaStyle
+    })
+}
+
 const T = {
     [N.Text]: styleText,
     [N.Shape]: styleShape,
     [N.Notes]: styleNotes,
     [N.Section]: styleSections,
+    [N.Slide]: styleSlide,
+    [N.Group]: styleGroup,
 };
 
 export const createStyles = node => {

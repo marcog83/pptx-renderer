@@ -11,11 +11,9 @@ const createYogaNode = (node) => {
 
     node.parent._yogaNode?.insertChild(node._yogaNode, node.parent._yogaNode?.getChildCount());
 
-    node.style = {
-        ...node.style,
-        ...expandYogaStyles(node.props.style)
-    };
-    setYogaValues(node)
+    const style = expandYogaStyles(node.yogaStyle);
+ 
+    setYogaValues(style)(node);
     return node;
 }
 
@@ -54,15 +52,15 @@ const layoutGroup = () => (node) => {
 
 }
 
-const setMeasureFunc = (parentNode) => (node) => {
+// const setMeasureFunc = (parentNode) => (node) => {
     
-    const yogaNode = node._yogaNode;
-    if (N.isText(node)) {
+//     const yogaNode = node._yogaNode;
+//     if (N.isText(node)) {
        
-        yogaNode.setMeasureFunc(measureText(parentNode, node,(...rest)=>console.log(...rest)));
-      }
-    return node;
-}
+//         yogaNode.setMeasureFunc(measureText(parentNode, node,(...rest)=>console.log(...rest)));
+//       }
+//     return node;
+// }
 
 
 const T = {

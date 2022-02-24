@@ -5,28 +5,23 @@ import * as R from 'ramda';
 
 
 const calculateText = node => {
-  const box = getBox(node.parent, node);
   return {
     ...node,
-    box
+    box: getBox(node.parent, node)
   };
-}
-const calculateNotes = node => {
-  return node;
 }
 
 const calculateShape = node => {
-  const box = getBox(node.parent, node);
   return {
     ...node,
-    box
+    box: getBox(node.parent, node)
   };
 }
 
 
 const L = {
   [N.Text]: calculateText,
-  [N.Notes]: calculateNotes,
+  [N.Notes]: R.identity,
   [N.Shape]: calculateShape
 };
 

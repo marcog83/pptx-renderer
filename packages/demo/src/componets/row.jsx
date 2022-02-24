@@ -7,25 +7,25 @@ import { Box } from "./box";
 
 export function Row() {
     return (
-        <Group style={{ flex: 1, width: "100%", maxHeight: 91, flexDirection: "column" }}>
-           
-            <Group style={{ flex: 1 }}>
-                <Group style={{ width: 200 }}>
-                    <Text style={{ flex: 1, fontSize: 10, wrap: false, bold: true,align:"center" }}>Name of Campaign</Text>
+        <Group className='row'>
+
+            <Group className="flex">
+                <Group className="campaign column flex" style={{ justifyContent: "center" }}>
+                    <Text className="flex campaign-name">Name of Campaign</Text>
+                    <Text className="flex campaign-name" style={{ bold: false }}>SUBTITLE</Text>
                 </Group>
-                <Shape type="line" line={{ color: "grey", width: 1 }} />
-                <Group style={{ flex: 1, flexDirection: "column",padding:5 }}>
-                    <Group style={{ flex: 1 }}>
+                <Group className="timeline">
+                    <Group className="flex">
                         <Box name="BLUE VERSION (JUN) FF22" label="Jul 12 - Jun 12" fill="#4472C4" />
                         <Box name="GREEN VERSION (JUN) SS21" label="Feb 12 - Mar 25" fill="#20E854" />
                     </Group>
-                    <Group style={{ flex: 1, marginLeft: 100 }}>
+                    <Group className="flex" style={{ marginLeft: 100 }}>
                         <Box name="black VERSION (JUN) FF22" label="Jul 12 - Jun 12" fill="black" />
-                        <Box style={{marginLeft: 20 }} name="blue VERSION (JUN) SS21" label="Feb 12 - Mar 25" fill="blue" />
+                        <Box style={{ marginLeft: 20 }} name="blue VERSION (JUN) SS21" label="Feb 12 - Mar 25" fill="blue" />
                     </Group>
                 </Group>
             </Group>
-            <Shape type="line" line={{ color: "grey", width: 1 }} />
+            <Shape type="line" line={{ color: "#efefef", width: 1 }} />
         </Group>
     )
 }

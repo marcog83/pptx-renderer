@@ -4,19 +4,16 @@ import {
     Group
 } from "pptx-renderer";
 export function Box({ name, label, style, fill }) {
-    return <Group style={{
-        ...style,
-        flexDirection: "column",
-        width: 150,
-        height: 40
-    }}>
-        <Text style={{ flex: 1, fontSize: 10, bold: true, wrap: false }} >
-            {name}
-        </Text>
-        <Shape type="roundRect" rectRadius={1} style={{ flex: 1, color: "white", fill: fill }}>
-            <Text style={{ fontSize: 10, align: 'center' }}>
-                {label}
+    return (
+        <Group className="column" style={{ ...style, width: 150 }}>
+            <Text className="flex item__name" >
+                {name}
             </Text>
-        </Shape>
-    </Group>
+            <Shape type="roundRect" rectRadius={1} style={{ flex: 1, color: "white", fill: fill }}>
+                <Text className='item_label'>
+                    {label}
+                </Text>
+            </Shape>
+        </Group>
+    )
 }

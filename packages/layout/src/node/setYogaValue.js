@@ -18,9 +18,12 @@ const isNotNil = R.complement(R.isNil);
  * @return {Object} node instance
  */
 const setYogaValue = (attr, edge) => value => node => {
+
+
   const yogaNode = node._yogaNode;
 
   if (!R.isNil(value) && yogaNode) {
+
     const hasEdge = isNotNil(edge);
     const fixedMethod = `set${upperFirst(attr)}`;
     const autoMethod = `${fixedMethod}Auto`;
@@ -30,7 +33,7 @@ const setYogaValue = (attr, edge) => value => node => {
     if (percent && !yogaNode[percentMethod]) {
       throw new Error(`You can't pass percentage values to ${attr} property`);
     }
- 
+
     if (percent) {
       if (hasEdge) {
         yogaNode[percentMethod]?.(edge, percent.value);

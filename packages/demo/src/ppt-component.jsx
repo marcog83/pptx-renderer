@@ -23,7 +23,7 @@ export function PPTComponent() {
         title="PptxGenJS Sample Presentation"
         layout="LAYOUT_16x9"
     >
-        <Slide style={{ flex: 1, flexDirection: "column" }}>
+        <Slide className='flex column'>
             <Row />
             <Row />
             <Row />
@@ -36,10 +36,12 @@ export function PPTComponent() {
                 top: 25,
                 left: 350,
                 width: "400",
-                height: "500"
+                height: "500",
+                fontSize: 10,
+                color: "blue"
             }}>
                 <Text style={{ flex: 1 }} fill="#FF0000">WEEE</Text>
-                <Text style={{ flex: 1 }} fill="blue">blue</Text>
+                <Text style={{ flex: 1, fill: "blue" }} >blue</Text>
                 <Text style={{ flex: 1 }} fill="green">green</Text>
                 <Shape style={{
                     position: "absolute",

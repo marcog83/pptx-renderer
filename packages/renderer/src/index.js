@@ -1,3 +1,3 @@
 export * from './ppxt';
 
-export * from '@pptx-renderer/primitives';
+// export * from '@pptx-renderer/primitives';
