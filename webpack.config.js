@@ -21,7 +21,6 @@ module.exports = {
             }
         ]
     },
-    devtool: 'inline-source-map',
     watchOptions: {
         aggregateTimeout: 200,
         ignored: [ '**/test', '**/node_modules' ]

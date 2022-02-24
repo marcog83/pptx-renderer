@@ -1802,6 +1802,8 @@ __metadata:
 "@pptx-renderer/primitives@0.0.1, @pptx-renderer/primitives@workspace:packages/primitives":
   version: 0.0.0-use.local
   resolution: "@pptx-renderer/primitives@workspace:packages/primitives"
+  dependencies:
+    ramda: 0.28.0
   languageName: unknown
   linkType: soft
 

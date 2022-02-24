@@ -3141,7 +3141,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:packages/primitives", {
           "packageLocation": "./packages/primitives/",
           "packageDependencies": [
-            ["@pptx-renderer/primitives", "workspace:packages/primitives"]
+            ["@pptx-renderer/primitives", "workspace:packages/primitives"],
+            ["ramda", "npm:0.28.0"]
           ],
           "linkType": "SOFT",
         }]

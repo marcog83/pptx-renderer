@@ -100,8 +100,7 @@ export const getStyles = R.compose(
   expand
 )
 
-export const getProps = R.compose(
-  R.tap((style) => console.log(style)),
+export const getProps = R.compose( 
   colorTransform,
   R.mergeRight({ margin: [0, 0, 0, 0] }),
   R.omit([...ALLOWED_YOGA_PROPS, 'children', 'data', 'style', 'box'])

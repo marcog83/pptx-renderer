@@ -4,13 +4,13 @@ import { flattenChildren } from './flatten-children';
 import { getProps, getStyles } from '@pptx-renderer/stylesheet';
 import * as R from 'ramda';
 
-const isTextInstance = ({ type }) => type === N.TextInstance;
+ 
 
 const styleText =  node => {
     let values = flattenChildren(node.children, node.props);
 
     values = values
-        .filter(isTextInstance)
+        .filter(N.isTextInstance)
         .map((child) => {
             const style = getStyles(child.props.style);
             const options = getProps(child.props);
@@ -42,7 +42,7 @@ const styleShape =  node => {
         let values = flattenChildren(node.children, {});
 
         values = values
-            .filter(isTextInstance)
+            .filter(N.isTextInstance)
             .map((child) => {
                 const style = getStyles(child.props.style);
                 const options = getProps(child.props);
@@ -71,7 +71,7 @@ const styleShape =  node => {
 
 const styleNotes = node => {
     const text = node.children
-        .filter(isTextInstance)
+        .filter(N.isTextInstance)
         .map(({ value }) => value)
         .join(' ');
 

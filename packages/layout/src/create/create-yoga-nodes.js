@@ -3,7 +3,8 @@ import Yoga from "@react-pdf/yoga";
 import { getSize } from '../calculate/get-size';
 import { setYogaValues } from './setYogaValues';
 import { expandYogaStyles } from '@pptx-renderer/stylesheet';
-import * as R from 'ramda' 
+import * as R from 'ramda'
+import { measureText } from './measureText';
 
 const createYogaNode = (node) => {
     node._yogaNode = Yoga.Node.createDefault();
@@ -18,14 +19,14 @@ const createYogaNode = (node) => {
     return node;
 }
 
-const layoutText = (parentNode) =>createYogaNode;
+const layoutText = (parentNode) => createYogaNode;
 
-const layoutShape = (parentNode) =>createYogaNode;
+const layoutShape = (parentNode) => createYogaNode;
 
 const layoutSection = (ctx) => (node) => {
     return R.evolve({
         children: R.map(createYogaNodes(ctx))
-    },node)
+    }, node)
 
 };
 
@@ -40,7 +41,7 @@ const layoutSlide = (ctx) => (node) => {
 
     return R.evolve({
         children: R.map(createYogaNodes(node))
-    },node)
+    }, node)
 
 }
 
@@ -49,9 +50,20 @@ const layoutGroup = () => (node) => {
 
     return R.evolve({
         children: R.map(createYogaNodes(node))
-    },node)
+    }, node)
 
 }
+
+const setMeasureFunc = (parentNode) => (node) => {
+    
+    const yogaNode = node._yogaNode;
+    if (N.isText(node)) {
+       
+        yogaNode.setMeasureFunc(measureText(parentNode, node,(...rest)=>console.log(...rest)));
+      }
+    return node;
+}
+
 
 const T = {
     [N.Text]: layoutText,
@@ -63,11 +75,15 @@ const T = {
 export const createYogaNodes = (parentNode) => (node) => {
     const { type } = node;
     node.parent = parentNode;
-    
+
     const identity = (parentNode) => R.evolve({
         children: R.map(createYogaNodes(parentNode))
     });
     const fn = T[type] || identity;
 
-    return fn(parentNode)(node);
+    return R.compose(
+        // setMeasureFunc(parentNode),not ready yet
+        fn(parentNode)
+    )(node);
 }
+
