@@ -5,17 +5,23 @@ export const Style = {
     column: {
         flexDirection: "column"
     },
-    campaign:{
+    campaign: {
         maxWidth: 200,
-        paddingLeft:20
+        paddingLeft: 20
     },
-    "campaign-name": {        
+    "campaign-name": {
         fontSize: 10,
         wrap: false,
         bold: true,
         align: "left",
-        maxHeight:12
-        
+        maxHeight: 12
+    },
+    "campaign-sub-title":{
+        fontSize: 10,
+        wrap: false,
+        bold: true,
+        align: "left",
+        maxHeight: 12
     },
     row: {
         flex: 1,
@@ -33,8 +39,9 @@ export const Style = {
         bold: true,
         wrap: false
     },
-    item_label:{ 
+    item__label: {
         fontSize: 10,
-         align: 'center'
-         }
+        align: 'center',
+        color: "white",
+    }
 }

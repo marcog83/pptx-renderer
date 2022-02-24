@@ -12,7 +12,7 @@ export function Row() {
             <Group className="flex">
                 <Group className="campaign column flex" style={{ justifyContent: "center" }}>
                     <Text className="flex campaign-name">Name of Campaign</Text>
-                    <Text className="flex campaign-name" style={{ bold: false }}>SUBTITLE</Text>
+                    <Text className="flex campaign-sub-title" style={{ bold: false }}>SUBTITLE</Text>
                 </Group>
                 <Group className="timeline">
                     <Group className="flex">
