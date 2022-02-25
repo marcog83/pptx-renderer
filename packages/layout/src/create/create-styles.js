@@ -1,7 +1,7 @@
 
 import * as N from '@pptx-renderer/primitives';
 import { flattenChildren } from './flatten-children';
-import { getProps, getStyles, parseClassNames, parseYogaClassNames } from '@pptx-renderer/stylesheet';
+import { getProps, getStyles, parseClassNames, parseYogaClassNames, parseYogaStyles } from '@pptx-renderer/stylesheet';
 import * as R from 'ramda';
 
 
@@ -30,10 +30,10 @@ const styleText = node => {
     };
     const options = getProps(node.props);
 
-    const yogaStyle = {
+    const yogaStyle = parseYogaStyles({
         ...parseYogaClassNames(node.props.className),
         ...node.props.style
-    };
+    });
 
     return {
         ...node,
@@ -52,10 +52,10 @@ const styleShape = node => {
         ...getStyles(node.props.style)
     };
 
-    const yogaStyle = {
+    const yogaStyle = parseYogaStyles({
         ...parseYogaClassNames(node.props.className),
         ...node.props.style
-    };
+    });
 
     const hasText = node.children.length > 0;
 
@@ -111,15 +111,17 @@ const styleNotes = node => {
 }
 
 const styleSections = node => {
-    return {
-        ...node,
-        children: node.children
-            .map((child) => ({
-                ...child,
-                props: { ...child.props, sectionTitle: node.props.title }
-            }))
-            .map(createStyles)
-    }
+    const addSectionTitle=(child) => ({
+        ...child,
+        props: { ...child.props, sectionTitle: node.props.title }
+    });
+    const transducer = R.compose(
+        R.map(addSectionTitle),
+        R.map(createStyles)
+    );
+    return R.evolve({
+        children:R.into([], transducer)
+    })(node);    
 }
 
 const styleSlide = (node) => {
@@ -128,12 +130,11 @@ const styleSlide = (node) => {
         ...getStyles(node.props.style)
     };
 
-    const yogaStyle = {
+    const yogaStyle = parseYogaStyles({
         ...parseYogaClassNames(node.props.className),
         ...node.props.style
-    };
-   
-    // const options = getProps(node.props);
+    });
+
     return R.evolve({
         children: R.map(createStyles)
     })({
@@ -148,12 +149,10 @@ const styleGroup = (node) => {
         ...getStyles(node.props.style)
     };
 
-    const yogaStyle = {
+    const yogaStyle = parseYogaStyles({
         ...parseYogaClassNames(node.props.className),
         ...node.props.style
-    };
-
-     
+    });
 
     return R.evolve({
         children: R.map(createStyles)

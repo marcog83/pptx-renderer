@@ -2,9 +2,16 @@ import { calculateLayout } from './calculate/calculate-layout';
 import { createStyles } from './create/create-styles';
 import { createYogaNodes } from './create/create-yoga-nodes';
 import * as R from 'ramda';
+import { isSection, isSlide } from '@pptx-renderer/primitives';
 
-const triggerLayoutCalculation=(node)=> {
-  node._yogaNode?.calculateLayout();
+const triggerLayoutCalculation = (node) => {
+  if (isSection(node)) {
+    node.children.forEach(slide => {
+      triggerLayoutCalculation(slide);
+    })
+  } else if (isSlide(node)) {
+    node._yogaNode.calculateLayout();
+  }
   return node;
 }
 

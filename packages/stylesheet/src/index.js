@@ -1,16 +1,14 @@
 import * as R from 'ramda';
 
 import { colorTransform } from "./color-transform";
-import { ALLOWED_YOGA_PROPS, POSITION_RULES } from './allowed-props';
+import { ALLOWED_YOGA_PROPS } from './allowed-props';
 import { expand } from './expand';
 
-export const expandYogaStyles = R.compose(
+export const parseYogaStyles = R.compose(
   R.pick(ALLOWED_YOGA_PROPS),
   expand,
   R.defaultTo({})
 );
-
-
 
 export const getStyles = R.compose(
   colorTransform,
