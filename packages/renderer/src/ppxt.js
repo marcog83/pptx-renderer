@@ -3,7 +3,7 @@ import { getLayout } from '@pptx-renderer/layout';
 import { render, Pptxgen } from '@pptx-renderer/render';
 
 export const PPTX = {
-  render(doc) {
+  async render(doc) {
     const container = { type: 'ROOT', document: null };
 
     // doc: This is the react element for App component
@@ -22,8 +22,8 @@ export const PPTX = {
     const props = container.document.props || {};
 
     const ctx = new Pptxgen(props);
-    const layout = getLayout(ctx,container.document);
-
+    const layout =await getLayout({ctx,doc:container.document});
+ 
     return render(ctx, layout);
   }
 };

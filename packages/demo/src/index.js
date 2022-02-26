@@ -7,11 +7,15 @@ import { App } from './app';
 import { PPTComponent } from './ppt-component';
 import { Style } from "./class-names";
 
-registerClassNames(Style);
 
-const pptx = PPTX.render(<PPTComponent />);
+async function main() {
+    registerClassNames(Style);
+    const pptx = await PPTX.render(<PPTComponent />);
 
-ReactDOM.render(<App pptx={pptx} />, document.getElementById("root"));
+    ReactDOM.render(<App pptx={pptx} />, document.getElementById("root"));
+}
+main();
+
 
 
 

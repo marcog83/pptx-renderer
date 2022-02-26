@@ -27,7 +27,7 @@ const destroyYogaNodes = node => {
   )(node);
 };
 
-export function getLayout(ctx, doc) {
+export function resolveLayout({ctx, doc}) {
 
   return R.evolve({
     children: R.map(R.compose(

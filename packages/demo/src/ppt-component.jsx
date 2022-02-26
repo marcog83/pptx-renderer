@@ -6,7 +6,8 @@ import {
     SlideNumber,
     Section,
     Text,
-    Group
+    Group,
+    Image
 } from "pptx-renderer";
 import { Row } from "./componets/row";
 
@@ -30,7 +31,7 @@ export function PPTComponent() {
                 <Row />
             </Slide>
             <Slide>
-
+                <Image path="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"/>
                 <Group style={{
                     flex: 1,
                     position: "absolute",
