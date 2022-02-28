@@ -52,15 +52,23 @@ const layoutGroup = () => (node) => {
 
 }
 
-// const setMeasureFunc = (parentNode) => (node) => {
+const setMeasureFunc = (parentNode) => (node) => {
 
-//     const yogaNode = node._yogaNode;
-//     if (N.isText(node)) {
-
-//         yogaNode.setMeasureFunc(measureText(parentNode, node,(...rest)=>console.log(...rest)));
-//       }
-//     return node;
-// }
+    const yogaNode = node._yogaNode;
+    if (N.isText(node)) {
+        
+       // yogaNode.setMeasureFunc(measureText(parentNode, node,(...rest)=>console.log(...rest)));
+       
+       yogaNode.setMeasureFunc((width, widthMode, height, heightMode)=>{
+        console.log(node,width, widthMode, height, heightMode);
+            return {
+                width:node.children[0]?.text.length*6,
+                height:10
+            }
+        });
+      }
+    return node;
+}
 
 
 const T = {
@@ -84,7 +92,7 @@ export const createYogaNodes = (parentNode) => (node) => {
     const fn = T[type] || identity;
 
     return R.compose(
-        // setMeasureFunc(parentNode),not ready yet
+        // setMeasureFunc(parentNode),//not ready yet
         fn(parentNode)
     )(node);
 }

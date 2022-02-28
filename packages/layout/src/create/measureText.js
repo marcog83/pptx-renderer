@@ -23,7 +23,7 @@ const linesHeight = node => {
   };
  
 const _measureText = (page, node, fontStore, width, widthMode, height, heightMode) => {
-    fontStore("_measureText",width, widthMode, height)
+   
     if (widthMode === Yoga.MEASURE_MODE_EXACTLY) {
         if (!node.lines) node.lines =layoutText(node, width, height, fontStore);
 

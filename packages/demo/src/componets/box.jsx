@@ -6,8 +6,8 @@ import {
 
 export function Box({ name, label, style, fill }) {
     return (
-        <Group className="column" style={{ ...style, width: 150 }}>
-            <Text className="flex item__name" >
+        <Group className="column" style={{ ...style }}>
+            <Text className="item__name" style={{flexShrink:0,flexGrow: 1}} >
                 {name}
             </Text>
             <Shape type="roundRect" rectRadius={1} className='flex' style={{ fill }}>

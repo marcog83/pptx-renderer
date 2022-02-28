@@ -25,8 +25,7 @@ export class Pptxgen {
     
     this.slide.addText(children, options);
   }
-  addImage(props) {
-    console.log(props)
+  addImage(props) {   
     this.slide.addImage(props);
   }
   addShape(node,options) {

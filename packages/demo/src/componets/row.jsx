@@ -16,7 +16,7 @@ export function Row() {
                 </Group>
                 <Group className="timeline">
                     <Group className="flex">
-                        <Box name="BLUE VERSION (JUN) FF22" label="Jul 12 - Jun 12" fill="#4472C4" />
+                        <Box name="BLUE VERSION (JUN) FF22 and overflow a bit?" label="Jul 12 - Jun 12" fill="#4472C4" />
                         <Box name="GREEN VERSION (JUN) SS21" label="Feb 12 - Mar 25" fill="#20E854" />
                     </Group>
                     <Group className="flex" style={{ marginLeft: 100 }}>
