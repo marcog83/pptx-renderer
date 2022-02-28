@@ -17,7 +17,8 @@ export function sizeOf(buffer) {
         if (type in typeHandlers) {
             const size = typeHandlers[type].calculate(buffer)
             if (size !== undefined) {
-                size.type = type
+                
+                size.type = typeHandlers[type]?.getMimetype()
                 return size
             }
         }

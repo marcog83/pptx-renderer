@@ -11,9 +11,8 @@ async function _fetchImage(url) {
           
             const size = sizeOf(buffer); 
             console.log(size);
-            const encoding='base64';
-            var mime = `image/${size.type}`; 
-            var uri = 'data:' + mime + ';' + encoding + ',' + buffer.toString(encoding); 
+            const encoding='base64'; 
+            var uri = 'data:' + size.type + ';' + encoding + ',' + buffer.toString(encoding); 
             return {
                 ...size,
                 data:uri
@@ -25,7 +24,7 @@ async function _fetchImage(url) {
 
 
 export async function fetchImage(node) {
-    const image = await _fetchImage(node.props.path); 
+    const image = await _fetchImage(node.props.src); 
     node.image = image;
     return node;
 }

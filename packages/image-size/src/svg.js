@@ -94,5 +94,8 @@ export const SVG = {
       }
     }
     throw new TypeError('Invalid SVG')
+  },
+  getMimetype(){
+    return 'image/svg+xml'
   }
 }

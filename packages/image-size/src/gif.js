@@ -10,5 +10,8 @@ export const GIF = {
       height: buffer.readUInt16LE(8),
       width: buffer.readUInt16LE(6)
     }
+  },
+  getMimetype(){
+    return 'image/gif'
   }
 }

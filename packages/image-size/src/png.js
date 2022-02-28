@@ -30,5 +30,8 @@ export const PNG = {
       height: buffer.readUInt32BE(20),
       width: buffer.readUInt32BE(16)
     }
+  },
+  getMimetype(){
+    return 'image/png'
   }
 }

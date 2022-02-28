@@ -146,5 +146,8 @@ export const JPG = {
     }
 
     throw new TypeError('Invalid JPG, no size found')
+  },
+  getMimetype(){
+    return 'image/jpg'
   }
 }

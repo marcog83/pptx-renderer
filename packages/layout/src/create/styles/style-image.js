@@ -5,7 +5,7 @@ import {
     parseYogaClassNames,
     parseYogaStyles
 } from '@pptx-renderer/stylesheet';
-import { resolveTextIntances } from './style-text-instance';
+import * as R from 'ramda';
 
 export const styleIMage = () => node => {
 
@@ -14,7 +14,7 @@ export const styleIMage = () => node => {
         ...getStyles(node.props.style)
     };
     const options ={
-        ... getProps(node.props),
+        ... R.omit(["src"],getProps(node.props)),
         ...node.image
     };
 
