@@ -4,9 +4,11 @@
     "version": "0.0.1",
     "main": "./src/index.js",
     "dependencies": {
+        "@pptx-renderer/image-size": "0.0.1",
         "@pptx-renderer/primitives": "0.0.1",
         "@pptx-renderer/stylesheet": "0.0.1",
         "@react-pdf/yoga": "2.0.4",
+        "buffer": "6.0.3",
         "ramda": "0.28.0"
     }
 }

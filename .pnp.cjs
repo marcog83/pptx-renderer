@@ -27,6 +27,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/demo"
       },
       {
+        "name": "@pptx-renderer/image-size",
+        "reference": "workspace:packages/image-size"
+      },
+      {
         "name": "@pptx-renderer/layout",
         "reference": "workspace:packages/layout"
       },
@@ -50,6 +54,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
+      ["@pptx-renderer/image-size", ["workspace:packages/image-size"]],
       ["@pptx-renderer/layout", ["workspace:packages/layout"]],
       ["@pptx-renderer/primitives", ["workspace:packages/primitives"]],
       ["@pptx-renderer/render", ["virtual:f82e7d74599c05357519432d4dd84f0fdff656f2e9877e789fc96400b2924b7b570bbb7ba1a1f61a6dbb6d4af7bf28313d6f43947cd14093f63294f5fece2fb1#workspace:packages/render", "workspace:packages/render"]],
@@ -3124,14 +3129,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@pptx-renderer/image-size", [
+        ["workspace:packages/image-size", {
+          "packageLocation": "./packages/image-size/",
+          "packageDependencies": [
+            ["@pptx-renderer/image-size", "workspace:packages/image-size"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
       ["@pptx-renderer/layout", [
         ["workspace:packages/layout", {
           "packageLocation": "./packages/layout/",
           "packageDependencies": [
             ["@pptx-renderer/layout", "workspace:packages/layout"],
+            ["@pptx-renderer/image-size", "workspace:packages/image-size"],
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],
             ["@pptx-renderer/stylesheet", "workspace:packages/stylesheet"],
             ["@react-pdf/yoga", "npm:2.0.4"],
+            ["buffer", "npm:6.0.3"],
             ["ramda", "npm:0.28.0"]
           ],
           "linkType": "SOFT",
@@ -4765,6 +4781,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["base64-js", [
+        ["npm:1.5.1", {
+          "packageLocation": "./.yarn/cache/base64-js-npm-1.5.1-b2f7275641-669632eb37.zip/node_modules/base64-js/",
+          "packageDependencies": [
+            ["base64-js", "npm:1.5.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["batch", [
         ["npm:0.6.1", {
           "packageLocation": "./.yarn/cache/batch-npm-0.6.1-70e2e81169-61f9934c73.zip/node_modules/batch/",
@@ -4919,6 +4944,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["bser", "npm:2.1.1"],
             ["node-int64", "npm:0.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["buffer", [
+        ["npm:6.0.3", {
+          "packageLocation": "./.yarn/cache/buffer-npm-6.0.3-cd90dfedfe-5ad23293d9.zip/node_modules/buffer/",
+          "packageDependencies": [
+            ["buffer", "npm:6.0.3"],
+            ["base64-js", "npm:1.5.1"],
+            ["ieee754", "npm:1.2.1"]
           ],
           "linkType": "HARD",
         }]
@@ -7613,6 +7649,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@types/postcss",
             "postcss"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ieee754", [
+        ["npm:1.2.1", {
+          "packageLocation": "./.yarn/cache/ieee754-npm-1.2.1-fb63b3caeb-5144c0c981.zip/node_modules/ieee754/",
+          "packageDependencies": [
+            ["ieee754", "npm:1.2.1"]
           ],
           "linkType": "HARD",
         }]

@@ -6,10 +6,11 @@ import { styleNotes } from './styles/style-notes';
 import { styleSections } from './styles/style-sections';
 import { styleSlide } from './styles/style-slide';
 import { styleGroup } from './styles/style-group';
+import { styleIMage } from './styles/style-image';
  
 const T = {
     [N.Text]: styleText,
-    [N.Image]: styleText,
+    [N.Image]: styleIMage,
     [N.Shape]: styleShape,
     [N.Notes]: styleNotes,
     [N.Section]: styleSections,

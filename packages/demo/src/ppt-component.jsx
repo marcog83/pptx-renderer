@@ -32,7 +32,7 @@ export function PPTComponent() {
             </Slide>
             <Slide>
             <Text style={{ flex: 1 }} fill="#FF0000">WEEE</Text>
-                <Image style={{ width:200,aspectRatio:1}}  path="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"/>
+                <Image path="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"/>
                 {/* <Group style={{
                     flex: 1,
                     position: "absolute",
