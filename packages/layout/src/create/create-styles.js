@@ -9,6 +9,7 @@ import { styleGroup } from './styles/style-group';
  
 const T = {
     [N.Text]: styleText,
+    [N.Image]: styleText,
     [N.Shape]: styleShape,
     [N.Notes]: styleNotes,
     [N.Section]: styleSections,
@@ -17,12 +18,10 @@ const T = {
 };
 
 export const createStyles = node => {
-    
-    const { type } = node;
 
     const identity = R.evolve({
         children: R.map(createStyles)
     })
-    const fn = T[type]?.(createStyles) || identity;
+    const fn = T[node.type]?.(createStyles) ?? identity;
     return fn(node)
 }

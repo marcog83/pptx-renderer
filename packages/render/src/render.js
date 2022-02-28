@@ -5,7 +5,8 @@ const renderText = (ctx, node) => {
   ctx.addText(children, {...options,...style,...box});
 };
 const renderImage = (ctx, node) => {
-  ctx.addImage(node.props);
+  const {style, options, box } = node; 
+  ctx.addImage({...options,...style,...box});
 };
 const renderShape = (ctx, node) => {
   const {style, options ,box} = node;

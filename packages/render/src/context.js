@@ -26,7 +26,7 @@ export class Pptxgen {
     this.slide.addText(children, options);
   }
   addImage(props) {
-    
+    console.log(props)
     this.slide.addImage(props);
   }
   addShape(node,options) {
@@ -34,7 +34,7 @@ export class Pptxgen {
       
       this.addText(node.children, options);
     } else {
-      const { type, ...props } = node.props;
+      const { type} = node.props;
 
      
       this.slide.addShape(type, options);

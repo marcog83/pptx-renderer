@@ -31,8 +31,9 @@ export function PPTComponent() {
                 <Row />
             </Slide>
             <Slide>
-                <Image path="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"/>
-                <Group style={{
+            <Text style={{ flex: 1 }} fill="#FF0000">WEEE</Text>
+                <Image style={{ width:200,aspectRatio:1}}  path="https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"/>
+                {/* <Group style={{
                     flex: 1,
                     position: "absolute",
                     top: 25,
@@ -50,7 +51,7 @@ export function PPTComponent() {
                         top: 25,
                         left: 50, width: 100, height: 100
                     }} type="sun" fill="white" />
-                </Group>
+                </Group> */}
             </Slide>
 
             <Slide>

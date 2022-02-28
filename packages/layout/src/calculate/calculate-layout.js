@@ -4,23 +4,21 @@ import * as N from '@pptx-renderer/primitives';
 import * as R from 'ramda';
 
 
-const calculateText = node => {
+const calculateBox=node => {
   return {
     ...node,
     box: getBox(node.parent, node)
   };
 }
 
-const calculateShape = node => {
-  return {
-    ...node,
-    box: getBox(node.parent, node)
-  };
-}
+const calculateText =calculateBox;
 
+const calculateShape = calculateBox;
+const calculateImage = calculateBox;
 
 const L = {
   [N.Text]: calculateText,
+  [N.Image]: calculateImage,
   [N.Notes]: R.identity,
   [N.Shape]: calculateShape
 };
