@@ -10,8 +10,10 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         filename: 'app.bundle.js'
     },
-    externals: ["pptxgenjs"],
-
+    externals: ["pptxgenjs","react"],
+    resolve: {
+        extensions: ['*', '.js', '.jsx'],
+      },
     module: {
         rules: [
             {

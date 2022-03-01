@@ -14,7 +14,8 @@ module.exports = {
         extensions: [ '.js', '.jsx'],
         alias: {
             "pptxgenjs": require.resolve("pptxgenjs"),
-            'react/jsx-runtime': require.resolve("react/jsx-runtime")
+            'react/jsx-runtime': require.resolve("react/jsx-runtime"),
+            'react': require.resolve("react")
         }
     }, 
     

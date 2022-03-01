@@ -23,6 +23,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."
       },
       {
+        "name": "@pptx-renderer/components",
+        "reference": "workspace:packages/components"
+      },
+      {
         "name": "demo",
         "reference": "workspace:packages/demo"
       },
@@ -54,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
+      ["@pptx-renderer/components", ["workspace:packages/components"]],
       ["@pptx-renderer/image-size", ["workspace:packages/image-size"]],
       ["@pptx-renderer/layout", ["workspace:packages/layout"]],
       ["@pptx-renderer/primitives", ["workspace:packages/primitives"]],
@@ -3127,6 +3132,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["@pptx-renderer/components", [
+        ["workspace:packages/components", {
+          "packageLocation": "./packages/components/",
+          "packageDependencies": [
+            ["@pptx-renderer/components", "workspace:packages/components"],
+            ["react", "npm:17.0.2"]
+          ],
+          "linkType": "SOFT",
         }]
       ]],
       ["@pptx-renderer/image-size", [

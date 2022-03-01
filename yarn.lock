@@ -1788,6 +1788,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pptx-renderer/components@workspace:packages/components":
+  version: 0.0.0-use.local
+  resolution: "@pptx-renderer/components@workspace:packages/components"
+  dependencies:
+    react: 17.0.2
+  languageName: unknown
+  linkType: soft
+
 "@pptx-renderer/image-size@0.0.1, @pptx-renderer/image-size@workspace:packages/image-size":
   version: 0.0.0-use.local
   resolution: "@pptx-renderer/image-size@workspace:packages/image-size"
