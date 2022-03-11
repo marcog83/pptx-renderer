@@ -13,7 +13,8 @@ module.exports = {
     externals: ["pptxgenjs","react"],
     resolve: {
         extensions: ['*', '.js', '.jsx'],
-      },
+    },
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {
@@ -26,6 +27,5 @@ module.exports = {
     watchOptions: {
         aggregateTimeout: 200,
         ignored: [ '**/test', '**/node_modules' ]
-      }
-
+    }
 };

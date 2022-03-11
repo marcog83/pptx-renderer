@@ -20,7 +20,7 @@ const _parseClassNames = (classNames = '') => {
         }
     }, {})
 }
- 
+
 export const parseClassNames = R.compose(
     colorTransform,
     R.omit(ALLOWED_YOGA_PROPS),

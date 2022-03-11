@@ -7,11 +7,10 @@ import {
     Section,
     Text,
     Group,
-    Image
+    Image,
+    Media
 } from "pptx-renderer";
 import { Row } from "./componets/row";
-
-
 
 export function PPTComponent() {
 
@@ -25,6 +24,27 @@ export function PPTComponent() {
         layout="LAYOUT_16x9"
     >
         <Section title="section-1">
+            <Slide className='flex column'>
+                <Media
+                    style={{
+                        x: 5,
+                        y: 3,
+                        width: 100,
+                        height: 100
+                    }}
+                    type="video"
+                    path="https://raw.githubusercontent.com/gitbrent/PptxGenJS/master/demos/common/media/sample.mov" />
+
+                <Media
+                    style={{
+                        x: 10,
+                        y: 3,
+                        width: 100,
+                        height: 100
+                    }}
+                    type="video"
+                    path="https://raw.githubusercontent.com/gitbrent/PptxGenJS/master/demos/common/media/sample.mov" />
+            </Slide>
             <Slide className='flex column'>
                 <Row />
                 <Row />
@@ -85,4 +105,3 @@ export function PPTComponent() {
 
     </Document >
 }
-
