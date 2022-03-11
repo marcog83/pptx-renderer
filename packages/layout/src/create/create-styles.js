@@ -7,7 +7,8 @@ import { styleSections } from './styles/style-sections';
 import { styleSlide } from './styles/style-slide';
 import { styleGroup } from './styles/style-group';
 import { styleIMage } from './styles/style-image';
- 
+import { styleMedia } from './styles/style-media';
+
 const T = {
     [N.Text]: styleText,
     [N.Image]: styleIMage,
@@ -16,6 +17,7 @@ const T = {
     [N.Section]: styleSections,
     [N.Slide]: styleSlide,
     [N.Group]: styleGroup,
+    [N.Media]: styleMedia,
 };
 
 export const createStyles = node => {

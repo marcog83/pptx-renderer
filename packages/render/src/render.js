@@ -8,6 +8,9 @@ const renderImage = (ctx, node) => {
   const {style, options, box } = node; 
   ctx.addImage({...options,...style,...box});
 };
+const renderMedia = (ctx, node) => {
+  ctx.addMedia(node.props);
+};
 const renderShape = (ctx, node) => {
   const {style, options ,box} = node;
   
@@ -33,6 +36,7 @@ const Types = {
   [N.SlideNumber]: renderSlideNumber,
   [N.Text]: renderText,
   [N.Image]: renderImage,
+  [N.Media]: renderMedia,
   [N.Shape]: renderShape,
   [N.Notes]: renderNotes
 };

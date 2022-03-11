@@ -15,6 +15,7 @@ const createYogaNode = (node) => {
 }
 
 const layoutText = (parentNode) => createYogaNode;
+const layoutMedia = (parentNode) => createYogaNode;
 
 const layoutImage = (parentNode) => createYogaNode;
 
@@ -77,7 +78,8 @@ const T = {
     [N.Section]: layoutSection,
     [N.Shape]: layoutShape,
     [N.Slide]: layoutSlide,
-    [N.Group]: layoutGroup
+    [N.Group]: layoutGroup,
+    [N.Media]: layoutMedia
 };
 export const createYogaNodes = (parentNode) => (node) => {
     const { type } = node;

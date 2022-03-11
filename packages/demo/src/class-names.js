@@ -16,6 +16,13 @@ export const Style = {
         align: "left",
         maxHeight: 12
     },
+    "campaign-label": {
+        fontSize: 7,
+        wrap: false,
+        bold: false,
+        align: "left",
+        maxHeight: 12
+    },
     "campaign-sub-title":{
         fontSize: 10,
         wrap: false,
@@ -26,7 +33,7 @@ export const Style = {
     row: {
         flex: 1,
         width: "100%",
-        maxHeight: 90,
+        maxHeight: 200,
         flexDirection: "column"
     },
     timeline: {
