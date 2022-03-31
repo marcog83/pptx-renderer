@@ -3,7 +3,6 @@ export const flattenChildren = (arr, props) => {
   
     arr.forEach((item) => {
       const { children, ...node } = item;
-  
       result.push({
         props,
         ...node

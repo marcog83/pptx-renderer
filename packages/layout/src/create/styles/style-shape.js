@@ -3,17 +3,18 @@ import {
     getStyles,
     parseClassNames,
     parseYogaClassNames,
-    parseYogaStyles
+    parseYogaStyles,
+    textDefault
 } from '@pptx-renderer/stylesheet';
 import { resolveTextIntances } from './style-text-instance';
 
 export const styleShape = () => node => {
 
     const options = getProps(node.props);
-    const style = {
+    const style = textDefault({
         ...parseClassNames(node.props.className),
         ...getStyles(node.props.style)
-    };
+    });
 
     const yogaStyle = parseYogaStyles({
         ...parseYogaClassNames(node.props.className),

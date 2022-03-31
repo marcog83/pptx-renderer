@@ -3,10 +3,14 @@ import Yoga from "@react-pdf/yoga";
 import { getSize } from '../calculate/get-size';
 import { setYogaValues } from './setYogaValues';
 import * as R from 'ramda'
-import { measureText } from './measureText';
+import { measureText } from './styles/text/measureText';
+import { measureImage } from './styles/image/measureImage';
+import { measureShape } from './styles/shape/measureShape';
+const YOGA_CONFIG = Yoga.Config.create();
 
+YOGA_CONFIG.setPointScaleFactor(0);
 const createYogaNode = (node) => {
-    node._yogaNode = Yoga.Node.createDefault();
+    node._yogaNode = Yoga.Node.createWithConfig(YOGA_CONFIG);
     if (!N.isSlide(node)) {
         node.parent._yogaNode?.insertChild(node._yogaNode, node.parent._yogaNode?.getChildCount());
     }
@@ -56,17 +60,15 @@ const setMeasureFunc = (parentNode) => (node) => {
 
     const yogaNode = node._yogaNode;
     if (N.isText(node)) {
+        yogaNode.setMeasureFunc(measureText(parentNode, node));
+    }
+    if(N.isShape(node)){
+        yogaNode.setMeasureFunc(measureShape(parentNode, node));
+    }
+    if(N.isImage(node)){
         
-       // yogaNode.setMeasureFunc(measureText(parentNode, node,(...rest)=>console.log(...rest)));
-       
-       yogaNode.setMeasureFunc((width, widthMode, height, heightMode)=>{
-        console.log(node,width, widthMode, height, heightMode);
-            return {
-                width:node.children[0]?.text.length*6,
-                height:10
-            }
-        });
-      }
+        yogaNode.setMeasureFunc(measureImage(parentNode, node));
+    }
     return node;
 }
 
@@ -92,7 +94,7 @@ export const createYogaNodes = (parentNode) => (node) => {
     const fn = T[type] || identity;
 
     return R.compose(
-        // setMeasureFunc(parentNode),//not ready yet
+        setMeasureFunc(parentNode),//not ready yet
         fn(parentNode)
     )(node);
 }

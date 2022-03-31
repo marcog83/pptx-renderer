@@ -1,6 +1,7 @@
 import {
     getProps,
     getStyles,
+    textDefault,
     parseClassNames,
     parseYogaClassNames,
     parseYogaStyles
@@ -9,10 +10,11 @@ import { resolveTextIntances } from './style-text-instance';
 
 export const styleText = () => node => {
 
-    const style = {
+    const style = textDefault({
         ...parseClassNames(node.props.className),
         ...getStyles(node.props.style)
-    };
+    });
+    
     const options = getProps(node.props);
 
     const yogaStyle = parseYogaStyles({

@@ -4,6 +4,7 @@ import { colorTransform } from "./color-transform";
 import { ALLOWED_YOGA_PROPS } from './allowed-props';
 import { expand } from './expand';
 
+
 export const parseYogaStyles = R.compose(
   R.pick(ALLOWED_YOGA_PROPS),
   expand,
@@ -11,7 +12,8 @@ export const parseYogaStyles = R.compose(
 );
 
 export const getStyles = R.compose(
-  colorTransform,
+  colorTransform, 
+  
   R.omit(ALLOWED_YOGA_PROPS),
   expand
 )
@@ -23,3 +25,4 @@ export const getProps = R.compose(
 )
 
 export * from './classname/classname';
+export { textDefault } from './text-default';

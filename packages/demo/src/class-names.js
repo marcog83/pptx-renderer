@@ -23,25 +23,24 @@ export const Style = {
         align: "left",
         maxHeight: 12
     },
-    row: {
-        flex: 1,
-        width: "100%",
-        maxHeight: 90,
+    row: {        
+        width: "100%",         
         flexDirection: "column"
     },
-    timeline: {
-        flex: 1,
+    timeline: { 
         flexDirection: "column",
         padding: 5
     },
     item__name: {
         fontSize: 10,
-        bold: true,
-        wrap: false
+        bold: true 
     },
     item__label: {
         fontSize: 10,
         align: 'center',
-        color: "white",
+        color: "white"
+    },
+    'flex-space-between':{
+        justifyContent:"space-between"
     }
 }

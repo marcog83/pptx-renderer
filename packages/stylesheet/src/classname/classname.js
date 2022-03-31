@@ -1,7 +1,7 @@
 import { ALLOWED_YOGA_PROPS } from "../allowed-props";
 import { colorTransform } from "../color-transform";
 import { expand } from "../expand";
-import * as R from 'ramda';
+import * as R from 'ramda'; 
 
 const CLASSES = {};
 export const className = (key, style) => {
@@ -23,7 +23,8 @@ const _parseClassNames = (classNames = '') => {
  
 export const parseClassNames = R.compose(
     colorTransform,
-    R.omit(ALLOWED_YOGA_PROPS),
+     
+    R.omit(ALLOWED_YOGA_PROPS),    
     expand,
     _parseClassNames
 )

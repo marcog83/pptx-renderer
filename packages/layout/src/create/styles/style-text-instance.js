@@ -1,15 +1,20 @@
-import { getProps, getStyles, parseClassNames } from '@pptx-renderer/stylesheet';
+import { getProps, getStyles, parseClassNames,textDefault } from '@pptx-renderer/stylesheet';
 import * as N from '@pptx-renderer/primitives';
 import { flattenChildren } from './flatten-children';
 
 const styleTextInstance = (child) => {
+    const style = textDefault({
+        ...parseClassNames(child.props.className),
+        ...getStyles(child.props.style)
+    });
+    const options={
+        ...getProps(child.props),
+        ...style
+    };
     return ({
         text: child.value,
-        options: {
-            ...getProps(child.props),
-            ...parseClassNames(child.props.className),
-            ...getStyles(child.props.style)
-        }
+        options,
+        style:options
     })
 }
 
