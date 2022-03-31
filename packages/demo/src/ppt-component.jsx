@@ -28,7 +28,7 @@ export function PPTComponent() {
              <Slide className='column'>
                 <Row />
                 <Row />
-                {/* <Row />  */}
+                <Row />
             </Slide> 
             <Slide>
                
