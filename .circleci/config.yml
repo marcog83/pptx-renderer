@@ -32,6 +32,19 @@ jobs:
       - run:
           command: yarn run lint
           name: Run YARN eslint
+  build:
+    executor:
+      name: node/default
+      tag: '16.15.0'
+    steps:
+      - checkout
+      - node/install-packages:
+          check-cache: always
+          pkg-manager: yarn-berry
+          with-cache: false
+      - run:
+          command: yarn run build
+          name: Run YARN build
   deploy:
     executor:
       name: node/default
@@ -53,4 +66,5 @@ workflows:
     jobs:
       - test
       - lint
+      - build
       - deploy
