@@ -37,13 +37,12 @@ jobs:
       name: node/default
       tag: '16.15.0'
     steps:
-      - checkout
+      - checkout      
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/pptx-renderer/.npmrc
-      - run:
-          name: Publish package
-          command: npm publish
+          name: Publish to NPM
+          command: |
+            npm set //registry.npmjs.org/:_authToken=$npm_TOKEN
+            npm publish
 
 
  
