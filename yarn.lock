@@ -8513,7 +8513,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pptx-renderer@0.0.1, pptx-renderer@workspace:.":
+"pptx-renderer@npm:0.0.1":
+  version: 0.0.1
+  resolution: "pptx-renderer@npm:0.0.1"
+  checksum: 96009217b9b0088d26c2d68089ed0bbbd20c9fec57d3c2ac01a0b53ef2b6be83fb1c6929ba037dbdde0495951a20391146ce21a6ffecbd13886372d1086b56c1
+  languageName: node
+  linkType: hard
+
+"pptx-renderer@workspace:.":
   version: 0.0.0-use.local
   resolution: "pptx-renderer@workspace:."
   dependencies:

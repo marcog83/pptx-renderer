@@ -6376,7 +6376,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["multer", "npm:1.4.4"],\
             ["nodemon", "npm:2.0.15"],\
             ["pnp-webpack-plugin", "npm:1.7.0"],\
-            ["pptx-renderer", "workspace:."],\
+            ["pptx-renderer", "npm:0.0.1"],\
             ["pptxgenjs", "npm:3.9.0"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:56655dccefeb57870db2fe3117292997fc9f96cec11bdfe7524b833a4665e07826505d869dc3eb64fc4a21ad76da2ad743f6a1761d2b5eafcd491195d94bbb8c#npm:17.0.2"],\
@@ -11273,6 +11273,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["pptx-renderer", [\
+        ["npm:0.0.1", {\
+          "packageLocation": "./.yarn/cache/pptx-renderer-npm-0.0.1-88eea93812-96009217b9.zip/node_modules/pptx-renderer/",\
+          "packageDependencies": [\
+            ["pptx-renderer", "npm:0.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
