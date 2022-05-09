@@ -10,17 +10,12 @@ function _measureShape(page, node, width, widthMode) {
     wordBreak: 'break-word'
   });
 
-  console.log(node.style);
-
   if (widthMode === Yoga.MEASURE_MODE_EXACTLY) {
-    console.log(node.type, text, metrics);
-
     return { height: metrics.height };
   }
 
   if (widthMode === Yoga.MEASURE_MODE_AT_MOST) {
     node.metrics = metrics;
-    console.log('MEASURE_MODE_AT_MOST', text, metrics);
 
     return {
       height: metrics.height,
@@ -30,5 +25,6 @@ function _measureShape(page, node, width, widthMode) {
 
   return {};
 }
+const PARAMS = 6;
 
-export const measureShape = R.curryN(6, _measureShape);
+export const measureShape = R.curryN(PARAMS, _measureShape);

@@ -12,14 +12,11 @@ const _measureText = (page, node, width, widthMode) => {
   });
 
   if (widthMode === Yoga.MEASURE_MODE_EXACTLY) {
-    console.log(node.type, text, metrics);
-
     return { height: metrics.height };
   }
 
   if (widthMode === Yoga.MEASURE_MODE_AT_MOST) {
     node.metrics = metrics;
-    console.log('MEASURE_MODE_AT_MOST', text, metrics);
 
     return {
       height: metrics.height,
@@ -30,4 +27,6 @@ const _measureText = (page, node, width, widthMode) => {
   return {};
 };
 
-export const measureText = R.curryN(6, _measureText);
+const PARAMS = 6;
+
+export const measureText = R.curryN(PARAMS, _measureText);

@@ -3,7 +3,7 @@ import Yoga from '@react-pdf/yoga';
 /**
  * Set display attribute to node's Yoga instance
  *
- * @param {string} display
+ * @param {string} value display attribute
  * @param {Object} node instance
  * @returns {Object} node instance
  */

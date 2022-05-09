@@ -4,7 +4,7 @@ import Yoga from '@react-pdf/yoga';
 /**
  * Set overflow attribute to node's Yoga instance
  *
- * @param {string} overflow value
+ * @param {string} value overflow attribute
  * @param {Object} node instance
  * @returns {Object} node instance
  */

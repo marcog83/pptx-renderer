@@ -3,7 +3,7 @@ import * as R from 'ramda';
 /**
  * Get many nodes height
  *
- * @param {Array} nodes
+ * @param {Array} nodes nodes
  * @returns {number} nodes height
  */
 const getNodesHeight = (nodes) => {

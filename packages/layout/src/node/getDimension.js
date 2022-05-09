@@ -6,7 +6,7 @@ const DEFAULT_DIMENSION = {
 /**
  * Get Yoga computed dimensions. Zero otherwise
  *
- * @param {Object} node
+ * @param {Object} node - node
  * @returns {Object} dimensions
  */
 const getDimension = (node) => {

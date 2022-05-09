@@ -40,7 +40,7 @@ export const setMarginLeft = setYogaValue('margin', Yoga.EDGE_LEFT);
 /**
  * Set all margins at once
  *
- * @param {number} margin
+ * @param {number} margin - margin
  * @param {Object} node instance
  * @returns {Object} node instance
  */

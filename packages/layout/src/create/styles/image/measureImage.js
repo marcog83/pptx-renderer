@@ -3,7 +3,6 @@ import * as R from 'ramda';
 import { getImageSize } from './get-image-size';
 
 function _measureImage(page, node, _width, widthMode) {
-  console.log('_measureImage', node.image);
   const { width, height } = getImageSize(node.image, node.yogaStyle);
 
   if (widthMode === Yoga.MEASURE_MODE_EXACTLY) {
@@ -16,7 +15,10 @@ function _measureImage(page, node, _width, widthMode) {
       width
     };
   }
-}
 
-export const measureImage = R.curryN(6, _measureImage);
+  return { width, height };
+}
+const PARAMS = 6;
+
+export const measureImage = R.curryN(PARAMS, _measureImage);
 

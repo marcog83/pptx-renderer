@@ -1,7 +1,7 @@
 /**
  * Get Yoga computed position. Zero otherwise
  *
- * @param {Object} node
+ * @param {Object} node Yoga computed position
  * @returns {Object} position
  */
 const getPosition = (node) => {

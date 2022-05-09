@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import setPadding from './setPadding';
+import { setPadding } from './setPadding';
 
 /**
  * Removes padding on node

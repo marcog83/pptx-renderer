@@ -6,7 +6,7 @@ const getComputedBorder = (yogaNode, edge) =>
 /**
  * Get Yoga computed border width. Zero otherwise
  *
- * @param {Object} node
+ * @param {Object} node node
  * @returns {Object} border widths
  */
 const getBorderWidth = (node) => {

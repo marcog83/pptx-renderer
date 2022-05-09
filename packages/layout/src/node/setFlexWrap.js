@@ -4,7 +4,7 @@ import Yoga from '@react-pdf/yoga';
 /**
  * Set flex wrap attribute to node's Yoga instance
  *
- * @param {string} flex wrap value
+ * @param {string} value flex wrap value
  * @param {Object} node instance
  * @returns {Object} node instance
  */

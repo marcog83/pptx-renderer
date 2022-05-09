@@ -40,7 +40,7 @@ export const setBorderLeft = setYogaValue('border', Yoga.EDGE_LEFT);
 /**
  * Set all border widths at once
  *
- * @param {number} border width
+ * @param {number} width border width
  * @param {Object} node instance
  * @returns {Object} node instance
  */

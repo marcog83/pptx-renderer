@@ -52,5 +52,3 @@ export const setPadding = (padding) => (node) => {
 
   return node;
 };
-
-export default setPadding;

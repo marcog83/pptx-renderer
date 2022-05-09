@@ -8,7 +8,7 @@ const isColumnReverse = R.equals('column-reverse');
 /**
  * Set flex direction attribute to node's Yoga instance
  *
- * @param {string} flex direction value
+ * @param {string} value flex direction value
  * @param {Object} node instance
  * @returns {Object} node instance
  */

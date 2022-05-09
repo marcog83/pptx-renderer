@@ -4,7 +4,7 @@ import Yoga from '@react-pdf/yoga';
 /**
  * Set justify content attribute to node's Yoga instance
  *
- * @param {string} justify content value
+ * @param {string} value justify content value
  * @param {Object} node instance
  * @returns {Object} node instance
  */

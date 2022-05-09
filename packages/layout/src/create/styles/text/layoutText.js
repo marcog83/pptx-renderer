@@ -3,7 +3,7 @@ export function layoutText(pText, pFontSize, pStyle) {
 
   document.body.appendChild(lDiv);
 
-  if (pStyle != null) {
+  if (pStyle !== null) {
     Object.assign(lDiv.style, pStyle || {});
   }
 

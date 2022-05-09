@@ -6,7 +6,7 @@ const getTransformStyle = (s) => R.pathOr('50%', [ 'style', s ]);
 /**
  * Get node origin
  *
- * @param {Object} node
+ * @param {Object} node node
  * @returns {Object} node origin
  */
 const getOrigin = (node) => {

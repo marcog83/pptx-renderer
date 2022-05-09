@@ -5,9 +5,9 @@ import upperFirst from '../utils/upperFirst';
 /**
  * Set generic align attribute to node's Yoga instance
  *
- * @param {string} specific align property
- * @param {string} align value
- * @param {Object} node instance
+ * @param {string} attr specific align property
+ * @param {string} value align value
+ * @param {Object} node node instance
  * @returns {Object} node instance
  */
 const setAlign = (attr) => (value) =>
