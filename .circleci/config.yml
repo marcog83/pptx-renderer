@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  1-test:
+  test:
     executor:
       name: node/default
       tag: '16.15.0'
@@ -19,7 +19,7 @@ jobs:
       - store_test_results:
           path: junit.xml
       
-  2-lint:
+  lint:
     executor:
       name: node/default
       tag: '16.15.0'
@@ -32,7 +32,7 @@ jobs:
       - run:
           command: yarn run lint
           name: Run YARN eslint
-  3-build:
+  build:
     executor:
       name: node/default
       tag: '16.15.0'
@@ -45,7 +45,7 @@ jobs:
       - run:
           command: yarn run build
           name: Run YARN build
-  4-deploy:
+  deploy:
     executor:
       name: node/default
       tag: '16.15.0'
@@ -64,7 +64,7 @@ workflows:
   version: 2
   build_and_test: 
     jobs:
-      - 1-test
-      - 2-lint
-      - 3-build
-      - 4-deploy
+      - test
+      - lint
+      - build
+      - deploy
