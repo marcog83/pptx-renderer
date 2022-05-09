@@ -6,11 +6,13 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: '16'
+      tag: '16.15.0'
     steps:
       - checkout
       - node/install-packages:
+          check-cache: always
           pkg-manager: yarn-berry
+          with-cache: false
       - run:
           command: yarn run test
           name: Run YARN tests
@@ -20,18 +22,20 @@ jobs:
   lint:
     executor:
       name: node/default
-      tag: '16'
+      tag: '16.15.0'
     steps:
       - checkout
       - node/install-packages:
+          check-cache: always
           pkg-manager: yarn-berry
+          with-cache: false
       - run:
           command: yarn run lint
           name: Run YARN eslint
   deploy:
     executor:
       name: node/default
-      tag: '16'
+      tag: '16.15.0'
     steps:
       - checkout
       - run:
