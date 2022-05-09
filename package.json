@@ -1,6 +1,5 @@
 {
   "name": "pptx-renderer",
-  "private": true,
   "version": "0.0.1",
   "description": "React Renderer for creating Powerpoint File with React. It is a PPTXJS binding for react",
   "main": "./build/app.bundle.js",
