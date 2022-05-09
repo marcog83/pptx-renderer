@@ -2,14 +2,15 @@ version: 2.1
 orbs: 
   node: circleci/node@5.0.2
 
-jobs:         
-  test:    
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: '16'
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: '16.13'
-      - run: node --version
+      - node/install-packages:
+          pkg-manager: yarn-berry
       - run:
           command: yarn run test
           name: Run YARN tests
@@ -17,19 +18,20 @@ jobs:
           path: junit.xml
       
   lint:
+    executor:
+      name: node/default
+      tag: '16'
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: '16.13'
-      - run: node --version
+      - node/install-packages:
+          pkg-manager: yarn-berry
       - run:
           command: yarn run lint
           name: Run YARN eslint
   deploy:
     executor:
       name: node/default
-      tag: '16.13'
+      tag: '16'
     steps:
       - checkout
       - run:
