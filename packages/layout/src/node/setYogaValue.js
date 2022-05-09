@@ -2,7 +2,6 @@
 
 import * as R from 'ramda';
 import Yoga from '@react-pdf/yoga';
-
 import upperFirst from '../utils/upperFirst';
 import matchPercent from '../utils/matchPercent';
 
@@ -11,27 +10,24 @@ const isNotNil = R.complement(R.isNil);
 /**
  * Set generic yoga attribute to node's Yoga instance, handing `auto`, edges and percentage cases
  *
- * @param {String} property
- * @param {Number} edge
- * @param {any} value
+ * @param {string} attr - property
+ * @param {number} edge  - edge
+ * @param {any} value  - value
  * @param {Object} node instance
- * @return {Object} node instance
+ * @returns {Object} node instance
  */
-const setYogaValue = (attr, edge) => value => node => {
-
-
+const setYogaValue = (attr, edge) => (value) => (node) => {
   const yogaNode = node._yogaNode;
 
   if (!R.isNil(value) && yogaNode) {
-
     const hasEdge = isNotNil(edge);
-    const fixedMethod = `set${upperFirst(attr)}`;
-    const autoMethod = `${fixedMethod}Auto`;
-    const percentMethod = `${fixedMethod}Percent`;
+    const fixedMethod = `set${ upperFirst(attr) }`;
+    const autoMethod = `${ fixedMethod }Auto`;
+    const percentMethod = `${ fixedMethod }Percent`;
     const percent = matchPercent(value);
 
     if (percent && !yogaNode[percentMethod]) {
-      throw new Error(`You can't pass percentage values to ${attr} property`);
+      throw new Error(`You can't pass percentage values to ${ attr } property`);
     }
 
     if (percent) {

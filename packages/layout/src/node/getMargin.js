@@ -2,6 +2,7 @@ import Yoga from '@react-pdf/yoga';
 
 const getComputedMargin = (node, edge) => {
   const yogaNode = node._yogaNode;
+
   return yogaNode ? yogaNode.getComputedMargin(edge) : null;
 };
 
@@ -9,9 +10,9 @@ const getComputedMargin = (node, edge) => {
  * Get Yoga computed magins. Zero otherwise
  *
  * @param {Object} node
- * @return {Object} margins
+ * @returns {Object} margins
  */
-const getMargin = node => {
+const getMargin = (node) => {
   const { style, box } = node;
 
   const marginTop =

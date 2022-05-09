@@ -12,9 +12,9 @@ const isImage = isType(P.Image);
 const isCanvas = isType(P.Canvas);
 
 const getWrap = R.ifElse(
-  R.anyPass([isSvg, isNote, isImage, isCanvas]),
+  R.anyPass([ isSvg, isNote, isImage, isCanvas ]),
   R.always(false),
-  R.pathOr(true, ['props', 'wrap']),
+  R.pathOr(true, [ 'props', 'wrap' ])
 );
 
 export default getWrap;

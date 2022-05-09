@@ -1,5 +1,4 @@
 import Yoga from '@react-pdf/yoga';
-
 import setYogaValue from './setYogaValue';
 
 /**
@@ -41,11 +40,11 @@ export const setMarginLeft = setYogaValue('margin', Yoga.EDGE_LEFT);
 /**
  * Set all margins at once
  *
- * @param {Number} margin
+ * @param {number} margin
  * @param {Object} node instance
- * @return {Object} node instance
+ * @returns {Object} node instance
  */
-export const setMargin = margin => node => {
+export const setMargin = (margin) => (node) => {
   setMarginTop(margin)(node);
   setMarginRight(margin)(node);
   setMarginBottom(margin)(node);

@@ -2,6 +2,7 @@ import Yoga from '@react-pdf/yoga';
 
 const getComputedPadding = (node, edge) => {
   const yogaNode = node._yogaNode;
+
   return yogaNode ? yogaNode.getComputedPadding(edge) : null;
 };
 
@@ -9,9 +10,9 @@ const getComputedPadding = (node, edge) => {
  * Get Yoga computed paddings. Zero otherwise
  *
  * @param {Object} node
- * @return {Object} paddings
+ * @returns {Object} paddings
  */
-const getPadding = node => {
+const getPadding = (node) => {
   const { style, box } = node;
 
   const paddingTop =

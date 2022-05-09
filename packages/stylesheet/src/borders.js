@@ -5,17 +5,18 @@ const BORDER_SHORTHAND_REGEX = /(-?\d+(\.\d+)?(px|in|mm|cm|pt|vw|vh|px)?)\s(\S+)
 const matchBorderShorthand = R.match(BORDER_SHORTHAND_REGEX);
 
 const expandBorders = (key, value) => {
-  const match = matchBorderShorthand(`${value}`);
+  const match = matchBorderShorthand(`${ value }`);
 
   if (match) {
     const color = match[5] || value;
     const style = match[4] || value;
     const width = match[1] || value;
+
     if (key.match(/(Top|Right|Bottom|Left)$/)) {
       return {
-        [`${key}Color`]: color,
-        [`${key}Style`]: style,
-        [`${key}Width`]: width,
+        [`${ key }Color`]: color,
+        [`${ key }Style`]: style,
+        [`${ key }Width`]: width
       };
     }
 
@@ -24,7 +25,7 @@ const expandBorders = (key, value) => {
         borderTopColor: color,
         borderRightColor: color,
         borderBottomColor: color,
-        borderLeftColor: color,
+        borderLeftColor: color
       };
     }
 
@@ -33,7 +34,7 @@ const expandBorders = (key, value) => {
         borderTopStyle: style,
         borderRightStyle: style,
         borderBottomStyle: style,
-        borderLeftStyle: style,
+        borderLeftStyle: style
       };
     }
 
@@ -42,7 +43,7 @@ const expandBorders = (key, value) => {
         borderTopWidth: width,
         borderRightWidth: width,
         borderBottomWidth: width,
-        borderLeftWidth: width,
+        borderLeftWidth: width
       };
     }
 
@@ -51,7 +52,7 @@ const expandBorders = (key, value) => {
         borderTopLeftRadius: value,
         borderTopRightRadius: value,
         borderBottomRightRadius: value,
-        borderBottomLeftRadius: value,
+        borderBottomLeftRadius: value
       };
     }
 
@@ -67,7 +68,7 @@ const expandBorders = (key, value) => {
       borderBottomWidth: width,
       borderLeftColor: color,
       borderLeftStyle: style,
-      borderLeftWidth: width,
+      borderLeftWidth: width
     };
   }
 

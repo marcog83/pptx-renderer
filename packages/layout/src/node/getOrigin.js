@@ -1,8 +1,7 @@
 import * as R from 'ramda';
-
 import matchPercent from '../utils/matchPercent';
 
-const getTransformStyle = s => R.pathOr('50%', ['style', s]);
+const getTransformStyle = (s) => R.pathOr('50%', [ 'style', s ]);
 
 /**
  * Get node origin
@@ -10,8 +9,10 @@ const getTransformStyle = s => R.pathOr('50%', ['style', s]);
  * @param {Object} node
  * @returns {Object} node origin
  */
-const getOrigin = node => {
-  if (!node.box) return {};
+const getOrigin = (node) => {
+  if (!node.box) {
+    return {};
+  }
 
   const { left, top, width, height } = node.box;
   const transformOriginX = getTransformStyle('transformOriginX')(node);

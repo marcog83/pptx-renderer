@@ -1,21 +1,18 @@
-import { normalize } from "./utils/colors";
-
 import * as R from 'ramda';
+import { normalize } from './utils/colors';
 
 const Colors = {
   color: normalize,
-  fill: (fill) => {
+  fill(fill) {
     if (R.is(String, fill)) {
-      return { color: normalize(fill) }
-    } else {
-      return { color: normalize(fill.color), transparency: fill.transparency }
+      return { color: normalize(fill) };
     }
 
+    return { color: normalize(fill.color), transparency: fill.transparency };
   },
-  line: (line) => {
-    return { ...line, color: normalize(line.color) }
-
+  line(line) {
+    return { ...line, color: normalize(line.color) };
   }
-}
+};
 
-export const colorTransform = R.evolve(Colors)
+export const colorTransform = R.evolve(Colors);

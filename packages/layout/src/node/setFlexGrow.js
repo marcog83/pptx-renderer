@@ -1,5 +1,4 @@
 import * as R from 'ramda';
-
 import setYogaValue from './setYogaValue';
 
 /**
@@ -11,7 +10,7 @@ import setYogaValue from './setYogaValue';
  */
 const setFlexGrow = R.compose(
   setYogaValue('flexGrow'),
-  R.defaultTo(0),
+  R.defaultTo(0)
 );
 
 export default setFlexGrow;

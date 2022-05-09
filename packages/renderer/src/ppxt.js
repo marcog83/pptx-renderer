@@ -1,6 +1,6 @@
-import { renderer } from './host';
 import { getLayout } from '@pptx-renderer/layout';
 import { render, Pptxgen } from '@pptx-renderer/render';
+import { renderer } from './host';
 
 export const PPTX = {
   async render(doc) {
@@ -22,8 +22,8 @@ export const PPTX = {
     const props = container.document.props || {};
 
     const ctx = new Pptxgen(props);
-    const layout =await getLayout({ctx,doc:container.document});
- 
+    const layout = await getLayout({ ctx, doc: container.document });
+
     return render(ctx, layout);
   }
 };

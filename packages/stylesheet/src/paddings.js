@@ -5,25 +5,25 @@ const processPadding = processBoxModel({
     paddingTop: first,
     paddingRight: second,
     paddingBottom: third,
-    paddingLeft: fourth,
+    paddingLeft: fourth
   }),
-  maxValues: 4,
+  maxValues: 4
 });
 
 const processPaddingVertical = processBoxModel({
   expandsTo: ({ first, second }) => ({
     paddingTop: first,
-    paddingBottom: second,
+    paddingBottom: second
   }),
-  maxValues: 2,
+  maxValues: 2
 });
 
 const processPaddingHorizontal = processBoxModel({
   expandsTo: ({ first, second }) => ({
     paddingRight: first,
-    paddingLeft: second,
+    paddingLeft: second
   }),
-  maxValues: 2,
+  maxValues: 2
 });
 
 const processPaddingSingle = processBoxModel();
@@ -32,5 +32,5 @@ export {
   processPadding,
   processPaddingVertical,
   processPaddingHorizontal,
-  processPaddingSingle,
+  processPaddingSingle
 };

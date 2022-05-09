@@ -1,15 +1,14 @@
 /* eslint-disable no-continue */
 
 import * as R from 'ramda';
-
 import getWrap from './getWrap';
 import getNodesHeight from './getNodesHeight';
 
-const getBreak = R.pathOr(false, ['props', 'break']);
+const getBreak = R.pathOr(false, [ 'props', 'break' ]);
 
-const getMinPresenceAhead = R.path(['props', 'minPresenceAhead']);
+const getMinPresenceAhead = R.path([ 'props', 'minPresenceAhead' ]);
 
-const defaultPresenceAhead = element => height =>
+const defaultPresenceAhead = (element) => (height) =>
   Math.min(element.box.height, height);
 
 const getPresenceAhead = (elements, height) => {
@@ -18,7 +17,9 @@ const getPresenceAhead = (elements, height) => {
   for (let i = 0; i < elements.length; i += 1) {
     const element = elements[i];
 
-    if (!element.box) continue;
+    if (!element.box) {
+      continue;
+    }
 
     const isElementInside = height > element.box.top;
     const presenceAhead =

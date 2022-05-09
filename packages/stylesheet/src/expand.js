@@ -3,16 +3,15 @@ import {
   processMargin,
   processMarginVertical,
   processMarginHorizontal,
-  processMarginSingle,
+  processMarginSingle
 } from './margins';
 import processBorders from './borders';
 import {
   processPadding,
   processPaddingVertical,
   processPaddingHorizontal,
-  processPaddingSingle,
+  processPaddingSingle
 } from './paddings';
-
 
 const shorthands = {
   flex: processFlex,
@@ -44,13 +43,11 @@ const shorthands = {
 /**
  * Transforms style key-value
  *
- * @param {String} key style key
- * @param {String} value style value
- * @returns {String | Number} transformed style values
+ * @param {string} key style key
+ * @param {string} value style value
+ * @returns {string | number} transformed style values
  */
-const expandStyle = (key, value) => {
-  return shorthands[key] ? shorthands[key](key, value) : { [key]: value };
-};
+const expandStyle = (key, value) => shorthands[key] ? shorthands[key](key, value) : { [key]: value };
 
 /**
  * Expand the shorthand properties.
@@ -59,7 +56,6 @@ const expandStyle = (key, value) => {
  * @returns { Object } expanded style object
  */
 export const expand = (style = {}) => {
-
   const propsArray = Object.keys(style);
   const resolvedStyle = {};
 

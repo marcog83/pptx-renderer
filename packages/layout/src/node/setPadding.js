@@ -1,5 +1,4 @@
 import Yoga from '@react-pdf/yoga';
-
 import setYogaValue from './setYogaValue';
 
 /**
@@ -41,11 +40,11 @@ export const setPaddingLeft = setYogaValue('padding', Yoga.EDGE_LEFT);
 /**
  * Set all paddings at once
  *
- * @param {Number} margin
+ * @param {number} padding padding
  * @param {Object} node instance
- * @return {Object} node instance
+ * @returns {Object} node instance
  */
-export const setPadding = padding => node => {
+export const setPadding = (padding) => (node) => {
   setPaddingTop(padding)(node);
   setPaddingRight(padding)(node);
   setPaddingBottom(padding)(node);

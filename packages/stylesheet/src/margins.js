@@ -5,37 +5,37 @@ const processMargin = processBoxModel({
     marginTop: first,
     marginRight: second,
     marginBottom: third,
-    marginLeft: fourth,
+    marginLeft: fourth
   }),
   maxValues: 4,
-  autoSupported: true,
+  autoSupported: true
 });
 
 const processMarginVertical = processBoxModel({
   expandsTo: ({ first, second }) => ({
     marginTop: first,
-    marginBottom: second,
+    marginBottom: second
   }),
   maxValues: 2,
-  autoSupported: true,
+  autoSupported: true
 });
 
 const processMarginHorizontal = processBoxModel({
   expandsTo: ({ first, second }) => ({
     marginRight: first,
-    marginLeft: second,
+    marginLeft: second
   }),
   maxValues: 2,
-  autoSupported: true,
+  autoSupported: true
 });
 
 const processMarginSingle = processBoxModel({
-  autoSupported: true,
+  autoSupported: true
 });
 
 export {
   processMargin,
   processMarginVertical,
   processMarginHorizontal,
-  processMarginSingle,
+  processMarginSingle
 };

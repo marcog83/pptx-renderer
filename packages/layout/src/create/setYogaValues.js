@@ -1,9 +1,4 @@
 import * as R from 'ramda';
-import getMargin from '../node/getMargin';
-import getPadding from '../node/getPadding';
-import getPosition from '../node/getPosition';
-import getDimension from '../node/getDimension';
-import getBorderWidth from '../node/getBorderWidth';
 import setDisplay from '../node/setDisplay';
 import setOverflow from '../node/setOverflow';
 import setFlexWrap from '../node/setFlexWrap';
@@ -21,25 +16,25 @@ import {
   setMarginTop,
   setMarginRight,
   setMarginBottom,
-  setMarginLeft,
+  setMarginLeft
 } from '../node/setMargin';
 import {
   setPaddingTop,
   setPaddingRight,
   setPaddingBottom,
-  setPaddingLeft,
+  setPaddingLeft
 } from '../node/setPadding';
 import {
   setBorderTop,
   setBorderRight,
   setBorderBottom,
-  setBorderLeft,
+  setBorderLeft
 } from '../node/setBorderWidth';
 import {
   setPositionTop,
   setPositionRight,
   setPositionBottom,
-  setPositionLeft,
+  setPositionLeft
 } from '../node/setPosition';
 import {
   setWidth,
@@ -47,10 +42,10 @@ import {
   setMaxWidth,
   setMinHeight,
   setMaxHeight,
-  setHeight,
+  setHeight
 } from '../node/setDimension';
 
-export const setYogaValues = style => R.compose(
+export const setYogaValues = (style) => R.compose(
   setHeight(style.height),
   setWidth(style.width),
   setMinWidth(style.minWidth),
@@ -85,5 +80,5 @@ export const setYogaValues = style => R.compose(
   setAspectRatio(style.aspectRatio),
   setFlexBasis(style.flexBasis),
   setFlexGrow(style.flexGrow),
-  setFlexShrink(style.flexShrink),
+  setFlexShrink(style.flexShrink)
 );

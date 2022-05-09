@@ -1,5 +1,5 @@
 import PPTxgen from 'pptxgenjs';
- 
+
 export class Pptxgen {
   constructor(props) {
     this.pres = new PPTxgen();
@@ -11,43 +11,36 @@ export class Pptxgen {
     this.pres.layout = props.layout;
   }
   addSlide({ masterName, sectionTitle, ...props }) {
-    
     this.slide = this.pres.addSlide({ masterName, sectionTitle });
     this.slide.background = props.background;
     this.slide.color = props.color;
     this.slide.fontSize = props.fontSize;
   }
   addSlideNumber(props) {
-    
     this.slide.slideNumber = props;
   }
   addText(children, options) {
-    
     this.slide.addText(children, options);
   }
-  addImage(props) {   
+  addImage(props) {
     this.slide.addImage(props);
   }
-  addShape(node,options) {
+  addShape(node, options) {
     if (node.hasText) {
-      
       this.addText(node.children, options);
     } else {
-      const { type} = node.props;
+      const { type } = node.props;
 
-     
       this.slide.addShape(type, options);
     }
   }
   addNotes(text) {
-    
     this.slide.addNotes(text);
   }
   addSection({ title }) {
-   
     this.pres.addSection({ title });
   }
-  getLayout(){
+  getLayout() {
     return this.pres.presLayout;
   }
   writeFile({ fileName }) {

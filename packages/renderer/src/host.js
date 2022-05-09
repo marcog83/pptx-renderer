@@ -1,14 +1,13 @@
 import Reconciler from 'react-reconciler';
-
-let UNDEFINED;
-
 import {
   unstable_scheduleCallback as schedulePassiveEffects,
   unstable_cancelCallback as cancelPassiveEffects,
   unstable_now as now
 } from 'scheduler';
-import propsEqual from './props-equal';
 import * as N from '@pptx-renderer/primitives';
+import propsEqual from './props-equal';
+
+let UNDEFINED;
 
 const emptyObject = {};
 
@@ -31,11 +30,12 @@ const HostConfig = {
     parentInstance.children.push(child);
   },
 
+  // eslint-disable-next-line no-unused-vars
   createInstance(type, { children, ...props }) {
     return {
       type,
       props: props || {},
-      style:{},
+      style: {},
       children: []
     };
   },

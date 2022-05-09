@@ -4,7 +4,8 @@ import * as R from 'ramda';
 /**
  * Performs right-to-left function composition with async functions support
  *
- * @param  {...any} functions
+ * @param  {...any} functions - list of functions
+ * @returns {Promise} promise
  */
 export const asyncCompose = (...fns) => async (value, ...args) => {
   let result = value;
@@ -12,6 +13,7 @@ export const asyncCompose = (...fns) => async (value, ...args) => {
 
   for (let i = 0; i < reversedFns.length; i += 1) {
     const fn = reversedFns[i];
+
     result = await fn(result, ...args);
   }
 

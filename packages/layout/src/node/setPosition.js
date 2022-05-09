@@ -1,5 +1,4 @@
 import Yoga from '@react-pdf/yoga';
-
 import setYogaValue from './setYogaValue';
 
 /**
@@ -41,11 +40,11 @@ export const setPositionLeft = setYogaValue('position', Yoga.EDGE_LEFT);
 /**
  * Set all positions at once
  *
- * @param {Number} position
+ * @param {number} position position
  * @param {Object} node instance
- * @return {Object} node instance
+ * @returns {Object} node instance
  */
-export const setPosition = position => node => {
+export const setPosition = (position) => (node) => {
   setPositionTop(position)(node);
   setPositionRight(position)(node);
   setPositionBottom(position)(node);

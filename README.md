@@ -4,6 +4,10 @@ It is a [PPTXJS](https://gitbrent.github.io/PptxGenJS/) binding for react
 
 
 ## Usage
+### Required SDKS
+```
+yarn dlx @yarnpkg/sdks vscode
+```
 
 ### Commands
 

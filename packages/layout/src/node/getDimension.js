@@ -1,22 +1,24 @@
 const DEFAULT_DIMENSION = {
   width: 0,
-  height: 0,
+  height: 0
 };
 
 /**
  * Get Yoga computed dimensions. Zero otherwise
  *
  * @param {Object} node
- * @return {Object} dimensions
+ * @returns {Object} dimensions
  */
-const getDimension = node => {
+const getDimension = (node) => {
   const yogaNode = node._yogaNode;
 
-  if (!yogaNode) return DEFAULT_DIMENSION;
+  if (!yogaNode) {
+    return DEFAULT_DIMENSION;
+  }
 
   return {
     width: yogaNode.getComputedWidth(),
-    height: yogaNode.getComputedHeight(),
+    height: yogaNode.getComputedHeight()
   };
 };
 

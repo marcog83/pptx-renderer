@@ -19,6 +19,7 @@ const propsEqual = (a, b) => {
           typeof b[propName] === 'object' &&
           propsEqual(a[propName], b[propName])
       ) {
+        // eslint-disable-next-line no-continue
         continue;
       }
 

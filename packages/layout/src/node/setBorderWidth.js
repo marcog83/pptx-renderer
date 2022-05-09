@@ -1,5 +1,4 @@
 import Yoga from '@react-pdf/yoga';
-
 import setYogaValue from './setYogaValue';
 
 /**
@@ -41,11 +40,11 @@ export const setBorderLeft = setYogaValue('border', Yoga.EDGE_LEFT);
 /**
  * Set all border widths at once
  *
- * @param {Number} border width
+ * @param {number} border width
  * @param {Object} node instance
- * @return {Object} node instance
+ * @returns {Object} node instance
  */
-export const setBorder = width => node => {
+export const setBorder = (width) => (node) => {
   setBorderTop(width)(node);
   setBorderRight(width)(node);
   setBorderBottom(width)(node);

@@ -1,17 +1,14 @@
-import { getBox } from './get-box';
 
 import * as N from '@pptx-renderer/primitives';
 import * as R from 'ramda';
+import { getBox } from './get-box';
 
+const calculateBox = (node) => ({
+  ...node,
+  box: getBox(node.parent, node)
+});
 
-const calculateBox=node => {
-  return {
-    ...node,
-    box: getBox(node.parent, node)
-  };
-}
-
-const calculateText =calculateBox;
+const calculateText = calculateBox;
 
 const calculateShape = calculateBox;
 const calculateImage = calculateBox;
@@ -29,4 +26,4 @@ export const calculateLayout = (node) => {
   const fn = L[type] || identity;
 
   return fn(node);
-}
+};

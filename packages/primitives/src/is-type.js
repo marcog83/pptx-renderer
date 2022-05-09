@@ -2,8 +2,8 @@ import * as R from 'ramda';
 import * as T from './primitives';
 
 const isType = R.propEq('type');
- 
-export const isDocument =isType(T.Document);
+
+export const isDocument = isType(T.Document);
 
 export const isSection = isType(T.Section);
 

@@ -1,28 +1,32 @@
-import { detector, typeHandlers } from "./detector";
+import { detector, typeHandlers } from './detector';
 
-export * from "./gif";
-export * from "./jpg";
+export * from './gif';
+
+export * from './jpg';
+
 export * from './png';
+
 export * from './svg';
 
-
+let UNDEFINED;
 
 export function sizeOf(buffer) {
-    // detect the file type.. don't rely on the extension
-    const type = detector(buffer)
+  // detect the file type.. don't rely on the extension
+  const type = detector(buffer);
 
-    if (typeof type !== 'undefined') {
+  if (typeof type !== 'undefined') {
+    // find an appropriate handler for this file type
+    if (type in typeHandlers) {
+      const size = typeHandlers[type].calculate(buffer);
 
-        // find an appropriate handler for this file type
-        if (type in typeHandlers) {
-            const size = typeHandlers[type].calculate(buffer)
-            if (size !== undefined) {
-                
-                size.type = typeHandlers[type]?.getMimetype()
-                return size
-            }
-        }
+      if (size !== UNDEFINED) {
+        size.type = typeHandlers[type]?.getMimetype();
+
+        return size;
+      }
     }
-    return {}
+  }
+
+  return {};
 }
 

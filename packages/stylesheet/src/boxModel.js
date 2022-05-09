@@ -1,25 +1,28 @@
-/* eslint-disable no-plusplus */
+/* eslint-disable complexity */
 import parse from 'postcss-value-parser/lib/parse';
 import parseUnit from 'postcss-value-parser/lib/unit';
 
 const BOX_MODEL_UNITS = 'px,in,mm,cm,pt,%,vw,vh';
 
 const logError = (style, value) => {
+  const SPACES = 2;
+
+  // eslint-disable-next-line no-console
   console.error(`
     @pptx-renderer/stylesheet parsing error:
 
-    ${style}: ${value},
-    ${' '.repeat(style.length + 2)}^
-    Unsupported ${style} value format
+    ${ style }: ${ value },
+    ${ ' '.repeat(style.length + SPACES) }^
+    Unsupported ${ style } value format
   `);
 };
 
 const expandBoxModel = ({
   expandsTo,
   maxValues = 1,
-  autoSupported = false,
+  autoSupported = false
 } = {}) => (model, value) => {
-  const nodes = parse(`${value}`);
+  const nodes = parse(`${ value }`);
 
   const parts = [];
 
@@ -28,11 +31,7 @@ const expandBoxModel = ({
 
     // value contains `calc`, `url` or other css function
     // `,`, `/` or strings that unsupported by margin and padding
-    if (
-      node.type === 'function' ||
-      node.type === 'string' ||
-      node.type === 'div'
-    ) {
+    if ([ 'function', 'string', 'div' ].includes(node.type)) {
       logError(model, value);
 
       return {};
@@ -63,7 +62,7 @@ const expandBoxModel = ({
     return {};
   }
 
-  const first = parts[0];
+  const [ first ] = parts;
 
   if (expandsTo) {
     const second = parts[1] || parts[0];
@@ -74,7 +73,7 @@ const expandBoxModel = ({
   }
 
   return {
-    [model]: first,
+    [model]: first
   };
 };
 

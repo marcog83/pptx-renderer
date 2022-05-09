@@ -3,11 +3,11 @@ import * as R from 'ramda';
 /**
  * Set aspect ratio attribute to node's Yoga instance
  *
- * @param {Number} ratio
+ * @param {number} ratio
  * @param {Object} node instance
- * @return {Object} node instance
+ * @returns {Object} node instance
  */
-const setAspectRatio = value => node => {
+const setAspectRatio = (value) => (node) => {
   const yogaNode = node._yogaNode;
 
   if (!R.isNil(value) && yogaNode) {
