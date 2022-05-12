@@ -4,7 +4,6 @@ module.exports = {
   entry: {
     index: './index.js'
   },
-  mode: 'development',
   output: {
     library: 'PPTX',
     libraryTarget: 'umd',
@@ -19,6 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: require.resolve('babel-loader')
 
       }

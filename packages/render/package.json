@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "main": "./src/index.js",
     "dependencies": {
+        "@babel/runtime-corejs3": "7.17.9",
         "@pptx-renderer/primitives": "0.0.1"
     },
     "peerDependencies": {

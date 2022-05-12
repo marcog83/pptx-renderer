@@ -7,9 +7,9 @@ export function usePreview() {
   async function sendData(url, data) {
     const formData = new FormData();
 
-    for (const name of data) {
-      formData.append(name, data[name]);
-    }
+    Object.entries(data).forEach(([ name, value ]) => {
+      formData.append(name, value);
+    });
 
     const response = await fetch(url, {
       method: 'POST',

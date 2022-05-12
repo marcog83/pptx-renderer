@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "main": "./src/index.js",
     "dependencies": {
+        "@babel/runtime-corejs3": "7.17.9",
         "color-string": "1.9.0",
         "postcss-value-parser": "4.2.0",
         "ramda": "0.28.0"

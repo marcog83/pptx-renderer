@@ -21,5 +21,8 @@ async function _fetchImage(url) {
 export async function fetchImage(node) {
   const image = await _fetchImage(node.props.src);
 
-  return { ...node, image };
+  // eslint-disable-next-line require-atomic-updates
+  node.image = image;
+
+  return node;
 }

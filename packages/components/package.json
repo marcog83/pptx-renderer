@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "main": "./src/index.js",
     "dependencies": {
+        "@babel/runtime-corejs3": "7.17.9",
         "react": "17.0.2"
     }
 }

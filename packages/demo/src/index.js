@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime';
+// import 'regenerator-runtime/runtime';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { PPTX, registerClassNames } from 'pptx-renderer';

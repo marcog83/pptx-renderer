@@ -87,7 +87,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-runtime", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.17.0"],\
             ["@babel/preset-env", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.16.11"],\
             ["@babel/preset-react", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.16.7"],\
-            ["@babel/runtime", "npm:7.17.2"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["babel-jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:28.1.0"],\
             ["babel-loader", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:8.2.3"],\
             ["eslint", "npm:8.14.0"],\
@@ -2820,6 +2820,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@babel/runtime-corejs3", [\
+        ["npm:7.17.9", {\
+          "packageLocation": "./.yarn/cache/@babel-runtime-corejs3-npm-7.17.9-b98e7d07b4-c0893eb1ba.zip/node_modules/@babel/runtime-corejs3/",\
+          "packageDependencies": [\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
+            ["core-js-pure", "npm:3.22.5"],\
+            ["regenerator-runtime", "npm:0.13.9"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@babel/template", [\
         ["npm:7.16.7", {\
           "packageLocation": "./.yarn/cache/@babel-template-npm-7.16.7-a18e444be8-10cd112e89.zip/node_modules/@babel/template/",\
@@ -3391,6 +3402,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/components/",\
           "packageDependencies": [\
             ["@pptx-renderer/components", "workspace:packages/components"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["react", "npm:17.0.2"]\
           ],\
           "linkType": "SOFT"\
@@ -3400,7 +3412,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:packages/image-size", {\
           "packageLocation": "./packages/image-size/",\
           "packageDependencies": [\
-            ["@pptx-renderer/image-size", "workspace:packages/image-size"]\
+            ["@pptx-renderer/image-size", "workspace:packages/image-size"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -3410,6 +3423,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/layout/",\
           "packageDependencies": [\
             ["@pptx-renderer/layout", "workspace:packages/layout"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["@pptx-renderer/image-size", "workspace:packages/image-size"],\
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],\
             ["@pptx-renderer/stylesheet", "workspace:packages/stylesheet"],\
@@ -3425,6 +3439,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/primitives/",\
           "packageDependencies": [\
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["ramda", "npm:0.28.0"]\
           ],\
           "linkType": "SOFT"\
@@ -3435,6 +3450,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@pptx-renderer-render-virtual-5d16d533d1/1/packages/render/",\
           "packageDependencies": [\
             ["@pptx-renderer/render", "virtual:f82e7d74599c05357519432d4dd84f0fdff656f2e9877e789fc96400b2924b7b570bbb7ba1a1f61a6dbb6d4af7bf28313d6f43947cd14093f63294f5fece2fb1#workspace:packages/render"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],\
             ["@types/pptxgenjs", null],\
             ["pptxgenjs", null]\
@@ -3449,6 +3465,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/render/",\
           "packageDependencies": [\
             ["@pptx-renderer/render", "workspace:packages/render"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["@pptx-renderer/primitives", "workspace:packages/primitives"]\
           ],\
           "linkType": "SOFT"\
@@ -3459,6 +3476,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/renderer/",\
           "packageDependencies": [\
             ["@pptx-renderer/renderer", "workspace:packages/renderer"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["@pptx-renderer/layout", "workspace:packages/layout"],\
             ["@pptx-renderer/primitives", "workspace:packages/primitives"],\
             ["@pptx-renderer/render", "virtual:f82e7d74599c05357519432d4dd84f0fdff656f2e9877e789fc96400b2924b7b570bbb7ba1a1f61a6dbb6d4af7bf28313d6f43947cd14093f63294f5fece2fb1#workspace:packages/render"],\
@@ -3474,6 +3492,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/stylesheet/",\
           "packageDependencies": [\
             ["@pptx-renderer/stylesheet", "workspace:packages/stylesheet"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["color-string", "npm:1.9.0"],\
             ["postcss-value-parser", "npm:4.2.0"],\
             ["ramda", "npm:0.28.0"]\
@@ -5970,6 +5989,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["core-js-pure", [\
+        ["npm:3.22.5", {\
+          "packageLocation": "./.yarn/unplugged/core-js-pure-npm-3.22.5-c97acb6bb3/node_modules/core-js-pure/",\
+          "packageDependencies": [\
+            ["core-js-pure", "npm:3.22.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["core-util-is", [\
         ["npm:1.0.3", {\
           "packageLocation": "./.yarn/cache/core-util-is-npm-1.0.3-ca74b76c90-9de8597363.zip/node_modules/core-util-is/",\
@@ -6376,7 +6404,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["multer", "npm:1.4.4"],\
             ["nodemon", "npm:2.0.15"],\
             ["pnp-webpack-plugin", "npm:1.7.0"],\
-            ["pptx-renderer", "npm:0.0.1"],\
+            ["pptx-renderer", "workspace:."],\
             ["pptxgenjs", "npm:3.9.0"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:56655dccefeb57870db2fe3117292997fc9f96cec11bdfe7524b833a4665e07826505d869dc3eb64fc4a21ad76da2ad743f6a1761d2b5eafcd491195d94bbb8c#npm:17.0.2"],\
@@ -11273,13 +11301,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["pptx-renderer", [\
-        ["npm:0.0.1", {\
-          "packageLocation": "./.yarn/cache/pptx-renderer-npm-0.0.1-88eea93812-96009217b9.zip/node_modules/pptx-renderer/",\
-          "packageDependencies": [\
-            ["pptx-renderer", "npm:0.0.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
@@ -11298,7 +11319,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-runtime", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.17.0"],\
             ["@babel/preset-env", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.16.11"],\
             ["@babel/preset-react", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.16.7"],\
-            ["@babel/runtime", "npm:7.17.2"],\
+            ["@babel/runtime-corejs3", "npm:7.17.9"],\
             ["babel-jest", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:28.1.0"],\
             ["babel-loader", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:8.2.3"],\
             ["eslint", "npm:8.14.0"],\

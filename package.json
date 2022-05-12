@@ -1,16 +1,13 @@
 {
   "name": "pptx-renderer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React Renderer for creating Powerpoint File with React. It is a PPTXJS binding for react",
   "main": "./build/app.bundle.js",
-  "files": [
-    
-  ],
   "scripts": {
     "start:demo": "yarn workspace demo start",
     "test": "jest --ci",
-    "build": "webpack",
-    "dev": "webpack --watch",
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch",
     "lint": "yarn run eslint \"packages/**/*.js\" --fix"
   },
   "repository": {
@@ -31,7 +28,7 @@
     "yarn": ">=1.22.17"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.0"
+    "@babel/runtime-corejs3": "7.17.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
