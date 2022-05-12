@@ -1505,7 +1505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.17.0, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.8.4":
   version: 7.17.2
   resolution: "@babel/runtime@npm:7.17.2"
   dependencies:
@@ -4324,7 +4324,6 @@ __metadata:
     "@babel/plugin-transform-runtime": ^7.17.0
     "@babel/preset-env": ^7.16.11
     "@babel/preset-react": ^7.16.7
-    "@babel/runtime": ^7.17.0
     babel-loader: ^8.2.3
     cors: 2.8.5
     cross-spawn: ^7.0.3
@@ -4339,11 +4338,10 @@ __metadata:
     multer: 1.4.4
     nodemon: 2.0.15
     pnp-webpack-plugin: 1.7.0
-    pptx-renderer: 0.0.7
+    pptx-renderer: 0.0.8
     pptxgenjs: 3.9.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    regenerator-runtime: 0.13.9
     style-loader: 3.3.1
     tmp: 0.2.1
     webpack: 5.69.0
@@ -8538,7 +8536,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pptx-renderer@0.0.7, pptx-renderer@workspace:.":
+"pptx-renderer@0.0.8, pptx-renderer@workspace:.":
   version: 0.0.0-use.local
   resolution: "pptx-renderer@workspace:."
   dependencies:
@@ -8946,7 +8944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:0.13.9, regenerator-runtime@npm:^0.13.4":
+"regenerator-runtime@npm:^0.13.4":
   version: 0.13.9
   resolution: "regenerator-runtime@npm:0.13.9"
   checksum: 65ed455fe5afd799e2897baf691ca21c2772e1a969d19bb0c4695757c2d96249eb74ee3553ea34a91062b2a676beedf630b4c1551cc6299afb937be1426ec55e

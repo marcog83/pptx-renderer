@@ -6389,7 +6389,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-runtime", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.17.0"],\
             ["@babel/preset-env", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.16.11"],\
             ["@babel/preset-react", "virtual:105f14b33154046b74e4cf9bad6aa7910a580f2cd560f8025be43ac59d710c4382e7f8009d143e3291035dcd40da129804b9b3de9729a92ce7e7e7bdc5fcd7be#npm:7.16.7"],\
-            ["@babel/runtime", "npm:7.17.2"],\
             ["babel-loader", "virtual:56655dccefeb57870db2fe3117292997fc9f96cec11bdfe7524b833a4665e07826505d869dc3eb64fc4a21ad76da2ad743f6a1761d2b5eafcd491195d94bbb8c#npm:8.2.3"],\
             ["cors", "npm:2.8.5"],\
             ["cross-spawn", "npm:7.0.3"],\
@@ -6408,7 +6407,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pptxgenjs", "npm:3.9.0"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:56655dccefeb57870db2fe3117292997fc9f96cec11bdfe7524b833a4665e07826505d869dc3eb64fc4a21ad76da2ad743f6a1761d2b5eafcd491195d94bbb8c#npm:17.0.2"],\
-            ["regenerator-runtime", "npm:0.13.9"],\
             ["style-loader", "virtual:56655dccefeb57870db2fe3117292997fc9f96cec11bdfe7524b833a4665e07826505d869dc3eb64fc4a21ad76da2ad743f6a1761d2b5eafcd491195d94bbb8c#npm:3.3.1"],\
             ["tmp", "npm:0.2.1"],\
             ["webpack", "virtual:56655dccefeb57870db2fe3117292997fc9f96cec11bdfe7524b833a4665e07826505d869dc3eb64fc4a21ad76da2ad743f6a1761d2b5eafcd491195d94bbb8c#npm:5.69.0"],\

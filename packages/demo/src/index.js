@@ -1,10 +1,10 @@
-// import 'regenerator-runtime/runtime';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { PPTX, registerClassNames } from 'pptx-renderer';
 import { App } from './app';
 import { PPTComponent } from './ppt-component';
 import { Style } from './class-names';
+
+import './index.css';
 
 async function main() {
   registerClassNames(Style);

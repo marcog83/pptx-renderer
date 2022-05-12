@@ -3,22 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.17.0",
-    "cors": "2.8.5",
-    "cross-spawn": "^7.0.3",
-    "express": "4.17.2",
-    "html-webpack-plugin": "5.5.0",
-    "multer": "1.4.4",
-    "nodemon": "2.0.15",
-    "pptx-renderer": "0.0.7",
+    "pptx-renderer": "0.0.8",
     "pptxgenjs": "3.9.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "regenerator-runtime": "0.13.9",
-    "tmp": "0.2.1",
-    "webpack": "5.69.0",
-    "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.7.4"
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "start": "yarn run start:client & yarn run server",
@@ -41,13 +29,23 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
+    "cors": "2.8.5",
+    "cross-spawn": "^7.0.3",
     "css-loader": "6.6.0",
     "eslint": "8.6.0",
     "eslint-plugin-jest": "25.3.4",
     "eslint-plugin-react": "^7.28.0",
+    "express": "4.17.2",
+    "html-webpack-plugin": "5.5.0",
     "jest": "27.4.7",
     "jest-junit": "^13.0.0",
+    "multer": "1.4.4",
+    "nodemon": "2.0.15",
     "pnp-webpack-plugin": "1.7.0",
-    "style-loader": "3.3.1"
+    "style-loader": "3.3.1",
+    "tmp": "0.2.1",
+    "webpack": "5.69.0",
+    "webpack-cli": "4.9.2",
+    "webpack-dev-server": "4.7.4"
   }
 }
